@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/home/y.tanaka/chaos/.bundle'
+let g:netrw_dirhist_2='/home/y.tanaka/chaos/lib/card_complex'
+let g:netrw_dirhist_3='/home/y.tanaka/kpi_logger/lib/kpi_logger'
+let g:netrw_dirhist_4='/usr/local/mysql/5.5.25a'
+let g:netrw_dirhist_5='/home/y.tanaka/kpi_logger/lib/kpi_logger'
+let g:netrw_dirhist_6='/home/y.tanaka/chaos/lib/commons'
+let g:netrw_dirhist_7='/home/y.tanaka/chaos/spec/lib/commons'
+let g:netrw_dirhist_8='/home/y.tanaka/mithra/lib/log'

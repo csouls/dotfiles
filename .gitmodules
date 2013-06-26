@@ -1,0 +1,8 @@
+[submodule "vim/bundle/neobundle"]
+  path = vim/bundle/neobundle
+  url = git://github.com/Shougo/neobundle.vim
+  ignore = dirty
+[submodule "liquidprompt"]
+  path = liquidprompt
+  url = git://github.com/nojhan/liquidprompt.git
+  ignore = dirty

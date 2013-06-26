@@ -1,0 +1,37 @@
+[user]
+  user = y.tanaka
+  email = y.tanaka@aktsk.jp
+  name = Yusuke Tanaka
+[github]
+  user = yusuket
+[core]
+  quotepath = false
+  pager = less -r
+  editor = vim
+[color]
+  status = auto
+  diff = auto
+  branch = auto
+[alias]
+  b = branch
+  ba = branch -a
+  br = branch -r
+  bm = branch --merged
+  bnm = branch --no-merged
+  ci = commit
+  co = checkout
+  d = diff
+  ds = diff --cached
+  fix = commit --amend
+  l = log
+  s = status
+  st = status
+  graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
+[merge]
+  ff = false
+[pull]
+  rebase = true
+[push]
+  default = simple
+[grep]
+	lineNumber = true
