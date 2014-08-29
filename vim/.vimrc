@@ -1,7 +1,12 @@
-"--- NeoBundle
-set nocompatible
+" OS
+let s:is_win   = has('win32') || has('win64')
+let s:is_mac   = has('mac') || system('uname') =~? '^darwin'
+let s:is_linux = !s:is_mac && has('unix')
+
+filetype plugin indent on " Required for Neobundle
 
 if has('vim_starting')
+  set nocompatible               " Be iMproved
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
@@ -15,51 +20,130 @@ NeoBundle 'Shougo/vimproc'
 
 " My Bundles here:
 NeoBundle 'L9'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-NeoBundle 'thinca/vim-quickrun.git'
-NeoBundle 'itspriddle/vim-marked'
-NeoBundle 'tpope/vim-markdown'
-"NeoBundle 'tpope/vim-bundler'
-NeoBundle 'h1mesuke/vim-alignta'
-NeoBundle 'mattn/zencoding-vim'
-NeoBundle 'mattn/webapi-vim'
-NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'taichouchou2/html5.vim'
-NeoBundle 'taichouchou2/vim-javascript' " jQuery syntax追加
-NeoBundle 'AtsushiM/sass-compile.vim'
-NeoBundle 'vim-coffee-script'
-NeoBundle 'scrooloose/syntastic.git'
+NeoBundle 'FuzzyFinder'
+
+NeoBundle 'tpope/vim-rails'
+NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'tpope/vim-bundler'
+NeoBundle 'alpaca-tc/neorspec.vim'
 NeoBundle 'ngmy/vim-rubocop'
 NeoBundle 'tpope/vim-rbenv'
-" vim-scripts repos
-NeoBundle 'FuzzyFinder'
-NeoBundle 'rails.vim'
+NeoBundle 'Rip-Rip/clang_complete'
+NeoBundle 'xolox/vim-misc'
+NeoBundle 'xolox/vim-lua-ftplugin'
+NeoBundle 'xolox/vim-lua-inspect'
+NeoBundle 'jnwhiteh/vim-golang'
+NeoBundle 'taichouchou2/vim-javascript'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'mattn/webapi-vim'
+NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundle 'AtsushiM/sass-compile.vim'
+NeoBundle 'taichouchou2/html5.vim'
+NeoBundle 'gregsexton/gitv'
+NeoBundle 'kana/vim-fakeclip'
+NeoBundle 'surround.vim'
+NeoBundle 'matchit.zip'
+NeoBundle 'vim-jp/vital.vim'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'mattn/zencoding-vim'
+NeoBundle 'tpope/vim-endwise'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+NeoBundle 'elzr/vim-json'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'osyo-manga/vim-over'
+NeoBundle 'LeafCage/yankround.vim'
+NeoBundle 'h1mesuke/vim-alignta'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'itspriddle/vim-marked'
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'syui/wauto.vim'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'tpope/vim-dispatch'
+NeoBundle 'szw/vim-tags'                              "Ctags generator
+NeoBundle 'AndrewRadev/switch.vim'
+
+" if_luaが有効ならneocompleteを使う
+NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
+
+" Unite and plugins
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'h1mesuke/unite-outline'
+
+" vimrc Benchmark
+NeoBundle 'mattn/benchvimrc-vim'
+
+" Color schemes
+"" molokai only!
+NeoBundle 'tomasr/molokai'
+
+" TextObject
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'nelstrom/vim-textobj-rubyblock'      " rr:all blocks, ro:definitions, rl:loop, rc:control, rd:do for ruby blocks
+NeoBundle 'deris/vim-textobj-enclosedsyntax'    " aq, iq for treat enclosed syntax
+NeoBundle 'kana/vim-textobj-indent'             " al, il for indent block
+NeoBundle 'mattn/vim-textobj-url'               " au, iu for url
+NeoBundle 'mjbrownie/html-textobjects'          " Html textobject
+NeoBundle 'osyo-manga/vim-textobj-multiblock'   " Unite (, [, { to ab, ib, and multiple block
+NeoBundle 'osyo-manga/vim-textobj-multitextobj' " To gather multiple textobject into one textobject
+
+" misc
+NeoBundle 'daisuzu/facebook.vim'
+NeoBundle 'deris/vim-duzzle'
+
 " Non github repos
 NeoBundle 'git://git.wincent.com/command-t.git'
 " Non git repos
 NeoBundle 'http://svn.macports.org/repository/macports/contrib/mpvim/'
 
-NeoBundle 'daisuzu/facebook.vim'
-
-filetype plugin indent on     " Required!
-
 "-- Installation check.
 NeoBundleCheck
 
-"--- neocomplcache
-let g:NeoComplCache_EnableAtStartup = 1
-let g:NeoComplCache_SmartCase = 1
-let g:NeoComplCache_EnableCamelCaseCompletion = 1
-let g:NeoComplCache_EnableUnderbarCompletion = 1
-let g:NeoComplCache_MinSyntaxLength = 3
+"---------------------------------------------------------------------
+"--- Plugin settings
 
-"--- Ruby/Railsのomni補完
-let g:rubycomplete_buffer_loading = 1
-let g:rubycomplete_classes_in_global = 1
-let g:rubycomplete_rails = 1
-let g:rails_level = 4
+"--- neocomplete or neocomplcache
+if neobundle#is_installed('neocomplete')
+    " neocomplete用設定
+    let g:neocomplete#enable_at_startup = 1
+    let g:neocomplete#enable_ignore_case = 1
+    let g:neocomplete#enable_smart_case = 1
+    let g:neocomplete#enable_fuzzy_completion = 0
+
+    if !exists('g:neocomplete#keyword_patterns')
+      let g:neocomplete#keyword_patterns = {}
+    endif
+    let g:neocomplete#keyword_patterns._ = '\h\w*'
+
+    inoremap <expr><C-n>  pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
+    inoremap <expr><C-e>  pumvisible() ? neocomplete#close_popup() : "<End>"
+    inoremap <expr><C-c>  neocomplete#cancel_popup()
+    inoremap <expr><C-u>  neocomplete#undo_completion()
+    inoremap <expr><C-h>  neocomplete#smart_close_popup()."\<C-h>"
+elseif neobundle#is_installed('neocomplcache')
+    " neocomplcache用設定
+    let g:neocomplcache_enable_at_startup = 1
+"    let g:neocomplcache_enable_ignore_case = 1
+"    let g:neocomplcache_enable_smart_case = 1
+"    if !exists('g:neocomplcache_keyword_patterns')
+"        let g:neocomplcache_keyword_patterns = {}
+"    endif
+"    let g:neocomplcache_keyword_patterns._ = '\h\w*'
+"    let g:neocomplcache_enable_camel_case_completion = 0
+"    let g:neocomplcache_enable_underbar_completion = 1
+endif
+
+" vim-json
+let g:vim_json_syntax_conceal = 1
+let g:vim_json_syntax_concealcursor = 1
+
+"--- Ruby/Railsのomni補完: 重いので無効化
+"let g:rubycomplete_buffer_loading = 1
+"let g:rubycomplete_classes_in_global = 1
+"let g:rubycomplete_rails = 1
+"let g:rails_level = 4
 
 "--- sass
 let g:sass_compile_auto = 1
@@ -69,52 +153,221 @@ let g:sass_compile_file = ['scss', 'sass']
 let g:sass_started_dirs = []
 
 autocmd FileType less,sass  setlocal sw=2 sts=2 ts=2 et
-"au! BufWritePost * SassCompile
-
-"--- marked
-let g:quickrun_config = {}
-let g:quickrun_config.markdown = {
-      \ 'outputter' : 'null',
-      \ 'command'   : 'open',
-      \ 'cmdopt'    : '-a',
-      \ 'args'      : 'Marked',
-      \ 'exec'      : '%c %o %a %s',
-      \ }
 
 "--- Alignta
 xnoremap al :Alignta<Space>
 
-"--- Json整形
-command! -nargs=? Jq call s:Jq(<f-args>)
-function! s:Jq(...)
-    if 0 == a:0
-        let l:arg = "."
-    else
-        let l:arg = a:1
+"-- vim-over
+nnoremap <silent> <Leader>m :OverCommandLine<CR>%s/
+
+"-- yankround
+"" keymaps
+nmap p <Plug>(yankround-p)
+xmap p <Plug>(yankround-p)
+nmap P <Plug>(yankround-P)
+nmap gp <Plug>(yankround-gp)
+xmap gp <Plug>(yankround-gp)
+nmap gP <Plug>(yankround-gP)
+nmap <C-p> <Plug>(yankround-prev)
+nmap <C-n> <Plug>(yankround-next)
+
+"-- wauto
+nmap <Leader>s  <Plug>(AutoWriteStart)
+nmap <Leader>ss <Plug>(AutoWriteStop)
+let g:auto_write = 1
+
+"-- TextObject
+let g:textobj_multiblock_blocks = [
+\ [ '(', ')' ],
+\ [ '[', ']' ],
+\ [ '{', '}' ],
+\ [ '<', '>', 1 ],
+\ [ '"', '"', 1 ],
+\ [ "'", "'", 1 ],
+\ [ "_", "_", 1 ],
+\]
+
+omap is <Plug>(textobj-multiblock-i)
+omap as <Plug>(textobj-multiblock-a)
+vmap is <Plug>(textobj-multiblock-i)
+vmap as <Plug>(textobj-multiblock-a)
+
+" quickrun
+let g:quickrun_config = {}
+
+let g:neorspec_command = "Dispatch spring rspec {spec}"
+nmap <Leader>c :<C-U>RSpecCurrent<CR>
+
+if s:is_mac
+  let s:clang_library_path='/Library/Developer/CommandLineTools/usr/lib'
+  if isdirectory(s:clang_library_path)
+    let g:clang_library_path=s:clang_library_path
+  endif
+endif
+
+function! s:separate_defenition_to_each_filetypes(ft_dictionary) "{{{
+  let result = {}
+
+  for [filetypes, value] in items(a:ft_dictionary)
+    for ft in split(filetypes, ",")
+      if !has_key(result, ft)
+        let result[ft] = []
+      endif
+
+      call extend(result[ft], copy(value))
+    endfor
+  endfor
+
+  return result
+endfunction"}}}
+
+" ------------------------------------
+" switch.vim
+" ------------------------------------
+nnoremap ! :Switch<CR>
+let s:switch_definition = {
+      \ '*': [
+      \   ['is', 'are']
+      \ ],
+      \ 'ruby,eruby,haml' : [
+      \   ['if', 'unless'],
+      \   ['while', 'until'],
+      \   ['.blank?', '.present?'],
+      \   ['include', 'extend'],
+      \   ['class', 'module'],
+      \   ['.inject', '.delete_if'],
+      \   ['.map', '.map!'],
+      \   ['attr_accessor', 'attr_reader', 'attr_writer'],
+      \ ],
+      \ 'Gemfile,Berksfile' : [
+      \   ['=', '<', '<=', '>', '>=', '~>'],
+      \ ],
+      \ 'ruby.application_template' : [
+      \   ['yes?', 'no?'],
+      \   ['lib', 'initializer', 'file', 'vendor', 'rakefile'],
+      \   ['controller', 'model', 'view', 'migration', 'scaffold'],
+      \ ],
+      \ 'erb,html,php' : [
+      \   { '<!--\([a-zA-Z0-9 /]\+\)--></\(div\|ul\|li\|a\)>' : '</\2><!--\1-->' },
+      \ ],
+      \ 'rails' : [
+      \   [100, ':continue', ':information'],
+      \   [101, ':switching_protocols'],
+      \   [102, ':processing'],
+      \   [200, ':ok', ':success'],
+      \   [201, ':created'],
+      \   [202, ':accepted'],
+      \   [203, ':non_authoritative_information'],
+      \   [204, ':no_content'],
+      \   [205, ':reset_content'],
+      \   [206, ':partial_content'],
+      \   [207, ':multi_status'],
+      \   [208, ':already_reported'],
+      \   [226, ':im_used'],
+      \   [300, ':multiple_choices'],
+      \   [301, ':moved_permanently'],
+      \   [302, ':found'],
+      \   [303, ':see_other'],
+      \   [304, ':not_modified'],
+      \   [305, ':use_proxy'],
+      \   [306, ':reserved'],
+      \   [307, ':temporary_redirect'],
+      \   [308, ':permanent_redirect'],
+      \   [400, ':bad_request'],
+      \   [401, ':unauthorized'],
+      \   [402, ':payment_required'],
+      \   [403, ':forbidden'],
+      \   [404, ':not_found'],
+      \   [405, ':method_not_allowed'],
+      \   [406, ':not_acceptable'],
+      \   [407, ':proxy_authentication_required'],
+      \   [408, ':request_timeout'],
+      \   [409, ':conflict'],
+      \   [410, ':gone'],
+      \   [411, ':length_required'],
+      \   [412, ':precondition_failed'],
+      \   [413, ':request_entity_too_large'],
+      \   [414, ':request_uri_too_long'],
+      \   [415, ':unsupported_media_type'],
+      \   [416, ':requested_range_not_satisfiable'],
+      \   [417, ':expectation_failed'],
+      \   [422, ':unprocessable_entity'],
+      \   [423, ':precondition_required'],
+      \   [424, ':too_many_requests'],
+      \   [426, ':request_header_fields_too_large'],
+      \   [500, ':internal_server_error'],
+      \   [501, ':not_implemented'],
+      \   [502, ':bad_gateway'],
+      \   [503, ':service_unavailable'],
+      \   [504, ':gateway_timeout'],
+      \   [505, ':http_version_not_supported'],
+      \   [506, ':variant_also_negotiates'],
+      \   [507, ':insufficient_storage'],
+      \   [508, ':loop_detected'],
+      \   [510, ':not_extended'],
+      \   [511, ':network_authentication_required'],
+      \ ],
+      \ 'rspec': [
+      \   ['describe', 'context', 'specific', 'example'],
+      \   ['before', 'after'],
+      \   ['be_true', 'be_false'],
+      \   ['get', 'post', 'put', 'delete'],
+      \   ['==', 'eql', 'equal'],
+      \   { '\.should_not': '\.should' },
+      \   ['\.to_not', '\.to'],
+      \   { '\([^. ]\+\)\.should\(_not\|\)': 'expect(\1)\.to\2' },
+      \   { 'expect(\([^. ]\+\))\.to\(_not\|\)': '\1.should\2' },
+      \ ],
+      \ 'markdown' : [
+      \   ['[ ]', '[x]']
+      \ ]
+      \ }
+
+let s:switch_definition = s:separate_defenition_to_each_filetypes(s:switch_definition)
+function! s:define_switch_mappings() "{{{
+  if exists('b:switch_custom_definitions')
+    unlet b:switch_custom_definitions
+  endif
+
+  let dictionary = []
+  for filetype in split(&ft, '\.')
+    if has_key(s:switch_definition, filetype)
+      let dictionary = extend(dictionary, s:switch_definition[filetype])
     endif
-    execute "%! jq \"" . l:arg . "\""
-endfunction
+  endfor
 
-command! Jf :execute '%!python -m json.tool'
+  if exists('b:rails_root')
+    let dictionary = extend(dictionary, s:switch_definition['rails'])
+  endif
 
-command! Jfu :execute '%!python -m json.tool'
-  \ | :execute '%!python -c "import re,sys;chr=__builtins__.__dict__.get(\"unichr\", chr);sys.stdout.write(re.sub(r\"\\u[0-9a-f]{4}\", lambda x: chr(int(\"0x\" + x.group(0)[2:], 16)), sys.stdin.read()))"'
-  \ | :%s/ \+$//ge
-  \ | :set ft=javascript
-  \ | :1
+  if has_key(s:switch_definition, '*')
+    let dictionary = extend(dictionary, s:switch_definition['*'])
+  endif
 
-"--- vim一般設定
+  if !empty('dictionary')
+"    call alpaca#let_b:('switch_custom_definitions', dictionary)
+  endif
+endfunction"}}}
+
+augroup SwitchSetting
+  autocmd!
+  autocmd Filetype * if !empty(split(&ft, '\.')) | call <SID>define_switch_mappings() | endif
+augroup END
+
+
+"---------------------------------------------------------------------
+"--- vim general settings
 set autoindent
 set ambiwidth=double
-set backupdir=$HOME/.vimbackup
-set directory=$HOME/.vimbackup
+set backupdir=$HOME/.vim/backup/
+set directory=$HOME/.vim/backup/
 set browsedir=buffer
 set nocompatible
 set expandtab
 set hidden
 set incsearch
 set list
-set listchars=tab:>\ ,extends:<,trail:-
+set listchars=tab:>\ ,extends:<
 set number
 set showmatch
 set smartcase
@@ -123,38 +376,70 @@ set tabstop=2
 set smarttab
 set shiftwidth=2
 set whichwrap=b,s,h,l,<,>,[,]
+set autochdir
 
-nnoremap <C-g> 1<C-g>
-
-syntax on
 filetype on
 filetype indent on
 filetype plugin on
+syntax on
+set t_Co=256
+set enc=utf-8
+set fenc=utf-8
+set fencs=utf-8,iso-2022-jp,euc-jp,cp932
+set fileformats=unix,mac,dos
+set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 
-"-- 入力モード時、ステータスラインのカラーを変更
+" change the leader key to the ";"
+let mapleader = ";"
+noremap \ ;
+
+" copy to clipboard when yanked
+set clipboard=unnamed
+
+" 表示行単位で移動
+nnoremap j gj
+nnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up>   gk
+
+" activate molokai colorscheme
+colorscheme molokai
+
+" Change color on status line when input mode
 augroup InsertHook
 autocmd!
 autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340
 autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90
 augroup END
 
-"-- Rails関連ファイルでタブ幅を変更
-au BufNewFile,BufRead *.rhtml set nowrap tabstop=2 shiftwidth=2
-au BufNewFile,BufRead *.rb set nowrap tabstop=2 shiftwidth=2
-au BufNewFile,BufRead *.erb set nowrap tabstop=2 shiftwidth=2
+" Tab width
+au BufNewFile,BufRead *\.md set tabstop=4 shiftwidth=4
+au BufNewFile,BufRead *\.c set tabstop=4 shiftwidth=4
+au BufNewFile,BufRead *\.cpp set tabstop=4 shiftwidth=4
+au BufNewFile,BufRead *\.h set tabstop=4 shiftwidth=4
+au BufNewFile,BufRead *\.css set tabstop=4 shiftwidth=4
+au BufNewFile,BufRead *\.scss set tabstop=4 shiftwidth=4
 
-"-- タブ幅4のファイル郡
-au BufNewFile,BufRead *.md set nowrap tabstop=4 shiftwidth=4
+" Python
+autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 
-"-- 開いたファイルと同じディレクトリをカレントディレクトリにする
-au BufEnter * execute ":lcd " . expand("%:p:h")
+" <C-g> show the full file path
+nnoremap <C-g> 1<C-g>
 
-"-- 表示行単位で移動
-nnoremap j gj
-nnoremap k gk
-nnoremap <Down> gj
-nnoremap <Up>   gk
+" tagsジャンプの時に複数ある時は一覧表示
+nnoremap <C-]> g<C-]>
 
-"-- ;uでEscape
-inoremap ;u <ESC>
+" Json formatting
+command! Jf :execute '%!python -mjson.tool'
+  \ | :execute '%!python -c "import re,sys;chr=__builtins__.__dict__.get(\"unichr\", chr);sys.stdout.write(re.sub(r\"\\u[0-9a-f]{4}\", lambda x: chr(int(\"0x\" + x.group(0)[2:], 16)), sys.stdin.read()))"'
+  \ | :%s/ \+$//ge
+  \ | :set ft=javascript
+  \ | :1
+
+" Highlight the trailing whitespace
+augroup HighlightTrailingSpaces
+  autocmd!
+  autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guibg=Red ctermbg=Red
+  autocmd VimEnter,WinEnter * match TrailingSpaces /\s\+$/
+augroup END
 

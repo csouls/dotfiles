@@ -4,85 +4,29 @@
 # functions, options, key bindings, etc.
 #
 
+# command complement
 autoload -U compinit
 compinit
-
-#allow tab completion in the middle of a word
-setopt COMPLETE_IN_WORD
-
-## history
-HISTFILE=~/.history-zsh
-HISTSIZE=1000000
-SAVEHIST=1000000
-setopt APPEND_HISTORY
-
-## for sharing history between zsh processes
-setopt INC_APPEND_HISTORY
-setopt SHARE_HISTORY
-
-# PATH setting
-export PATH=~/.rbenv/bin:~/.gem/bin:~/bin/:/usr/local/bin:$PATH
-export PATH=$PATH:~/bin/FDK/Tools/osx # for makeotf
-# Vagrant
-export PATH=$PATH:/Applications/Vagrant/bin:$PATH
-## for AWS AutoScaring
-export PATH=$PATH:~/bin/AutoScaling/bin
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/1.6.0_33-b03-424.jdk/Contents/Home/
-export AWS_AUTO_SCALING_HOME=~/bin/AutoScaling
-
-# rbenv
-eval "$(rbenv init -)"
 
 # Disable Ctrl+S(terminal lock)
 stty stop undef
 
-# Color settins
-export CLICOLOR=1
-
-# aliases
-alias ll='ls -l'
-alias la='ls -a'
-alias g='git'
-alias gi='git'
-alias gits='git status'
-alias gg='git grep'
-alias -g gp='| grep'
-alias vi='vim'
-alias tmn="SHELL=/bin/zsh tmux new -s"
-alias tma="tmux a -d -t"
-alias tml="tmux ls"
-alias rake="bundle exec rake"
-alias gitdm='git co master && git branch --merged | grep -v "*" | xargs -I % git branch -d %'
-alias rename_model='rails runner ~/script/rename_model'
-alias annotate='bundle exec annotate -i'
-alias dstat-full='dstat -Tclmdrn'
-alias dstat-mem='dstat -Tclm'
-alias dstat-cpu='dstat -Tclr'
-alias dstat-net='dstat -Tclnd'
-alias dstat-disk='dstat -Tcldr'
-alias rds='rake db:migrate:status'
-alias rails='bundle exec rails'
-alias rspec="bundle exec rspec"
-alias spring="bundle exec spring"
-alias spork="spork -p 3990"
-alias guard="bundle exec guard"
-alias rails_best_practices='bundle exec rails_best_practices'
-
-#export RAILS_ENV=tanaka_dev
-#export PLATFORM_CODE=gree
-export RAILS_ENV=development
-export PLATFORM=mobage
-export PLATFORM_CODE=mbga
-
-# git completion
-autoload bashcompinit
-bashcompinit
-source ~/git/contrib/completion/git-completion.bash
+# rbenv
+eval "$(rbenv init -)"
 
 # liquidprompt
 source ~/dotfiles/liquidprompt/liquidprompt
 
-# zshrc再読み込み
-rs() {
-  source ~/.zshrc
-}
+# added by travis gem
+[ -f /Users/yusuke/.travis/travis.sh ] && source /Users/yusuke/.travis/travis.sh
+
+# environments
+source ~/.zshrc_source/env
+source ~/.zshrc_source/options
+
+# aliases
+source ~/.zshrc_source/alias
+
+# extensions
+source ~/.zshrc_source/functions
+source ~/.zshrc_source/peco

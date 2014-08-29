@@ -1,0 +1,17 @@
+# Highlight for Rails error log
+rails_log_highlight() {
+  perl -pe '
+s/ERROR/\e[0;31m$&\e[0m/g;
+s/\d*-\d*-\d*T\d*:\d*:\d*\.\d*/\e[1;33m$&\e[0m/g;
+s/#\d*/\e[0;34m$&\e[0m/g;
+s/\S*::\S*/\e[0;36m$&\e[0m/g;
+'
+}
+
+rename_files() {
+  filematch=$1
+  regexp=$2
+  replacement=$3
+  echo "filematch=$filematch, regexp=$regexp, replacement=$replacement"
+  find . -name $filematch | while read from; do to="`echo $from | sed "s/$regexp/$replacement/g"`"; echo "mv $from $to"; mv $from $to; done
+}
