@@ -6,3 +6,6 @@
   path = liquidprompt
   url = git://github.com/nojhan/liquidprompt.git
   ignore = dirty
+[submodule "home/oh-my-zsh"]
+	path = home/oh-my-zsh
+	url = git://github.com/robbyrussell/oh-my-zsh.git

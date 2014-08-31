@@ -1,8 +1,5 @@
-#
-# .zshrc is sourced in interactive shells.
-# It should contain commands to set up aliases,
-# functions, options, key bindings, etc.
-#
+# oh-my-zsh
+source ~/.zsh/oh-my-zsh
 
 # command complement
 autoload -U compinit
@@ -13,9 +10,6 @@ stty stop undef
 
 # rbenv
 eval "$(rbenv init -)"
-
-# liquidprompt
-source ~/dotfiles/liquidprompt/liquidprompt
 
 # added by travis gem
 [ -f /Users/yusuke/.travis/travis.sh ] && source /Users/yusuke/.travis/travis.sh
