@@ -21,12 +21,12 @@ source ~/dotfiles/liquidprompt/liquidprompt
 [ -f /Users/yusuke/.travis/travis.sh ] && source /Users/yusuke/.travis/travis.sh
 
 # environments
-source ~/.zshrc_source/env
-source ~/.zshrc_source/options
+source ~/.zsh/env
+source ~/.zsh/options
 
 # aliases
-source ~/.zshrc_source/alias
+source ~/.zsh/alias
 
 # extensions
-source ~/.zshrc_source/functions
-source ~/.zshrc_source/peco
+source ~/.zsh/functions
+source ~/.zsh/peco
