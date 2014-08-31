@@ -1,0 +1,50 @@
+[user]
+  user = y.tanaka
+  email = y.tanaka@aktsk.jp
+  name = Yusuke Tanaka
+[core]
+  quotepath = false
+  pager = less -r
+  editor = vim
+  excludesfile = /Users/yusuke/.gitignore
+[color]
+  status = auto
+  diff = auto
+  branch = auto
+[merge]
+  ff = false
+[pull]
+  rebase = true
+[push]
+  default = simple
+[grep]
+  lineNumber = true
+[pager]
+  log = diff-highlight | less
+  show = diff-highlight | less
+  diff = diff-highlight | less
+[rebase]
+  autosquash = true
+[alias]
+  a = add
+  b = branch
+  ba = branch -a
+  br = branch -r
+  bm = branch --merged
+  bnm = branch --no-merged
+  ci = commit
+  co = checkout
+  d = diff
+  ds = diff --cached
+  fix = commit --amend
+  l = log
+  s = status
+  st = status
+  sup = submodule update --init --recursive
+  pl = pull
+  graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
+  today = !git log --all --oneline --graph --decorate --since=yesterday --committer=`git config http://user.name`
+[github]
+  user = yusuket
+[url "git@github.com:"]
+  pushinsteadof = https://github.com/

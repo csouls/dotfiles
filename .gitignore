@@ -1,6 +1,5 @@
-vim/bundle/
 id_rsa.pub
 id_rsa
-vim/bundle/.neobundle/.netrwhist
-vim/bundle/neobundle.vim
-vim/backup
+home/vim/bundle/.neobundle/.netrwhist
+home/vim/bundle/neobundle.vim
+home/vim/tmp

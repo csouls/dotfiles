@@ -1,4 +1,4 @@
-path=$(cd $(dirname $0); pwd)
+path=$(cd $(dirname $0)/home; pwd)
 
 function yes_no {
   MSG=$1
@@ -32,5 +32,8 @@ then
   done
 fi
 
-touch $HOME/.vimrc_local
-mkdir $HOME/.vimbackup
+if [ `uname` = "Darwin" ]; then
+  ./setup_mac.sh
+elif [ `uname` = "Linux" ]; then
+  ./setup_linux.sh
+fi
