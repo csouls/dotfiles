@@ -1,5 +1,3 @@
-path=$(cd $(dirname $0)/home; pwd)
-
 function yes_no {
   MSG=$1
   while :
@@ -14,26 +12,22 @@ function yes_no {
 }
 
 yes_no 'CAUTION : your dotfiles under $HOME will be replaced.'
-if [ $? -eq 1 ]
-then
-  for dir in $(ls -l | awk '$1 ~ /d/ {print $9 }')
-  do
-    for file in $(ls $dir)
-    do
-      from=$path"/"$dir"/"$file
-      if [ $file = "sshconfig" ]
-      then
-        to="$HOME/.ssh/"$file
-      else
-        to="$HOME/."$file
-      fi
-      ln -f -s $from $to
-    done
-  done
-fi
+YES_NO=$?
 
 if [ `uname` = "Darwin" ]; then
-  ./setup_mac.sh
+  ./setup/setup_mac.sh
 elif [ `uname` = "Linux" ]; then
-  ./setup_linux.sh
+  ./setup/setup_linux.sh
+fi
+
+path=$(cd $(dirname $0); pwd)
+if [ $YES_NO -eq 1 ]
+then
+  for file in $(ls home)
+  do
+    from=$path/home/$file
+    to="$HOME/."$file
+    echo ln -sf $from $to
+    ln -sf $from $to
+  done
 fi

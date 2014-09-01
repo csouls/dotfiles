@@ -2,6 +2,8 @@ brew upgrade
 brew update
 
 brew tap phinze/homebrew-cask
+# homebrew-cask need password
+brew install caskroom/cask/brew-cask
 
 # utils
 brew install autoconf
@@ -88,9 +90,6 @@ brew install docker
 brew install awscli
 brew install aws-elasticbeanstalk
 
-# homebrew-cask
-brew install caskroom/cask/brew-cask
-
 brew cask install adobe-air
 brew cask install adobe-creative-cloud
 brew cask install adobe-reader
@@ -126,7 +125,7 @@ brew cask install sourcetree
 brew cask install spotify
 brew cask install steam
 brew cask install texturepacker
-brew cask install unity3d
+# brew cask install unity3d # need password
 brew cask install vagrant
 brew cask install virtualbox
 brew cask install vlc
