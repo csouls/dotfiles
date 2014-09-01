@@ -18,3 +18,6 @@ dotfiles
 
 - Karabiner export
 `/Applications/Karabiner.app/Contents/Library/bin/karabiner export > setup/mac/karabiner.sh`
+
+- Seil export
+`/Applications/Seil.app/Contents/Library/bin/seil export > setup/mac/seil.sh`
