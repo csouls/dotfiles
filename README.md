@@ -9,6 +9,10 @@ dotfiles
 4. run `./setup.sh`
 5. Launch applications and update Accessibility ( in Preferences -> Security and Privacy -> Privacy tab )
 
+### iTerm
+
+1. iTerm -> General -> Preferences -> Check the "Load preferences from a custom folder or URL:"
+2. Set the `dotfiles/setup/mac/config/iTerm` directory
 
 ## misc
 
