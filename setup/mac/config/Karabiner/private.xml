@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<root>
+
+  <item>
+    <name>F19 to CONTROL_L.</name>
+    <appendix>Otherwise, F19 to Control.</name>
+    <identifier>private.capslock_hack_f19</identifier>
+    <block>
+      <autogen>--KeyToKey-- KeyCode::F19, KeyCode::CONTROL_L</autogen>
+    </block>
+  </item>
+
+  <list>
+    <item>
+      <name>LeaveInsMode with EISUU(Terminal)</name>
+      <identifier>private.app_terminal_esc_with_eisuu</identifier>
+      <only>TERMINAL</only>
+      <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::ESCAPE, KeyCode::JIS_EISUU</autogen>
+      <autogen>--KeyToKey-- KeyCode::C, VK_CONTROL, KeyCode::C, VK_CONTROL, KeyCode::JIS_EISUU</autogen>
+    </item>
+  </list>
+</root>
