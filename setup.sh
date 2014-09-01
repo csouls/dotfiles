@@ -9,5 +9,7 @@ for file in $(ls home)
 do
   from=$path/home/$file
   to="$HOME/."$file
-  ln -sf $from $to
+  if [ ! -L ~/.zsh ]; then
+    ln -sf $from $to
+  fi
 done
