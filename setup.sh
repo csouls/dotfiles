@@ -6,8 +6,8 @@ function yes_no {
     read ans
     case $ans in
       [yY]) return 1 ;;
-    [nN]) return 0 ;;
-    esac
+      [nN]) return 0 ;;
+  esac
   done
 }
 
@@ -27,7 +27,6 @@ then
   do
     from=$path/home/$file
     to="$HOME/."$file
-    echo ln -sf $from $to
     ln -sf $from $to
   done
 fi
