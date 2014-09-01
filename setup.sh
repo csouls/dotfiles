@@ -1,3 +1,6 @@
+#!/bin/sh
+export GITHUB_USER=yusuket
+
 if [ `uname` = "Darwin" ]; then
   ./setup/setup_mac.sh
 elif [ `uname` = "Linux" ]; then
