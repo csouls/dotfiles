@@ -12,3 +12,6 @@
 [submodule "home/vim/bundle/neobundle.vim"]
 	path = home/vim/bundle/neobundle.vim
 	url = https://github.com/Shougo/neobundle.vim.git
+[submodule "home/tmux/tmux-powerline"]
+	path = home/tmux/tmux-powerline
+	url = https://github.com/erikw/tmux-powerline.git

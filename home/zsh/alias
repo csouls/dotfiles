@@ -40,7 +40,7 @@ alias sr="bundle exec spring rspec"
 alias spork="spork -p 3990"
 alias guard="bundle exec guard"
 alias knife='bundle exec knife'
-alias testdbreset='TMPENV=$RAILS_ENV; export RAILS_ENV=test; rake db:drop; rake db:create; rake db:migrate; rake db:seed_fu; export RAILS_ENV=$TMPENV'
+alias dbresetall='for e in development test; do RAILS_ENV=$e bundle exec rake db:shards:drop:all; RAILS_ENV=$e bundle exec rake db:shards:create:all; RAILS_ENV=$e bundle exec rake db:migrate; done'
 alias nsuserdel='rm -rf ~/Library/Application\ Support/iPhone\ Simulator/6.1/Applications/*'
 alias pssharms='pssh -h ~/.config/server.lst -i'
 alias pssharms-tailerr='pssharms -p8 -t0 -P "tail -f /media/ephemeral0/rails/production.log | grep ^E | grep -e releases -e ::" | rails_log_highlight'

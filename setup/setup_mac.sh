@@ -13,3 +13,8 @@ find mac -name "*.sh" | xargs -I S sh S
 # make user directories
 cd ~
 mkdir -p bin lib src memo tmp .vim/tmp
+
+# oh-my-zsh and powerline
+git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+git clone git@github.com:jeremyFreeAgent/oh-my-zsh-powerline-theme.git ~/.oh-my-zsh/themes/oh-my-zsh-powerline-theme
+bash ~/.oh-my-zsh/themes/oh-my-zsh-powerline-theme/install_in_omz.sh

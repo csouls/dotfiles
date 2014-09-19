@@ -12,7 +12,8 @@ for file in $(ls home)
 do
   from=$path/home/$file
   to="$HOME/."$file
-  if [ ! -L ~/.zsh ]; then
-    ln -sf $from $to
+  if [ -L $to ]; then
+    rm $to
   fi
+  ln -s $from $to
 done

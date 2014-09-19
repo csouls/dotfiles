@@ -14,6 +14,8 @@ brew install nkf
 brew install --HEAD cmigemo
 
 # gnu utils
+brew tap homebrew/dupes
+brew install homebrew/dupes/grep
 brew install xz
 brew install binutils
 brew install coreutils
