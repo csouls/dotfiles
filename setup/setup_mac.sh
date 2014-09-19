@@ -18,3 +18,5 @@ mkdir -p bin lib src memo tmp .vim/tmp
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 git clone git@github.com:jeremyFreeAgent/oh-my-zsh-powerline-theme.git ~/.oh-my-zsh/themes/oh-my-zsh-powerline-theme
 bash ~/.oh-my-zsh/themes/oh-my-zsh-powerline-theme/install_in_omz.sh
+
+cp mac/tmux-powerline-theme.sh ../home/tmux/tmux-powerline/themes/default.sh

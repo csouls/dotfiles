@@ -1,5 +1,6 @@
 #!/bin/sh
 export GITHUB_USER=yusuket
+git submodule update --init --recursive
 
 if [ `uname` = "Darwin" ]; then
   ./setup/setup_mac.sh
