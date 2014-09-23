@@ -21,6 +21,7 @@ alias berks="bundle exec berks"
 alias cap="bundle exec cap"
 alias jekyll="bundle exec jekyll"
 alias gitdm='git co master && git branch --merged | grep -Ev "\\*|master|develop" | xargs -I % git branch -d %'
+alias gitdd='git co develop && git branch --merged | grep -Ev "\\*|master|develop" | xargs -I % git branch -d %'
 alias rename_model='rails runner ~/script/rename_model'
 alias annotate='bundle exec annotate -i'
 alias dstat-full='dstat -Tclmdrn'
