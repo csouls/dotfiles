@@ -1,0 +1,12 @@
+#!/Users/yusuke/.rbenv/shims/ruby
+require 'rubygems'
+require 'mechanize'
+require 'rainbow'
+
+m = Mechanize.new
+m.get('http://www.meigensyu.com/quotations/view/random/') do |random|
+  m.get(random.uri) do |page|
+    text = page.parser.xpath('//div[@class="meigenbox"]/div[@class="text"]').text
+    puts Rainbow(text).color(:blue)
+  end
+end

@@ -9,6 +9,7 @@ git submodule update --init --recursive
 #fi
 
 path=$(cd $(dirname $0); pwd)
+# copy dotfiles
 for file in $(ls homedot)
 do
   from=$path/homedot/$file
@@ -18,3 +19,15 @@ do
   fi
   ln -sf $from $to
 done
+
+# copy normal files
+for file in $(ls home)
+do
+  from=$path/home/$file
+  to="$HOME/"$file
+  if [ -L $to ]; then
+    rm $to
+  fi
+  ln -sf $from $to
+done
+
