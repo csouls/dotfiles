@@ -93,7 +93,7 @@ NeoBundle 'nelstrom/vim-textobj-rubyblock'      " rr:all blocks, ro:definitions,
 NeoBundle 'deris/vim-textobj-enclosedsyntax'    " aq, iq for treat enclosed syntax
 NeoBundle 'kana/vim-textobj-indent'             " al, il for indent block
 NeoBundle 'mattn/vim-textobj-url'               " au, iu for url
-NeoBundle 'mjbrownie/html-textobjects'          " Html textobject
+"NeoBundle 'mjbrownie/html-textobjects'          " Html textobject
 NeoBundle 'osyo-manga/vim-textobj-multiblock'   " Unite (, [, { to ab, ib, and multiple block
 NeoBundle 'osyo-manga/vim-textobj-multitextobj' " To gather multiple textobject into one textobject
 

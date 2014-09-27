@@ -6,12 +6,12 @@
   path = liquidprompt
   url = git://github.com/nojhan/liquidprompt.git
   ignore = dirty
-[submodule "home/oh-my-zsh"]
-	path = home/oh-my-zsh
+[submodule "homedot/oh-my-zsh"]
+	path = homedot/oh-my-zsh
 	url = git://github.com/robbyrussell/oh-my-zsh.git
-[submodule "home/vim/bundle/neobundle.vim"]
-	path = home/vim/bundle/neobundle.vim
+[submodule "homedot/vim/bundle/neobundle.vim"]
+	path = homedot/vim/bundle/neobundle.vim
 	url = https://github.com/Shougo/neobundle.vim.git
-[submodule "home/tmux/tmux-powerline"]
-	path = home/tmux/tmux-powerline
+[submodule "homedot/tmux/tmux-powerline"]
+	path = homedot/tmux/tmux-powerline
 	url = https://github.com/erikw/tmux-powerline.git
