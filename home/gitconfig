@@ -13,6 +13,7 @@
   branch = auto
 [merge]
   ff = false
+	tool = vimdiff
 [pull]
   rebase = true
 [push]
