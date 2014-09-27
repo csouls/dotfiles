@@ -1,5 +1,5 @@
 id_rsa.pub
 id_rsa
-home/vim/bundle/*
-!home/vim/bundle/neobundle.vim
-home/vim/tmp
+homedot/vim/bundle/*
+!homedot/vim/bundle/neobundle.vim
+homedot/vim/tmp
