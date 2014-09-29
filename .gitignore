@@ -3,3 +3,4 @@ id_rsa
 homedot/vim/bundle/*
 !homedot/vim/bundle/neobundle.vim
 homedot/vim/tmp
+.DS_Store
