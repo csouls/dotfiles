@@ -111,6 +111,7 @@ brew cask install flip4mac
 brew cask install genymotion
 brew cask install google-chrome
 brew cask install google-japanese-ime
+brew cask install gyazo
 brew cask install hipchat
 brew cask install hyperswitch
 brew cask install istat-menus

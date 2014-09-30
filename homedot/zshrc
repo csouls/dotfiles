@@ -21,6 +21,9 @@ source ~/.zsh/options
 # aliases
 source ~/.zsh/alias
 
+# git-ignored
+source ~/.zsh/secret
+
 # extensions
 source ~/.zsh/functions
 source ~/.zsh/peco
