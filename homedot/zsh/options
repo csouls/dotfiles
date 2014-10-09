@@ -10,25 +10,12 @@ setopt SHARE_HISTORY
 # allow tab completion in the middle of a word
 setopt COMPLETE_IN_WORD
 
-# Prompt
+# prompt
 autoload -U colors
 colors
+setopt correct
 
-setopt prompt_subst
-setopt PROMPT_SUBST
-setopt transient_rprompt
-
-set_prompt() {
-  local face
-  face=$1
-  if [ "$SSH_CLIENT" ]; then
-    PROMPT="${PROMPT}%{%(?.$fg[cyan].$fg[red])%}$face%{$reset_color%}%b "
-  else
-    PROMPT="${PROMPT}%{%(?.$fg[cyan].$fg[red])%}$face%{$reset_color%}%b "
-  fi
-}
-PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
-set_prompt "%(?.(▰╹◡╹%).ヾ(｡>﹏<｡%)ﾉﾞ)"
-
+PROMPT="
+${PROMPT}%{%(?.$fg[cyan].$fg[red])%}%(?.(▰╹◡╹%).ヾ(｡>﹏<｡%)ﾉﾞ)%{$reset_color%}%b "
 PROMPT2='%B%_%(?.%f.%S%F)%b %#%f%s '
 SPROMPT="%r is correct? [n,y,a,e]: "

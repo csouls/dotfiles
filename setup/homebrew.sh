@@ -20,6 +20,7 @@ brew install xz
 brew install binutils
 brew install coreutils
 brew install findutils
+brew install gnu-sed
 
 # git
 brew install git

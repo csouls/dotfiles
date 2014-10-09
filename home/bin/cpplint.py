@@ -1,0 +1,1 @@
+/Users/y.tanaka/src/akatsuki-hound/bin/cpplint.py
