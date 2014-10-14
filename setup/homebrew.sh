@@ -121,6 +121,7 @@ brew cask install java
 brew cask install karabiner
 brew cask install league-of-legends
 brew cask install lightpaper
+brew cask install mou
 brew cask install reflector
 brew cask install seil
 brew cask install sequel-pro
@@ -129,7 +130,6 @@ brew cask install sourcetree
 brew cask install spotify
 brew cask install steam
 brew cask install texturepacker
-# brew cask install unity3d # need password
 brew cask install vagrant
 brew cask install virtualbox
 brew cask install vlc
