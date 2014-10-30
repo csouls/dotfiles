@@ -16,6 +16,6 @@ colors
 setopt correct
 
 PROMPT="
-${PROMPT}%{%(?.$fg[cyan].$fg[red])%}%(?.(▰╹◡╹%).ヾ(｡>﹏<｡%)ﾉﾞ)%{$reset_color%}%b "
+%{$fg_bold[blue]%}${HOST[0,7]} ${PROMPT}%{%(?.$fg[cyan].$fg[red])%}%(?.(▰╹◡╹%).ヾ(｡>﹏<｡%)ﾉﾞ)%{$reset_color%}%b "
 PROMPT2='%B%_%(?.%f.%S%F)%b %#%f%s '
 SPROMPT="%r is correct? [n,y,a,e]: "
