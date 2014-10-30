@@ -64,7 +64,6 @@ NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'itspriddle/vim-marked'
 NeoBundle 'tpope/vim-markdown'
-NeoBundle 'syui/wauto.vim'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'szw/vim-tags'                              "Ctags generator
@@ -195,11 +194,6 @@ xmap gp <Plug>(yankround-gp)
 nmap gP <Plug>(yankround-gP)
 nmap <C-p> <Plug>(yankround-prev)
 nmap <C-n> <Plug>(yankround-next)
-
-"-- wauto
-nmap <Leader>s  <Plug>(AutoWriteStart)
-nmap <Leader>ss <Plug>(AutoWriteStop)
-let g:auto_write = 1
 
 "-- TextObject
 let g:textobj_multiblock_blocks = [
