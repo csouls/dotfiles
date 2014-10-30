@@ -21,8 +21,8 @@
 [grep]
   lineNumber = true
 [pager]
-  log = diff-highlight | less
-  show = diff-highlight | less
+  log  = diff-highlight | more -R
+  show = diff-highlight | more -R
   diff = diff-highlight | less
 [rebase]
   autosquash = true
@@ -41,8 +41,8 @@
   l = log
   s = status
   st = status
+  pul = pull
   sup = submodule update --init --recursive
-  pl = pull
   graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
   today = !git log --all --oneline --graph --decorate --since=yesterday --committer=`git config http://user.name`
 [github]
@@ -51,3 +51,5 @@
   pushinsteadof = https://github.com/
 [help]
 	autocorrect = 1
+[filter "cpplint_cleaner"]
+  clean = bash ~/bin/cpplint_cleaner.sh

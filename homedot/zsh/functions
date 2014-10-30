@@ -15,3 +15,11 @@ rename_files() {
   echo "filematch=$filematch, regexp=$regexp, replacement=$replacement"
   find . -name $filematch | while read from; do to="`echo $from | sed "s/$regexp/$replacement/g"`"; echo "mv $from $to"; mv $from $to; done
 }
+
+dbe() {
+  ./d cmd "$*"
+}
+
+dbr() {
+  ./d cmd "rake $*"
+}

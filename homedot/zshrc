@@ -33,3 +33,6 @@ ZSH_THEME="powerline"
 POWERLINE_HIDE_HOST_NAME="true"
 POWERLINE_HIDE_GIT_PROMPT_STATUS="true"
 POWERLINE_SHOW_GIT_ON_RIGHT="true"
+
+# added by travis gem
+[ -f /Users/y.tanaka/.travis/travis.sh ] && source /Users/y.tanaka/.travis/travis.sh

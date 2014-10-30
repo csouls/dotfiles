@@ -8,9 +8,10 @@ brew install caskroom/cask/brew-cask
 # utils
 brew install autoconf
 brew install automake
+brew install ctags
+brew install nkf
 brew install openssl
 brew install readline
-brew install nkf
 brew install --HEAD cmigemo
 
 # gnu utils
