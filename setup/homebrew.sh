@@ -54,6 +54,9 @@ brew install tmux
 brew install reattach-to-user-namespace
 brew install source-highlight
 
+# npm
+brew install npm
+
 # vim
 brew install vim --devel --with-lua
 

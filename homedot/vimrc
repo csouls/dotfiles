@@ -29,6 +29,7 @@ NeoBundle 'Shougo/vimproc.vim', {
 NeoBundle 'L9'
 NeoBundle 'FuzzyFinder'
 
+NeoBundle 'vim-jp/cpp-vim'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'tpope/vim-bundler'
@@ -162,12 +163,6 @@ nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
 "--- vim-json
 let g:vim_json_syntax_conceal = 1
 let g:vim_json_syntax_concealcursor = 1
-
-"--- Ruby/Railsのomni補完: 重いので無効化
-"let g:rubycomplete_buffer_loading = 1
-"let g:rubycomplete_classes_in_global = 1
-"let g:rubycomplete_rails = 1
-"let g:rails_level = 4
 
 "--- sass
 let g:sass_compile_auto = 1
@@ -379,6 +374,7 @@ augroup END
 set autoindent
 set ambiwidth=double
 set backupdir=$HOME/.vim/tmp/
+set backupskip=/tmp/*,/private/tmp/*
 set directory=$HOME/.vim/tmp/
 set viminfo+=n~/.vim/tmp/viminfo.txt
 set browsedir=buffer

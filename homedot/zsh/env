@@ -1,6 +1,8 @@
 # Color settins
 export CLICOLOR=1
 
+export EDITOR=vim
+
 # PATH setting
 export PATH=~/.rbenv/bin:~/.gem/bin:~/bin/:/usr/local/bin:$PATH #for Ruby
 export PATH=~/.cabal/bin:$PATH #for Haskell
