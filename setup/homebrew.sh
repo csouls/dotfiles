@@ -85,6 +85,7 @@ brew install ant
 brew install android-sdk
 brew install android-ndk
 brew install gradle
+brew install ccache
 
 # font
 brew tap sanemat/font
