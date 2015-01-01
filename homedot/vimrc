@@ -70,7 +70,9 @@ NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'szw/vim-tags'                              "Ctags generator
 NeoBundle 'AndrewRadev/switch.vim'
 NeoBundle 'rcyrus/snipmate-snippets-rubymotion'
-
+NeoBundle 'tfnico/vim-gradle'
+NeoBundle 'xuhdev/indent-java.vim'
+NeoBundle 'tpope/vim-classpath'
 
 " if_luaが有効ならneocompleteを使う
 NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
@@ -149,6 +151,38 @@ elseif neobundle#is_installed('neocomplcache')
 endif
 
 let g:neocomplcache_dictionary_filetype_lists = { 'ruby' : $HOME . '/.vim/dict/rubymotion.dict' }
+
+" neocomplete.vim + clang_complete
+let g:clang_user_options = '-std=c++11' " command option
+
+if !exists('g:neocomplete#force_omni_input_patterns')
+  let g:neocomplete#force_omni_input_patterns = {}
+endif
+let g:neocomplete#force_overwrite_completefunc = 1
+let g:neocomplete#force_omni_input_patterns.c =
+      \ '[^.[:digit:] *\t]\%(\.\|->\)\w*'
+let g:neocomplete#force_omni_input_patterns.cpp =
+      \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+let g:neocomplete#force_omni_input_patterns.objc =
+      \ '[^.[:digit:] *\t]\%(\.\|->\)\w*'
+let g:neocomplete#force_omni_input_patterns.objcpp =
+      \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+
+" clang_complete では自動補完を行わない用に設定
+let g:clang_complete_auto = 0
+let g:clang_auto_select = 0
+
+"--- Syntastic
+" Syntastic + Java
+let g:syntastic_java_javac_config_file_enabled=1
+let g:syntastic_java_javac_classpath = "/usr/local/var/lib/android-sdk/platforms/android-21/android.jar:~/lib/cocos2d-x/cocos/platform/android/java/src:~/lib/cocos2dx-WebView/android/java/src:~/lib/FOX_COCOS2DX_SDK/FOX_Android_SDK_v2.14.6g/libs/AppAdForce.jar"
+
+" Syntastic + cpplint
+let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_checkers = ['cpplint']
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_auto_loc_list=2
+autocmd InsertLeave *.hpp,*.cpp,*.ipp SyntasticCheck cpplint
 
 "--- Unite
 let g:unite_enable_start_insert=1
@@ -428,13 +462,15 @@ autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340
 autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90
 augroup END
 
-" Tab width
+" Indent length
 au BufNewFile,BufRead *\.md set tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *\.c set tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *\.cpp set tabstop=4 shiftwidth=4
+au BufNewFile,BufRead *\.java set tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *\.h set tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *\.css set tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *\.scss set tabstop=4 shiftwidth=4
+au BufNewFile,BufRead *\.gradle set tabstop=4 shiftwidth=4
 
 " Python
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
@@ -458,4 +494,3 @@ augroup HighlightTrailingSpaces
   autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guibg=Red ctermbg=Red
   autocmd VimEnter,WinEnter * match TrailingSpaces /\s\+$/
 augroup END
-

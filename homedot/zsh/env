@@ -30,6 +30,8 @@ ANDROID_SDK=/usr/local/Cellar/android-sdk/24.0.1
 export PATH=$PATH:${ANDROID_SDK}:${ANDROID_SDK}/platform-tools
 export ANDROID_SDK_ROOT=${ANDROID_SDK}
 export ANT_ROOT=/usr/local/bin
+which ccache > /dev/null 2>&1 && export NDK_CCACHE=`which ccache`
+export CLASSPATH=${ANDROID_SDK}/platform-tools
 
 # cocos2d-x
 export COCOS_CONSOLE_ROOT=~/lib/cocos2d-x/tools/cocos2d-console/bin
