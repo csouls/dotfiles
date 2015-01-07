@@ -35,6 +35,7 @@ alias rails='bundle exec rails'
 alias r='rails'
 alias rspec="bundle exec rspec"
 alias rs='rspec'
+alias rubocop="rubocop -D"
 alias spring="bundle exec spring"
 alias sp="spring"
 alias sr="bundle exec spring rspec"

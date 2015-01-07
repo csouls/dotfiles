@@ -8,9 +8,6 @@ compinit
 # Disable Ctrl+S(terminal lock)
 stty stop undef
 
-# added by travis gem
-[ -f /Users/yusuke/.travis/travis.sh ] && source /Users/yusuke/.travis/travis.sh
-
 # environments
 source ~/.zsh/env
 source ~/.zsh/options
@@ -19,17 +16,17 @@ source ~/.zsh/options
 source ~/.zsh/alias
 
 # git-ignored
-source ~/.zsh/secret
+[ -f ~/.zsh/secret ] && source ~/.zsh/secret
 
 # extensions
 source ~/.zsh/functions
 source ~/.zsh/peco
 
 # rbenv
-eval "$(rbenv init -)"
+which rbenv > /dev/null 2>&1 && eval "$(rbenv init -)"
 
 # added by travis gem
-[ -f /Users/y.tanaka/.travis/travis.sh ] && source /Users/y.tanaka/.travis/travis.sh
+[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 
 # oh-my-zsh
 ZSH_THEME="powerline"

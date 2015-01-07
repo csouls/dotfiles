@@ -1,283 +1,71 @@
+# Common configuration.
 AllCops:
   Exclude:
-    - !ruby/regexp /\/bin\/.*/
+    - bin/*
+    - db/schema.rb
+  RunRailsCops: true
 
-AccessorMethodName:
-  Enabled: true
-
-AlignArray:
-  Enabled: true
-
-# Configuration parameters: EnforcedHashRocketStyle, EnforcedColonStyle, EnforcedLastArgumentHashStyle, SupportedLastArgumentHashStyles.
-AlignHash:
-  Enabled: true
-
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-AlignParameters:
-  Enabled: true
-
-AmbiguousOperator:
-  Enabled: true
-
-AndOr:
-  Enabled: true
-
-AsciiComments:
+Style/AsciiComments:
   Enabled: false
 
-# Configuration parameters: AllowSafeAssignment.
-AssignmentInCondition:
-  Enabled: true
-
-BlockAlignment:
-  Enabled: true
-
-Blocks:
-  Enabled: true
-
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-BracesAroundHashParameters:
-  Enabled: true
-
-CaseEquality:
-  Enabled: true
-
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-ClassAndModuleChildren:
-  Enabled: true
-
-# Configuration parameters: CountComments.
-ClassLength:
-  Max: 400
-
-ClassVars:
-  Enabled: true
-
-# Configuration parameters: PreferredMethods.
-CollectionMethods:
-  Enabled: true
-
-# Configuration parameters: Keywords.
-CommentAnnotation:
-  Enabled: true
-
-CyclomaticComplexity:
-  Max: 5
-
-DeprecatedClassMethods:
-  Enabled: true
-
-DeprecatedHashMethods:
-  Enabled: true
-
-Documentation:
+Style/BracesAroundHashParameters:
   Enabled: false
 
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-DotPosition:
+Style/ClassAndModuleChildren:
   Enabled: false
 
-# Configuration parameters: AllowAdjacentOneLineDefs.
-EmptyLineBetweenDefs:
-  Enabled: true
-
-EmptyLines:
-  Enabled: true
-
-EmptyLinesAroundAccessModifier:
-  Enabled: true
-
-EmptyLinesAroundBody:
-  Enabled: true
-
-EvenOdd:
-  Enabled: true
-
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-FormatString:
-  Enabled: true
-
-# Configuration parameters: AllowedVariables.
-GlobalVars:
+Style/CollectionMethods:
   Enabled: false
 
-HandleExceptions:
-  Enabled: true
-
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-HashSyntax:
+Style/CommentAnnotation:
   Enabled: false
 
-# Configuration parameters: MaxLineLength.
-IfUnlessModifier:
-  Enabled: true
-
-IndentArray:
-  Enabled: true
-
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-IndentHash:
-  Enabled: true
-
-IndentationWidth:
-  Enabled: true
-
-Lambda:
+Style/Documentation:
   Enabled: false
 
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-LambdaCall:
-  Enabled: true
+Style/DotPosition:
+  EnforcedStyle: trailing
 
-LeadingCommentSpace:
+Style/FormatString:
   Enabled: false
 
-LineLength:
-  Max: 150
-
-LiteralInInterpolation:
-  Enabled: true
-
-Loop:
-  Enabled: true
-
-MethodCallParentheses:
-  Enabled: true
-
-# Configuration parameters: CountComments.
-MethodLength:
-  Max: 90
-
-MultilineBlockChain:
-  Enabled: true
-
-NegatedIf:
-  Enabled: true
-
-NumericLiterals:
-  MinDigits: 15
-
-# Configuration parameters: CountKeywordArgs.
-ParameterLists:
-  Max: 4
-
-ParenthesesAsGroupedExpression:
-  Enabled: true
-
-# Configuration parameters: PreferredDelimiters.
-PercentLiteralDelimiters:
-  Enabled: true
-
-PerlBackrefs:
-  Enabled: true
-
-# Configuration parameters: NamePrefixBlacklist.
-PredicateName:
-  Enabled: true
-
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-RaiseArgs:
-  Enabled: true
-
-RedundantBegin:
-  Enabled: true
-
-# Configuration parameters: AllowMultipleReturnValues.
-RedundantReturn:
-  Enabled: true
-
-RedundantSelf:
+Style/Lambda:
   Enabled: false
 
-RegexpLiteral:
-  MaxSlashes: 1
-
-RescueModifier:
+Style/LambdaCall:
   Enabled: false
 
-SelfAssignment:
-  Enabled: true
+Style/NumericLiterals:
+  MinDigits: 9
 
-# Configuration parameters: AllowAsExpressionSeparator.
-Semicolon:
-  Enabled: true
+Style/RaiseArgs:
+  Enabled: false  # true にしたい
 
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-SignalException:
+Style/SingleSpaceBeforeFirstArg:
+  Enabled: false  # true にしたい
+
+Style/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: space
+
+Style/StringLiterals:
   Enabled: false
 
-# Configuration parameters: Methods.
-SingleLineBlockParams:
-  Enabled: true
+Style/TrailingComma:
+  EnforcedStyleForMultiline: comma
 
-# Configuration parameters: AllowIfMethodIsEmpty.
-SingleLineMethods:
-  Enabled: true
+##################### Metrics ##################################
+Metrics/ClassLength:
+  Max: 200
 
-SingleSpaceBeforeFirstArg:
-  Enabled: false
+Metrics/MethodLength:
+  Max: 20
 
-SpaceAfterComma:
-  Enabled: false
+Metrics/LineLength:
+  Max: 200
 
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-SpaceAroundEqualsInParameterDefault:
-  Enabled: true
+Metrics/AbcSize:
+  Max: 30
 
-SpaceAroundOperators:
-  Enabled: true
+Metrics/BlockNesting:
+  Max: 3
 
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-SpaceBeforeBlockBraces:
-  Enabled: false
-
-# Configuration parameters: EnforcedStyle, SupportedStyles, EnforcedStyleForEmptyBraces, SpaceBeforeBlockParameters.
-SpaceInsideBlockBraces:
-  Enabled: false
-
-SpaceInsideBrackets:
-  Enabled: false
-
-# Configuration parameters: EnforcedStyle, EnforcedStyleForEmptyBraces, SupportedStyles.
-SpaceInsideHashLiteralBraces:
-  Enabled: false
-
-SpaceInsideParens:
-  Enabled: false
-
-StringConversionInInterpolation:
-  Enabled: true
-
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-StringLiterals:
-  Enabled: false
-
-TrailingBlankLines:
-  Enabled: true
-
-# Configuration parameters: EnforcedStyleForMultiline, SupportedStyles.
-TrailingComma:
-  Enabled: false
-
-TrailingWhitespace:
-  Enabled: true
-
-# Configuration parameters: ExactNameMatch, AllowPredicates, Whitelist.
-TrivialAccessors:
-  Enabled: true
-
-UselessAssignment:
-  Enabled: true
-
-Void:
-  Enabled: true
-
-WhileUntilDo:
-  Enabled: true
-
-# Configuration parameters: MaxLineLength.
-WhileUntilModifier:
-  Enabled: true
-
-WordArray:
-  MinSize: 25
