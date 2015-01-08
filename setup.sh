@@ -1,5 +1,5 @@
 #!/bin/sh
-export GITHUB_USER=yusuket
+export GITHUB_USER=csouls
 git submodule update --init --recursive
 
 if [ `uname` = "Darwin" ]; then
@@ -31,3 +31,6 @@ do
   ln -sf $from $to
 done
 
+# make user directories
+cd ~
+mkdir -p bin lib src memo tmp .vim/tmp
