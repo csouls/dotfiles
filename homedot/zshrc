@@ -30,6 +30,7 @@ which rbenv > /dev/null 2>&1 && eval "$(rbenv init -)"
 
 # oh-my-zsh
 ZSH_THEME="powerline"
+# ZSH_THEME="suvash"
 POWERLINE_HIDE_HOST_NAME="true"
 POWERLINE_HIDE_GIT_PROMPT_STATUS="true"
 POWERLINE_SHOW_GIT_ON_RIGHT="true"

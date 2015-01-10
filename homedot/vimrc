@@ -44,7 +44,6 @@ NeoBundle 'jnwhiteh/vim-golang'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'mattn/webapi-vim'
-NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'AtsushiM/sass-compile.vim'
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'kana/vim-fakeclip'
@@ -57,7 +56,6 @@ NeoBundle 'tpope/vim-endwise'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 NeoBundle 'elzr/vim-json'
-NeoBundle 'scrooloose/syntastic'
 NeoBundle 'osyo-manga/vim-over'
 NeoBundle 'LeafCage/yankround.vim'
 NeoBundle 'h1mesuke/vim-alignta'
@@ -73,6 +71,18 @@ NeoBundle 'rcyrus/snipmate-snippets-rubymotion'
 NeoBundle 'tfnico/vim-gradle'
 NeoBundle 'xuhdev/indent-java.vim'
 NeoBundle 'tpope/vim-classpath'
+
+NeoBundle 'hail2u/vim-css3-syntax', {
+      \ 'autoload' : {
+      \   'filetypes' : ['css']
+      \ }
+      \}
+
+NeoBundleLazy 'scrooloose/syntastic', {
+      \ 'autoload' : {
+      \   'commands' : ['SyntasticCheck']
+      \ }
+      \}
 
 " if_luaが有効ならneocompleteを使う
 NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
