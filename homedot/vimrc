@@ -29,9 +29,9 @@ NeoBundle 'Shougo/vimproc.vim', {
 NeoBundle 'L9'
 NeoBundle 'FuzzyFinder'
 
+NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'vim-jp/cpp-vim'
 NeoBundle 'tpope/vim-rails'
-NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'tpope/vim-bundler'
 NeoBundle 'alpaca-tc/neorspec.vim'
 NeoBundle 'ngmy/vim-rubocop'
@@ -66,7 +66,6 @@ NeoBundle 'tpope/vim-markdown'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'szw/vim-tags'                              "Ctags generator
-NeoBundle 'AndrewRadev/switch.vim'
 NeoBundle 'rcyrus/snipmate-snippets-rubymotion'
 NeoBundle 'tfnico/vim-gradle'
 NeoBundle 'xuhdev/indent-java.vim'
@@ -111,7 +110,6 @@ NeoBundle 'osyo-manga/vim-textobj-multiblock'   " Unite (, [, { to ab, ib, and m
 NeoBundle 'osyo-manga/vim-textobj-multitextobj' " To gather multiple textobject into one textobject
 
 " misc
-NeoBundle 'daisuzu/facebook.vim'
 NeoBundle 'deris/vim-duzzle'
 
 " Non github repos
@@ -122,91 +120,30 @@ NeoBundle 'http://svn.macports.org/repository/macports/contrib/mpvim/'
 "-- Installation check.
 NeoBundleCheck
 
-"---------------------------------------------------------------------
-"--- Plugin settings
+"-------------------- Plugin settings --------------------
+"--- Switch.vim
+so ~/.vim/plugin/switch.vim
 
 "--- neocomplete or neocomplcache
-if neobundle#is_installed('neocomplete')
-    " neocomplete用設定
-    let g:neocomplete#enable_at_startup = 1
-    let g:neocomplete#enable_ignore_case = 1
-    let g:neocomplete#enable_smart_case = 1
-    let g:neocomplete#enable_fuzzy_completion = 0
-
-    if !exists('g:neocomplete#keyword_patterns')
-      let g:neocomplete#keyword_patterns = {}
-    endif
-    let g:neocomplete#keyword_patterns._ = '\h\w*'
-
-    inoremap <expr><C-n>  pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
-    inoremap <expr><C-e>  pumvisible() ? neocomplete#close_popup() : "<End>"
-    inoremap <expr><C-c>  neocomplete#cancel_popup()
-    inoremap <expr><C-u>  neocomplete#undo_completion()
-    inoremap <expr><C-h>  neocomplete#smart_close_popup()."\<C-h>"
-
-    let g:neocomplete#sources#dictionary#dictionaries = {
-          \ 'ruby' : $HOME . '/.vim/dict/rubymotion.dict',
-          \ }
-elseif neobundle#is_installed('neocomplcache')
-    " neocomplcache用設定
-    let g:neocomplcache_enable_at_startup = 1
-"    let g:neocomplcache_enable_ignore_case = 1
-"    let g:neocomplcache_enable_smart_case = 1
-"    if !exists('g:neocomplcache_keyword_patterns')
-"        let g:neocomplcache_keyword_patterns = {}
-"    endif
-"    let g:neocomplcache_keyword_patterns._ = '\h\w*'
-"    let g:neocomplcache_enable_camel_case_completion = 0
-"    let g:neocomplcache_enable_underbar_completion = 1
-endif
-
-let g:neocomplcache_dictionary_filetype_lists = { 'ruby' : $HOME . '/.vim/dict/rubymotion.dict' }
-
-" neocomplete.vim + clang_complete
-let g:clang_user_options = '-std=c++11' " command option
-
-if !exists('g:neocomplete#force_omni_input_patterns')
-  let g:neocomplete#force_omni_input_patterns = {}
-endif
-let g:neocomplete#force_overwrite_completefunc = 1
-let g:neocomplete#force_omni_input_patterns.c =
-      \ '[^.[:digit:] *\t]\%(\.\|->\)\w*'
-let g:neocomplete#force_omni_input_patterns.cpp =
-      \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
-let g:neocomplete#force_omni_input_patterns.objc =
-      \ '[^.[:digit:] *\t]\%(\.\|->\)\w*'
-let g:neocomplete#force_omni_input_patterns.objcpp =
-      \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
-
-" clang_complete では自動補完を行わない用に設定
-let g:clang_complete_auto = 0
-let g:clang_auto_select = 0
+so ~/.vim/plugin/neocomplete.vim
 
 "--- Syntastic
-" Syntastic + Java
-let g:syntastic_java_javac_config_file_enabled=1
-let g:syntastic_java_javac_classpath = "/usr/local/var/lib/android-sdk/platforms/android-21/android.jar:~/lib/cocos2d-x/cocos/platform/android/java/src:~/lib/cocos2dx-WebView/android/java/src:~/lib/FOX_COCOS2DX_SDK/FOX_Android_SDK_v2.14.6g/libs/AppAdForce.jar"
-
-" Syntastic + cpplint
-let g:syntastic_cpp_check_header = 1
-let g:syntastic_cpp_checkers = ['cpplint']
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_auto_loc_list=2
-autocmd InsertLeave *.hpp,*.cpp,*.ipp SyntasticCheck cpplint
+so ~/.vim/plugin/syntastic.vim
 
 "--- Unite
-let g:unite_enable_start_insert=1
-let g:unite_source_history_yank_enable =1
-let g:unite_source_file_mru_limit = 200
-nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
-nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
-nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
+so ~/.vim/plugin/unite.vim
+
+"-- TextObject
+so ~/.vim/plugin/textobject.vim
+
+" quickrun
+so ~/.vim/plugin/quickrun.vim
 
 "--- vim-json
 let g:vim_json_syntax_conceal = 1
 let g:vim_json_syntax_concealcursor = 1
+
+autocmd FileType json setlocal sw=2 sts=2 ts=2 et
 
 "--- sass
 let g:sass_compile_auto = 1
@@ -215,15 +152,15 @@ let g:sass_compile_cssdir = ['css', 'stylesheet']
 let g:sass_compile_file = ['scss', 'sass']
 let g:sass_started_dirs = []
 
-autocmd FileType less,sass  setlocal sw=2 sts=2 ts=2 et
+autocmd FileType less,sass setlocal sw=2 sts=2 ts=2 et
 
 "--- Alignta
 xnoremap al :Alignta<Space>
 
-"-- vim-over
+"--- vim-over
 nnoremap <silent> <Leader>m :OverCommandLine<CR>%s/
 
-"-- yankround
+"--- yankround
 "" keymaps
 nmap p <Plug>(yankround-p)
 xmap p <Plug>(yankround-p)
@@ -234,188 +171,8 @@ nmap gP <Plug>(yankround-gP)
 nmap <C-p> <Plug>(yankround-prev)
 nmap <C-n> <Plug>(yankround-next)
 
-"-- TextObject
-let g:textobj_multiblock_blocks = [
-\ [ '(', ')' ],
-\ [ '[', ']' ],
-\ [ '{', '}' ],
-\ [ '<', '>', 1 ],
-\ [ '"', '"', 1 ],
-\ [ "'", "'", 1 ],
-\ [ "_", "_", 1 ],
-\]
-
-omap is <Plug>(textobj-multiblock-i)
-omap as <Plug>(textobj-multiblock-a)
-vmap is <Plug>(textobj-multiblock-i)
-vmap as <Plug>(textobj-multiblock-a)
-
-" quickrun
-let g:quickrun_config = {}
-
-let g:neorspec_command = "Dispatch spring rspec {spec}"
-nmap <Leader>c :<C-U>RSpecCurrent<CR>
-
-if s:is_mac
-  let s:clang_library_path='/Library/Developer/CommandLineTools/usr/lib'
-  if isdirectory(s:clang_library_path)
-    let g:clang_library_path=s:clang_library_path
-  endif
-endif
-
-function! s:separate_defenition_to_each_filetypes(ft_dictionary) "{{{
-  let result = {}
-
-  for [filetypes, value] in items(a:ft_dictionary)
-    for ft in split(filetypes, ",")
-      if !has_key(result, ft)
-        let result[ft] = []
-      endif
-
-      call extend(result[ft], copy(value))
-    endfor
-  endfor
-
-  return result
-endfunction"}}}
-
-" ------------------------------------
-" switch.vim
-" ------------------------------------
-nnoremap ! :Switch<CR>
-let s:switch_definition = {
-      \ '*': [
-      \   ['is', 'are']
-      \ ],
-      \ 'ruby,eruby,haml' : [
-      \   ['if', 'unless'],
-      \   ['while', 'until'],
-      \   ['.blank?', '.present?'],
-      \   ['include', 'extend'],
-      \   ['class', 'module'],
-      \   ['.inject', '.delete_if'],
-      \   ['.map', '.map!'],
-      \   ['attr_accessor', 'attr_reader', 'attr_writer'],
-      \ ],
-      \ 'Gemfile,Berksfile' : [
-      \   ['=', '<', '<=', '>', '>=', '~>'],
-      \ ],
-      \ 'ruby.application_template' : [
-      \   ['yes?', 'no?'],
-      \   ['lib', 'initializer', 'file', 'vendor', 'rakefile'],
-      \   ['controller', 'model', 'view', 'migration', 'scaffold'],
-      \ ],
-      \ 'erb,html,php' : [
-      \   { '<!--\([a-zA-Z0-9 /]\+\)--></\(div\|ul\|li\|a\)>' : '</\2><!--\1-->' },
-      \ ],
-      \ 'rails' : [
-      \   [100, ':continue', ':information'],
-      \   [101, ':switching_protocols'],
-      \   [102, ':processing'],
-      \   [200, ':ok', ':success'],
-      \   [201, ':created'],
-      \   [202, ':accepted'],
-      \   [203, ':non_authoritative_information'],
-      \   [204, ':no_content'],
-      \   [205, ':reset_content'],
-      \   [206, ':partial_content'],
-      \   [207, ':multi_status'],
-      \   [208, ':already_reported'],
-      \   [226, ':im_used'],
-      \   [300, ':multiple_choices'],
-      \   [301, ':moved_permanently'],
-      \   [302, ':found'],
-      \   [303, ':see_other'],
-      \   [304, ':not_modified'],
-      \   [305, ':use_proxy'],
-      \   [306, ':reserved'],
-      \   [307, ':temporary_redirect'],
-      \   [308, ':permanent_redirect'],
-      \   [400, ':bad_request'],
-      \   [401, ':unauthorized'],
-      \   [402, ':payment_required'],
-      \   [403, ':forbidden'],
-      \   [404, ':not_found'],
-      \   [405, ':method_not_allowed'],
-      \   [406, ':not_acceptable'],
-      \   [407, ':proxy_authentication_required'],
-      \   [408, ':request_timeout'],
-      \   [409, ':conflict'],
-      \   [410, ':gone'],
-      \   [411, ':length_required'],
-      \   [412, ':precondition_failed'],
-      \   [413, ':request_entity_too_large'],
-      \   [414, ':request_uri_too_long'],
-      \   [415, ':unsupported_media_type'],
-      \   [416, ':requested_range_not_satisfiable'],
-      \   [417, ':expectation_failed'],
-      \   [422, ':unprocessable_entity'],
-      \   [423, ':precondition_required'],
-      \   [424, ':too_many_requests'],
-      \   [426, ':request_header_fields_too_large'],
-      \   [500, ':internal_server_error'],
-      \   [501, ':not_implemented'],
-      \   [502, ':bad_gateway'],
-      \   [503, ':service_unavailable'],
-      \   [504, ':gateway_timeout'],
-      \   [505, ':http_version_not_supported'],
-      \   [506, ':variant_also_negotiates'],
-      \   [507, ':insufficient_storage'],
-      \   [508, ':loop_detected'],
-      \   [510, ':not_extended'],
-      \   [511, ':network_authentication_required'],
-      \ ],
-      \ 'rspec': [
-      \   ['describe', 'context', 'specific', 'example'],
-      \   ['before', 'after'],
-      \   ['be_true', 'be_false'],
-      \   ['get', 'post', 'put', 'delete'],
-      \   ['==', 'eql', 'equal'],
-      \   { '\.should_not': '\.should' },
-      \   ['\.to_not', '\.to'],
-      \   { '\([^. ]\+\)\.should\(_not\|\)': 'expect(\1)\.to\2' },
-      \   { 'expect(\([^. ]\+\))\.to\(_not\|\)': '\1.should\2' },
-      \ ],
-      \ 'markdown' : [
-      \   ['[ ]', '[x]']
-      \ ]
-      \ }
-
-let s:switch_definition = s:separate_defenition_to_each_filetypes(s:switch_definition)
-function! s:define_switch_mappings() "{{{
-  if exists('b:switch_custom_definitions')
-    unlet b:switch_custom_definitions
-  endif
-
-  let dictionary = []
-  for filetype in split(&ft, '\.')
-    if has_key(s:switch_definition, filetype)
-      let dictionary = extend(dictionary, s:switch_definition[filetype])
-    endif
-  endfor
-
-  if exists('b:rails_root')
-    let dictionary = extend(dictionary, s:switch_definition['rails'])
-  endif
-
-  if has_key(s:switch_definition, '*')
-    let dictionary = extend(dictionary, s:switch_definition['*'])
-  endif
-
-  if !empty('dictionary')
-"    call alpaca#let_b:('switch_custom_definitions', dictionary)
-  endif
-endfunction"}}}
-
-augroup SwitchSetting
-  autocmd!
-  autocmd Filetype * if !empty(split(&ft, '\.')) | call <SID>define_switch_mappings() | endif
-augroup END
-
-
 "---------------------------------------------------------------------
 "--- vim general settings
-set autoindent
 set ambiwidth=double
 set backupdir=$HOME/.vim/tmp/
 set backupskip=/tmp/*,/private/tmp/*
@@ -431,23 +188,22 @@ set listchars=tab:>\ ,extends:<
 set number
 set showmatch
 set smartcase
-set smartindent
-set tabstop=2
-set smarttab
-set shiftwidth=2
 set whichwrap=b,s,h,l,<,>,[,]
 set autochdir
 
+syntax on
 filetype on
 filetype indent on
 filetype plugin on
-syntax on
 set t_Co=256
 set enc=utf-8
 set fenc=utf-8
 set fencs=utf-8,iso-2022-jp,euc-jp,cp932
 set fileformats=unix,mac,dos
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+
+" activate molokai colorscheme
+colorscheme molokai
 
 " change the leader key to the ";"
 let mapleader = ";"
@@ -462,8 +218,11 @@ nnoremap k gk
 nnoremap <Down> gj
 nnoremap <Up>   gk
 
-" activate molokai colorscheme
-colorscheme molokai
+" <C-g> show the full file path
+nnoremap <C-g> 1<C-g>
+
+" tagsジャンプの時に複数ある時は一覧表示
+nnoremap <C-]> g<C-]>
 
 " Change color on status line when input mode
 augroup InsertHook
@@ -473,6 +232,11 @@ autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90
 augroup END
 
 " Indent length
+set autoindent
+set smartindent
+set smarttab
+set tabstop=2
+set shiftwidth=2
 au BufNewFile,BufRead *\.md set tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *\.c set tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *\.cpp set tabstop=4 shiftwidth=4
@@ -484,12 +248,6 @@ au BufNewFile,BufRead *\.gradle set tabstop=4 shiftwidth=4
 
 " Python
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-
-" <C-g> show the full file path
-nnoremap <C-g> 1<C-g>
-
-" tagsジャンプの時に複数ある時は一覧表示
-nnoremap <C-]> g<C-]>
 
 " Json formatting
 command! Jf :execute '%!python -mjson.tool'
