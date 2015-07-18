@@ -9,14 +9,22 @@ export PATH=~/.cabal/bin:$PATH #for Haskell
 export PATH=$PATH:~/bin/FDK/Tools/osx # for makeotf
 
 # AWS
-export AWS_CREDENTIAL_FILE=~/.aws/beat-credential
 if [ -x /usr/libexec/java_home ]; then
   export JAVA_HOME=`/usr/libexec/java_home`
 fi
+export PATH=$PATH:$JAVA_HOME/bin
+
 export EC2_REGION=ap-northeast-1
-export AWS_RDS_HOME=/usr/local/rdstools
+export EC2_HOME=/usr/local/ec2/ec2-api-tools-1.7.3.2
+export PATH=$PATH:$EC2_HOME/bin
+
+export AWS_RDS_HOME=~/bin/RDSCli-1.19.004
+export PATH=$PATH:$AWS_RDS_HOME/bin # for RDS command line tools
+
 export AWS_AUTO_SCALING_HOME=~/bin/AutoScaling
-export PATH=$PATH:$JAVA_HOME/bin:$AWS_RDS_HOME/bin:$AWS_AUTOSCALING_HOME/bin
+export PATH=$PATH:$AWS_AUTO_SCALING_HOME/bin
+
+export AWS_CREDENTIAL_FILE=~/.aws/credentials/reserved-instances
 
 # ios
 export IOS_SIMULATOR_PATH="~/Library/Application Support/iPhone Simulator/"
@@ -40,3 +48,5 @@ export PATH=$COCOS_CONSOLE_ROOT:$PATH
 # Vagrant & Docker
 export PATH=$PATH:/Applications/Vagrant/bin
 export DOCKER_HOST="192.168.50.4:2375"
+
+export PGDATA=/usr/local/var/postgres

@@ -23,3 +23,13 @@ dbe() {
 dbr() {
   ./d cmd "rake $*"
 }
+
+function hlcopy() {
+  if [ -z "$2" ]; then
+    syntax=""
+  else
+    syntax="-S$2"
+  fi
+
+  cat $1 | highlight -O rtf $syntax --font=Ricty --style=molokai --font-size 24 | pbcopy
+}

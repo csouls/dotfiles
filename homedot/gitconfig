@@ -23,8 +23,8 @@
 [grep]
   lineNumber = true
 [pager]
-  log  = diff-highlight | more -R
-  show = diff-highlight | more -R
+  log  = diff-highlight | less
+  show = diff-highlight | less
   diff = diff-highlight | less
 [rebase]
   autosquash = true
@@ -56,5 +56,3 @@
   user = yusuket
 [url "git@github.com:"]
   pushinsteadof = https://github.com/
-[filter "cpplint_cleaner"]
-  clean = bash ~/bin/cpplint_cleaner.sh
