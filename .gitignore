@@ -1,5 +1,6 @@
 id_rsa.pub
 id_rsa
+home/bin/secret
 homedot/vim/bundle/*
 !homedot/vim/bundle/neobundle.vim
 homedot/vim/tmp
