@@ -33,4 +33,4 @@ done
 
 # make user directories
 cd ~
-mkdir -p bin lib src memo tmp .vim/tmp
+mkdir -p bin lib src tmp

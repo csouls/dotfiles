@@ -17,12 +17,13 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Recommended to install
 NeoBundle 'Shougo/vimproc.vim', {
-      \ 'build' : {
+      \   'build' : {
       \     'windows' : 'tools\\update-dll-mingw',
       \     'cygwin' : 'make -f make_cygwin.mak',
       \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
+      \     'linux' : 'make',
+      \     'unix' : 'gmake',
+      \   }
       \ }
 
 " My Bundles here:
@@ -144,26 +145,22 @@ so ~/.vim/plugin/syntastic.vim
 "--- Unite
 so ~/.vim/plugin/unite.vim
 
-"-- TextObject
+"--- TextObject
 so ~/.vim/plugin/textobject.vim
 
-" quickrun
+"--- quickrun
 so ~/.vim/plugin/quickrun.vim
 
-"--- vim-json
+"--- css/sass/less
+so ~/.vim/plugin/css.vim
+
+"--- AlpacaTags
+so ~/.vim/plugin/alpaca_tags.vim
+
+"--- json
 let g:vim_json_syntax_conceal = 1
 let g:vim_json_syntax_concealcursor = 1
-
 autocmd FileType json setlocal sw=2 sts=2 ts=2 et
-
-"--- sass
-let g:sass_compile_auto = 1
-let g:sass_compile_cdloop = 5
-let g:sass_compile_cssdir = ['css', 'stylesheet']
-let g:sass_compile_file = ['scss', 'sass']
-let g:sass_started_dirs = []
-
-autocmd FileType less,sass setlocal sw=2 sts=2 ts=2 et
 
 "--- Alignta
 xnoremap al :Alignta<Space>
@@ -182,24 +179,7 @@ nmap gP <Plug>(yankround-gP)
 nmap <C-p> <Plug>(yankround-prev)
 nmap <C-n> <Plug>(yankround-next)
 
-"--- AlpacaTags
-let g:alpaca_tags#config = {
-      \ '_' : '-R --sort=yes --languages=+Ruby --languages=-js,JavaScript',
-      \ 'js' : '--languages=+js',
-      \ '-js' : '--languages=-js,JavaScript',
-      \ 'vim' : '--languages=+Vim,vim',
-      \ 'php' : '--languages=+php',
-      \ '-vim' : '--languages=-Vim,vim',
-      \ '-style': '--languages=-css,scss,js,JavaScript,html',
-      \ 'scss' : '--languages=+scss --languages=-css',
-      \ 'css' : '--languages=+css',
-      \ 'java' : '--languages=+java $JAVA_HOME/src',
-      \ 'ruby': '--languages=+Ruby',
-      \ 'coffee': '--languages=+coffee',
-      \ '-coffee': '--languages=-coffee',
-      \ 'bundle': '--languages=+Ruby',
-      \ }
-
+"--- ruby
 au FileType ruby,eruby setl tags+=~/.vim/tmp/rtags
 
 "---------------------------------------------------------------------
@@ -273,8 +253,6 @@ au BufNewFile,BufRead *\.c set tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *\.cpp set tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *\.java set tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *\.h set tabstop=4 shiftwidth=4
-au BufNewFile,BufRead *\.css set tabstop=4 shiftwidth=4
-au BufNewFile,BufRead *\.scss set tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *\.gradle set tabstop=4 shiftwidth=4
 
 " Python
