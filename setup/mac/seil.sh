@@ -8,7 +8,7 @@ $cli set keycode_lang6 76
 /bin/echo -n .
 $cli set keycode_ssapex_l4 111
 /bin/echo -n .
-$cli set enable_capslock 1
+$cli set enable_capslock 0
 /bin/echo -n .
 $cli set enable_jis_xfer 1
 /bin/echo -n .
@@ -40,7 +40,7 @@ $cli set enable_undo 0
 /bin/echo -n .
 $cli set enable_ssapex_upleft 0
 /bin/echo -n .
-$cli set keycode_jis_nfer 55
+$cli set keycode_jis_nfer 54
 /bin/echo -n .
 $cli set keycode_tab 48
 /bin/echo -n .
@@ -131,6 +131,8 @@ $cli set keycode_control_r 54
 $cli set keycode_int7 76
 /bin/echo -n .
 $cli set enable_int8 0
+/bin/echo -n .
+$cli set keycode_capslock 80
 /bin/echo -n .
 $cli set enable_option_r 0
 /bin/echo -n .
