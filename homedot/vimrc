@@ -45,7 +45,6 @@ NeoBundle 'jnwhiteh/vim-golang'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'mattn/webapi-vim'
-NeoBundle 'AtsushiM/sass-compile.vim'
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'kana/vim-fakeclip'
 NeoBundle 'surround.vim'
@@ -72,6 +71,10 @@ NeoBundle 'groovyindent'
 NeoBundle 'tfnico/vim-gradle'
 NeoBundle 'xuhdev/indent-java.vim'
 NeoBundle 'tpope/vim-classpath'
+
+if executable('sass')
+  NeoBundle 'AtsushiM/sass-compile.vim'
+endif
 
 NeoBundle 'hail2u/vim-css3-syntax', {
       \ 'autoload' : {

@@ -35,10 +35,6 @@ brew install mercurial
 # lua
 brew install lua
 
-# perl
-brew install plenv
-brew install --HEAD perl-build
-
 # python
 brew install pyenv
 
@@ -98,48 +94,45 @@ brew install docker
 brew install awscli
 brew install aws-elasticbeanstalk
 
-brew cask install adobe-air
-brew cask install adobe-creative-cloud
-brew cask install adobe-reader
-brew cask install alfred
-brew cask install amethyst
-brew cask install android-studio
-brew cask install appcleaner
-brew cask install atom
-brew cask install bettertouchtool
-brew cask install box-sync
-brew cask install charles
-brew cask install coteditor
-brew cask install dropbox
-brew cask install firefox
-brew cask install flash
-brew cask install flip4mac
-brew cask install genymotion
-brew cask install google-chrome
-brew cask install google-japanese-ime
-brew cask install gyazo
-brew cask install hipchat
-brew cask install hyperswitch
-brew cask install istat-menus
-brew cask install iterm2
-brew cask install java
-brew cask install karabiner
-brew cask install league-of-legends
-brew cask install lightpaper
-brew cask install mou
-brew cask install reflector
-brew cask install seil
-brew cask install sequel-pro
-brew cask install skype
-brew cask install sourcetree
-brew cask install spotify
-brew cask install steam
-brew cask install texturepacker
-brew cask install vagrant
-brew cask install virtualbox
-brew cask install vlc
-
-brew cask alfred link
+brew cask install --force adobe-air
+brew cask install --force adobe-creative-cloud
+brew cask install --force adobe-reader
+brew cask install --force alfred
+brew cask install --force amethyst
+brew cask install --force android-studio
+brew cask install --force appcleaner
+brew cask install --force atom
+brew cask install --force bettertouchtool
+brew cask install --force box-sync
+brew cask install --force charles
+brew cask install --force coteditor
+brew cask install --force dropbox
+brew cask install --force firefox
+brew cask install --force flash
+brew cask install --force flip4mac
+brew cask install --force genymotion
+brew cask install --force google-chrome
+brew cask install --force google-japanese-ime
+brew cask install --force gyazo
+brew cask install --force hipchat
+brew cask install --force hyperswitch
+brew cask install --force istat-menus
+brew cask install --force iterm2
+brew cask install --force java
+brew cask install --force karabiner
+brew cask install --force league-of-legends
+brew cask install --force lightpaper
+brew cask install --force mou
+brew cask install --force reflector
+brew cask install --force seil
+brew cask install --force sequel-pro
+brew cask install --force skype
+brew cask install --force sourcetree
+brew cask install --force spotify
+brew cask install --force steam
+brew cask install --force texturepacker
+brew cask install --force vagrant
+brew cask install --force virtualbox
+brew cask install --force vlc
 
 brew cleanup
-
