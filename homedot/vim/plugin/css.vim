@@ -7,8 +7,6 @@ if executable('sass')
   let g:sass_compile_cssdir = ['css', 'stylesheet']
   let g:sass_compile_file = ['scss', 'sass']
   let g:sass_started_dirs = []
-
-  au! BufWritePost * SassCompile
 endif
 
 au BufNewFile,BufRead *\.css set tabstop=2 shiftwidth=2

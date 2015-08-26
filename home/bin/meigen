@@ -6,6 +6,7 @@ require 'colorize'
 m = Mechanize.new
 m.get('http://www.meigensyu.com/quotations/view/random/') do |random|
   m.get(random.uri) do |page|
-    puts page.parser.xpath('//div[@class="meigenbox"]/div[@class="text"]').text.colorize(:green)
+    puts page.parser.xpath('//div[@class="meigenbox"]/div[@class="text"]').text.colorize(:light_green)
+    puts "-- #{page.parser.xpath('//div[@class="meigenbox"]/div[@class="link"]/ul/li[1]/a').text} --".colorize(:green)
   end
 end
