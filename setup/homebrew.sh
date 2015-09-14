@@ -54,7 +54,7 @@ brew install source-highlight
 brew install npm
 
 # vim
-brew install vim --devel --with-lua
+brew install --force vim --with-lua
 
 # emacs
 brew install emacs --use-git-head --japanese

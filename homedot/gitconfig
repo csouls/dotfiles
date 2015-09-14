@@ -6,7 +6,7 @@
   quotepath = false
   pager = less -r
   editor = vim
-  excludesfile = /Users/yusuke/.gitignore
+  excludesfile = ~/.gitignore
 [color]
   status = auto
   diff = auto

@@ -31,5 +31,8 @@ function hlcopy() {
     syntax="-S$2"
   fi
 
-  cat $1 | highlight -O rtf $syntax --font=Ricty --style=molokai --font-size 24 | pbcopy
+#  cat $1 | highlight -O rtf $syntax --font=Ricty --style=molokai --font-size 24 | pbcopy
+  highlight -O rtf $1 $syntax --font Ricty --font-size 24 --style molokai -W -J 60 -j 3 | pbcopy
 }
+
+

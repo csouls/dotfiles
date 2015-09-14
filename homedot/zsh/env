@@ -30,11 +30,11 @@ export AWS_CREDENTIAL_FILE=~/.aws/credentials/reserved-instances
 export IOS_SIMULATOR_PATH="~/Library/Application Support/iPhone Simulator/"
 
 # android
-ANDROID_NDK=/usr/local/Cellar/android-ndk/r10d
+ANDROID_NDK=/usr/local/Cellar/android-ndk/r10e
 export PATH=$PATH:${ANDROID_NDK}
 export NDK_ROOT=${ANDROID_NDK}
 export ANDROID_NDK_ROOT=${ANDROID_NDK}
-ANDROID_SDK=/usr/local/Cellar/android-sdk/24.1.2
+ANDROID_SDK=/usr/local/Cellar/android-sdk/24.3.4
 export PATH=$PATH:${ANDROID_SDK}:${ANDROID_SDK}/platform-tools
 export ANDROID_SDK_ROOT=${ANDROID_SDK}
 export ANT_ROOT=/usr/local/bin
