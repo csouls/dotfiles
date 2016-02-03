@@ -3,10 +3,24 @@ require 'rubygems'
 require 'mechanize'
 require 'colorize'
 
+witticism_color = :light_green
+exhibitor_color = :green
+
+def parse_text(page, xpath)
+  page.parser.xpath(xpath).text
+end
+
 m = Mechanize.new
 m.get('http://www.meigensyu.com/quotations/view/random/') do |random|
   m.get(random.uri) do |page|
-    puts page.parser.xpath('//div[@class="meigenbox"]/div[@class="text"]').text.colorize(:light_green)
-    puts "-- #{page.parser.xpath('//div[@class="meigenbox"]/div[@class="link"]/ul/li[1]/a').text} --".colorize(:green)
+    witticism = parse_text(page, '//div[@class="meigenbox"]/div[@class="text"]')
+    exhibitor = parse_text(page, '//*[@id="contents_box"]/div[4]/div/strong/a/text()')
+    if exhibitor.empty?
+      exhibitor = "出展: #{parse_text(page, '//div[@class="meigenbox"]/div[@class="link"]/ul/li[1]/a')}"
+    end
+
+    puts witticism.colorize(witticism_color),
+         "\n",
+         "-- #{exhibitor} --".colorize(exhibitor_color)
   end
 end
