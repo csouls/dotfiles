@@ -56,3 +56,7 @@
   user = yusuket
 [url "git@github.com:"]
   pushinsteadof = https://github.com/
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true

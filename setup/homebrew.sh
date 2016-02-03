@@ -13,6 +13,7 @@ brew install nkf
 brew install openssl
 brew install readline
 brew install --HEAD cmigemo
+brew install Caskroom/cask/xquartz
 
 # gnu utils
 brew tap homebrew/dupes
@@ -84,8 +85,21 @@ brew install gradle
 brew install ccache
 
 # font
+brew tap caskroom/fonts
+fonts=(
+  font-m-plus
+  font-source-code-pro
+  font-clear-sans
+  font-roboto
+)
+brew cask install --force ${fonts[@]}
+
+## ricty
 brew tap sanemat/font
 brew install ricty
+cp -f /PATH/TO/RICTY/fonts/Ricty*.ttf ~/Library/Fonts/
+
+fc-cache -vf
 
 # docker
 brew install docker

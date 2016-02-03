@@ -52,11 +52,11 @@
 
 # mailcount.sh {
   # Mailbox type to use. Can be any of {apple_mail, gmail, maildir, mbox, mailcheck}
-  export TMUX_POWERLINE_SEG_MAILCOUNT_MAILBOX_TYPE=""
+  export TMUX_POWERLINE_SEG_MAILCOUNT_MAILBOX_TYPE="gmail"
 
   ## Gmail
   # Enter your Gmail username here WITH OUT @gmail.com.( OR @domain)
-  export TMUX_POWERLINE_SEG_MAILCOUNT_GMAIL_USERNAME=""
+  export TMUX_POWERLINE_SEG_MAILCOUNT_GMAIL_USERNAME="y.tanaka@aktsk.jp"
   # Google password. Recomenned to use application specific password (https://accounts.google.com/b/0/IssuedAuthSubTokens) Leave this empty to get password from OS X keychain.
   # For OSX users : MAKE SURE that you add a key to the keychain in the format as follows
   # Keychain Item name : http://<value-you-fill-in-server-variable-below>
@@ -84,7 +84,7 @@
 
 # now_playing.sh {
   # Music player to use. Can be any of {audacious, banshee, cmus, itunes, lastfm, mocp, mpd, mpd_simple, pithos, rdio, rhythmbox, spotify, spotify_wine}.
-  export TMUX_POWERLINE_SEG_NOW_PLAYING_MUSIC_PLAYER=""
+  export TMUX_POWERLINE_SEG_NOW_PLAYING_MUSIC_PLAYER="itunes"
   # Maximum output length.
   export TMUX_POWERLINE_SEG_NOW_PLAYING_MAX_LEN="40"
   # How to handle too long strings. Can be {trim, roll}.

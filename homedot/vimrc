@@ -15,7 +15,9 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-" Recommended to install
+" Vim libraries
+NeoBundle 'L9'
+NeoBundle 'vim-jp/vital.vim'
 NeoBundle 'Shougo/vimproc.vim', {
       \   'build' : {
       \     'windows' : 'tools\\update-dll-mingw',
@@ -26,30 +28,62 @@ NeoBundle 'Shougo/vimproc.vim', {
       \   }
       \ }
 
-" My Bundles here:
-NeoBundle 'L9'
-NeoBundle 'FuzzyFinder'
-
+" Ruby / Rails
 NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'vim-jp/cpp-vim'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-bundler'
 NeoBundle 'alpaca-tc/neorspec.vim'
 NeoBundle 'ngmy/vim-rubocop'
 NeoBundle 'tpope/vim-rbenv'
+" C++ / Clang
+NeoBundle 'vim-jp/cpp-vim'
 NeoBundle 'Rip-Rip/clang_complete'
-NeoBundle 'xolox/vim-misc'
+" Erlang
+NeoBundle 'vim-erlang/vim-erlang-compiler'
+NeoBundle 'vim-erlang/vim-erlang-omnicomplete'
+NeoBundle 'vim-erlang/vim-erlang-runtime'
+" Golang
+NeoBundle 'jnwhiteh/vim-golang'
+" Lua
 NeoBundle 'xolox/vim-lua-ftplugin'
 NeoBundle 'xolox/vim-lua-inspect'
-NeoBundle 'jnwhiteh/vim-golang'
+" JavaScript / CoffeeScript
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'mattn/webapi-vim'
-NeoBundle 'gregsexton/gitv'
-NeoBundle 'kana/vim-fakeclip'
+" Shader
+NeoBundle 'beyondmarc/hlsl.vim'
+NeoBundle 'tikhomirov/vim-glsl'
+
+" Ctags
+NeoBundle 'szw/vim-tags'
+NeoBundle 'soramugi/auto-ctags.vim'
+" RubyMotion
+NeoBundle 'rcyrus/snipmate-snippets-rubymotion'
+" Groovy/Gradle
+NeoBundle 'groovyindent'
+NeoBundle 'tfnico/vim-gradle'
+NeoBundle 'xuhdev/indent-java.vim'
+NeoBundle 'tpope/vim-classpath'
+" Git
+NeoBundle 'gregsexton/gitv'  " Gitk like
+" Syntax check
+NeoBundle 'osyo-manga/vim-watchdogs'  "Async syntax checking.
+NeoBundle "cohama/vim-hier"
+NeoBundle "dannyob/quickfixstatus"
+" Text object
+NeoBundle 'LeafCage/yankround.vim'
+NeoBundle 'h1mesuke/vim-alignta'
+" File search
+NeoBundle 'FuzzyFinder'
+" Execute external command
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle "osyo-manga/shabadou.vim"
+
+" Other utilities
+NeoBundle 'xolox/vim-misc'  " Miscellaneous auto-load Vim scripts
+NeoBundle 'kana/vim-fakeclip' " Provide pseudo 'clipboard' registers ( for tmux )
 NeoBundle 'surround.vim'
 NeoBundle 'matchit.zip'
-NeoBundle 'vim-jp/vital.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'tpope/vim-endwise'
@@ -57,20 +91,15 @@ NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 NeoBundle 'elzr/vim-json'
 NeoBundle 'osyo-manga/vim-over'
-NeoBundle 'LeafCage/yankround.vim'
-NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'itspriddle/vim-marked'
 NeoBundle 'tpope/vim-markdown'
-NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tpope/vim-dispatch'
-NeoBundle 'szw/vim-tags'                              "Ctags generator
-NeoBundle 'rcyrus/snipmate-snippets-rubymotion'
-NeoBundle 'groovyindent'
-NeoBundle 'tfnico/vim-gradle'
-NeoBundle 'xuhdev/indent-java.vim'
-NeoBundle 'tpope/vim-classpath'
+"NeoBundle 'airblade/vim-rooter'
+
+" Joke
+NeoBundle 'mattn/webapi-vim'
 
 if executable('sass')
   NeoBundle 'AtsushiM/sass-compile.vim'
@@ -79,12 +108,6 @@ endif
 NeoBundle 'hail2u/vim-css3-syntax', {
       \ 'autoload' : {
       \   'filetypes' : ['css']
-      \ }
-      \}
-
-NeoBundleLazy 'scrooloose/syntastic', {
-      \ 'autoload' : {
-      \   'commands' : ['SyntasticCheck']
       \ }
       \}
 
@@ -141,9 +164,6 @@ so ~/.vim/plugin/switch.vim
 
 "--- neocomplete or neocomplcache
 so ~/.vim/plugin/neocomplete.vim
-
-"--- Syntastic
-so ~/.vim/plugin/syntastic.vim
 
 "--- Unite
 so ~/.vim/plugin/unite.vim
@@ -257,6 +277,7 @@ au BufNewFile,BufRead *\.cpp set tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *\.java set tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *\.h set tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *\.gradle set tabstop=4 shiftwidth=4
+au BufNewFile,BufRead *\.*sl set tabstop=4 shiftwidth=4
 
 " Python
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class

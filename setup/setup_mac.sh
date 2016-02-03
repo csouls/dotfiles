@@ -7,7 +7,7 @@ if [ ! `which brew` ]; then
   ./homebrew.sh
 fi
 
-# setup with shell scripts
+# post processing
 find mac -name "*.sh" | xargs -I S sh S
 
 # oh-my-zsh and powerline
