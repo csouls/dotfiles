@@ -36,7 +36,7 @@ POWERLINE_HIDE_GIT_PROMPT_STATUS="true"
 POWERLINE_SHOW_GIT_ON_RIGHT="true"
 
 # The next line updates PATH for the Google Cloud SDK.
-source '/Users/y.tanaka/lib/google-cloud-sdk/path.zsh.inc'
+[ -f ~/lib/google-cloud-sdk/path.zsh.inc ] && source ~/lib/google-cloud-sdk/path.zsh.inc
 
 # The next line enables shell command completion for gcloud.
-source '/Users/y.tanaka/lib/google-cloud-sdk/completion.zsh.inc'
+[ -f ~/lib/google-cloud-sdk/completion.zsh.inc ] && source ~/lib/google-cloud-sdk/completion.zsh.inc
