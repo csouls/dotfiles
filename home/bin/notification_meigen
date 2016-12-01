@@ -1,0 +1,4 @@
+#!/bin/bash
+## prepare: $ sudo /usr/bin/gem install nokogiri -- --use-system-libraries=true /usr/include/libxml2
+MEIGEN=`/usr/bin/ruby $(cd $(dirname $0);pwd)/meigen -sn`
+echo "display notification \"${MEIGEN}\" with title \"名言\"" | osascript

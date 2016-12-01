@@ -71,11 +71,16 @@ brew install jq
 brew install z
 brew install rmtrash
 brew install tree
+brew tap caius/jo
+brew install jo
 
 # database
 brew install mysql
 brew install memcached
 brew install redis
+
+# database client
+brew install mycli
 
 # android
 brew install ant
@@ -115,7 +120,6 @@ brew cask install --force alfred
 brew cask install --force amethyst
 brew cask install --force android-studio
 brew cask install --force appcleaner
-brew cask install --force atom
 brew cask install --force bettertouchtool
 brew cask install --force box-sync
 brew cask install --force charles

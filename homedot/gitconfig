@@ -1,10 +1,5 @@
-[user]
-  user = y.tanaka
-  email = y.tanaka@aktsk.jp
-  name = Yusuke Tanaka
 [core]
   quotepath = false
-  pager = less -r
   editor = vim
   excludesfile = ~/.gitignore
 [color]
@@ -23,13 +18,28 @@
 [grep]
   lineNumber = true
 [pager]
-  log  = diff-highlight | less
-  show = diff-highlight | less
-  diff = diff-highlight | less
+  log  = diff-highlight | less -x4
+  show = diff-highlight | less -x4
+  diff = diff-highlight | less -x4
+  grep = false
 [rebase]
   autosquash = true
 [help]
   autocorrect = 1
+[credential]
+ helper = cache
+[user]
+  user = y.tanaka
+  email = y.tanaka@aktsk.jp
+  name = Yusuke Tanaka
+[github]
+  user = csouls
+[url "git@github.com:"]
+  pushinsteadof = https://github.com/
+[filter "lfs"]
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
 [alias]
   a = add
   b = branch
@@ -52,11 +62,4 @@
   revs = rebase --skip
   graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
   today = !git log --all --oneline --graph --decorate --since=yesterday --committer=`git config http://user.name`
-[github]
-  user = yusuket
-[url "git@github.com:"]
-  pushinsteadof = https://github.com/
-[filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
+  online = log --oneline --no-merges --date=short --pretty='format:%C(yellow)%h %C(green)%cd %C(blue)%an%C(red)%d %C(reset)%s'

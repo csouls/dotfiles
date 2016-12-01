@@ -101,10 +101,6 @@ NeoBundle 'tpope/vim-dispatch'
 " Joke
 NeoBundle 'mattn/webapi-vim'
 
-if executable('sass')
-  NeoBundle 'AtsushiM/sass-compile.vim'
-endif
-
 NeoBundle 'hail2u/vim-css3-syntax', {
       \ 'autoload' : {
       \   'filetypes' : ['css']
@@ -183,7 +179,6 @@ so ~/.vim/plugin/alpaca_tags.vim
 "--- json
 let g:vim_json_syntax_conceal = 1
 let g:vim_json_syntax_concealcursor = 1
-autocmd FileType json setlocal sw=2 sts=2 ts=2 et
 
 "--- Alignta
 xnoremap al :Alignta<Space>
@@ -216,7 +211,6 @@ set browsedir=buffer
 set nocompatible
 set expandtab
 set hidden
-set incsearch
 set list
 set listchars=tab:>\ ,extends:<
 set number
@@ -224,6 +218,14 @@ set showmatch
 set smartcase
 set whichwrap=b,s,h,l,<,>,[,]
 set autochdir
+
+" Search
+set incsearch " インクリメンタルサーチ. １文字入力毎に検索を行う
+set ignorecase " 検索パターンに大文字小文字を区別しない
+set smartcase " 検索パターンに大文字を含んでいたら大文字小文字を区別する
+set hlsearch " 検索結果をハイライト
+" ESCキー2度押しでハイライトの切り替え
+nnoremap <silent><Esc><Esc> :<C-u>set nohlsearch!<CR>
 
 syntax on
 filetype on
@@ -234,6 +236,7 @@ set enc=utf-8
 set fenc=utf-8
 set fencs=utf-8,iso-2022-jp,euc-jp,cp932
 set fileformats=unix,mac,dos
+set ambiwidth=double
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 
 " activate molokai colorscheme
@@ -251,6 +254,10 @@ nnoremap j gj
 nnoremap k gk
 nnoremap <Down> gj
 nnoremap <Up>   gk
+
+" Tag jump
+nnoremap <Leader>h :vsp<CR> :exe("tjump ".expand('<cword>'))<CR>
+nnoremap <Leader>k :split<CR> :exe("tjump ".expand('<cword>'))<CR>
 
 " <C-g> show the full file path
 nnoremap <C-g> 1<C-g>
@@ -271,13 +278,19 @@ set smartindent
 set smarttab
 set tabstop=2
 set shiftwidth=2
-au BufNewFile,BufRead *\.md set tabstop=4 shiftwidth=4
-au BufNewFile,BufRead *\.c set tabstop=4 shiftwidth=4
-au BufNewFile,BufRead *\.cpp set tabstop=4 shiftwidth=4
-au BufNewFile,BufRead *\.java set tabstop=4 shiftwidth=4
-au BufNewFile,BufRead *\.h set tabstop=4 shiftwidth=4
-au BufNewFile,BufRead *\.gradle set tabstop=4 shiftwidth=4
-au BufNewFile,BufRead *\.*sl set tabstop=4 shiftwidth=4
+autocmd BufNewFile,BufRead *\.md set tabstop=4 shiftwidth=4
+autocmd BufNewFile,BufRead *\.c set tabstop=4 shiftwidth=4
+autocmd BufNewFile,BufRead *\.cpp set tabstop=4 shiftwidth=4
+autocmd BufNewFile,BufRead *\.cs set tabstop=4 shiftwidth=4
+autocmd BufNewFile,BufRead *\.java set tabstop=4 shiftwidth=4
+autocmd BufNewFile,BufRead *\.h set tabstop=4 shiftwidth=4
+autocmd BufNewFile,BufRead *\.gradle set tabstop=4 shiftwidth=4
+autocmd BufNewFile,BufRead *\.*sl set tabstop=4 shiftwidth=4
+autocmd FileType json setlocal sw=2 sts=2 ts=2 et
+" File type
+autocmd BufNewFile,BufRead *\.shader set filetype=glsl
+autocmd BufNewFile,BufRead Fastfile set filetype=ruby
+autocmd BufNewFile,BufRead Matchfile set filetype=ruby
 
 " Python
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class

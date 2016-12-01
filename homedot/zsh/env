@@ -1,12 +1,14 @@
-# Color settins
+# PATH
+export PATH=~/.rbenv/bin:~/.gem/bin:~/bin/:$PATH #for Ruby
+export PATH=~/.cabal/bin:$PATH #for Haskell
+export PATH=/usr/local/bin:$PATH
+export PATH=$PATH:~/bin/FDK/Tools/osx # for makeotf
+
+# Color setting
 export CLICOLOR=1
 
+# vim
 export EDITOR=vim
-
-# PATH setting
-export PATH=~/.rbenv/bin:~/.gem/bin:~/bin/:/usr/local/bin:$PATH #for Ruby
-export PATH=~/.cabal/bin:$PATH #for Haskell
-export PATH=$PATH:~/bin/FDK/Tools/osx # for makeotf
 
 # AWS
 if [ -x /usr/libexec/java_home ]; then
@@ -26,15 +28,18 @@ export PATH=$PATH:$AWS_AUTO_SCALING_HOME/bin
 
 export AWS_CREDENTIAL_FILE=~/.aws/credentials/reserved-instances
 
+# PostgreSQL
+export PGDATA=/usr/local/var/postgres
+
 # ios
 export IOS_SIMULATOR_PATH="~/Library/Application Support/iPhone Simulator/"
 
 # android
-ANDROID_NDK=/usr/local/Cellar/android-ndk/r10e
+ANDROID_NDK=/usr/local/Cellar/android-ndk-r10e/r10e
 export PATH=$PATH:${ANDROID_NDK}
 export NDK_ROOT=${ANDROID_NDK}
 export ANDROID_NDK_ROOT=${ANDROID_NDK}
-ANDROID_SDK=/usr/local/Cellar/android-sdk/24.3.4
+ANDROID_SDK=/usr/local/Cellar/android-sdk/`ls /usr/local/Cellar/android-sdk/ | tail -1`
 export PATH=$PATH:${ANDROID_SDK}:${ANDROID_SDK}/platform-tools
 export ANDROID_SDK_ROOT=${ANDROID_SDK}
 export ANT_ROOT=/usr/local/bin
@@ -42,12 +47,9 @@ which ccache > /dev/null 2>&1 && export NDK_CCACHE=`which ccache`
 export CLASSPATH=${ANDROID_SDK}/platform-tools
 export PATH=$PATH:${ANDROID_SDK}/tools
 
-# cocos2d-x
+# Cocos2d-x
 export COCOS_CONSOLE_ROOT=~/lib/cocos2d-x/tools/cocos2d-console/bin
 export PATH=$COCOS_CONSOLE_ROOT:$PATH
 
-# Vagrant & Docker
-export PATH=$PATH:/Applications/Vagrant/bin
-export DOCKER_HOST="192.168.50.4:2375"
-
-export PGDATA=/usr/local/var/postgres
+# Unity
+export UNITY_PATH=/Applications/Unity5.4.1p2/Unity.app/Contents/MacOS/Unity

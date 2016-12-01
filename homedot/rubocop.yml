@@ -3,7 +3,6 @@ AllCops:
   Exclude:
     - bin/*
     - db/schema.rb
-  RunRailsCops: true
 
 Style/AsciiComments:
   Enabled: false
@@ -41,16 +40,13 @@ Style/NumericLiterals:
 Style/RaiseArgs:
   Enabled: false  # true にしたい
 
-Style/SingleSpaceBeforeFirstArg:
-  Enabled: false  # true にしたい
-
 Style/SpaceInsideHashLiteralBraces:
-  EnforcedStyle: space
+  EnforcedStyle: no_space
 
 Style/StringLiterals:
   Enabled: false
 
-Style/TrailingComma:
+Style/TrailingCommaInLiteral:
   EnforcedStyleForMultiline: comma
 
 ##################### Metrics ##################################

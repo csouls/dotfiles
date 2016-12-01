@@ -1,3 +1,7 @@
 .ruby-version
 .DS_Store
+.sass-cache
 tags
+Assets/GAF/Resources/Cache/
+Assets/_TsubasaDebug/GAF_TEST/
+Assets/StyleCop.Cache*
