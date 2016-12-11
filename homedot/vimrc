@@ -38,10 +38,11 @@ NeoBundle 'tpope/vim-rbenv'
 " C++ / Clang
 NeoBundle 'vim-jp/cpp-vim'
 NeoBundle 'Rip-Rip/clang_complete'
-" Erlang
+" Erlang / Elixir
 NeoBundle 'vim-erlang/vim-erlang-compiler'
 NeoBundle 'vim-erlang/vim-erlang-omnicomplete'
 NeoBundle 'vim-erlang/vim-erlang-runtime'
+NeoBundle 'elixir-lang/vim-elixir'
 " Golang
 NeoBundle 'jnwhiteh/vim-golang'
 " Lua

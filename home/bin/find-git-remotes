@@ -1,0 +1,5 @@
+#!/bin/zsh
+# カレントディレクトリ以下の、Gitのリモートリポジトリ一覧を出力します
+# * vendorディレクトリは除外しています。Bundler管理していると出力数が多すぎて出力を汚染するので
+# * zsh, realpath が必要です
+find . -name ".git" -not -iwholename '*/vendor/*' -type d -exec zsh -c 'repopath=`realpath {}/..`; echo -e "\n\e[96mGit repository path: ${repopath}\e[0m"' \; -exec git --git-dir {} remote -v \;
