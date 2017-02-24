@@ -2,6 +2,7 @@
   quotepath = false
   editor = vim
   excludesfile = ~/.gitignore
+	untrackedCache = true
 [color]
   status = auto
   diff = auto

@@ -16,9 +16,9 @@ alias g='git'
 alias gd='g d'
 alias gg='git grep -i'
 alias gi='git'
-alias gitdd='git checkout develop && git branch -d $(git branch --merged | grep -Ev "\sdevelop$" | grep -Ev "\smaster$")'
-alias gitds='git checkout staging && git branch -d $(git branch --merged | grep -Ev "\sstaging$")'
-alias gitdm='git checkout master  && git branch -d $(git branch --merged | grep -Ev "\sdevelop$" | grep -Ev "\smaster$")'
+alias gitdd='git checkout develop && git branch -d $(git branch --merged | grep -Ev "\sstaging$" | grep -Ev "\smaster$" | grep -v "*")'
+alias gitds='git checkout staging && git branch -d $(git branch --merged | grep -Ev "\sdevelop$" | grep -Ev "\smaster$" | grep -v "*")'
+alias gitdm='git checkout master  && git branch -d $(git branch --merged | grep -Ev "\sdevelop$" | grep -Ev "\sstaging$" | grep -v "*")'
 alias gitrebasem='git fetch origin master && git rebase origin/master'
 alias gits='git status'
 alias gs='g s'
@@ -56,7 +56,7 @@ alias spring="bundle exec spring"
 alias sr="bundle exec spring rspec"
 alias tma="tmux a -d -t"
 alias tml="tmux ls"
-alias tmn="SHELL=/bin/zsh tmux new -s"
+alias tmn='SHELL=/bin/zsh tmux new -s $(basename $(pwd))'
 alias unitylog='less ~/Library/Logs/Unity/Editor.log'
 alias unitylogtail='tail -f ~/Library/Logs/Unity/Editor.log'
 alias usls='git diff --name-only `git tag -l "production*" | tail -2` `git tag -l "production*" | tail -1` | grep "^db/seeds" | xargs -L1 -I {} basename {} .yml | tr "\n" "," | sed "s/,$//"'

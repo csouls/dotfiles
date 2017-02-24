@@ -92,11 +92,12 @@ NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 NeoBundle 'elzr/vim-json'
 NeoBundle 'osyo-manga/vim-over'
-NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'vim-scripts/grep.vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'itspriddle/vim-marked'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'tpope/vim-dispatch'
+NeoBundle 'editorconfig/editorconfig-vim'
 "NeoBundle 'airblade/vim-rooter'
 
 " Joke
