@@ -9,26 +9,21 @@ TEAM_NAME = 'development'.freeze
 
 extend Memoist
 
+Octokit.auto_paginate = true
+
+def members_outside_collaborators(client)
+  client.outside_collaborators(ORGANIZATION, headers: {Accept: 'application/vnd.github.korra-preview'})
+end
+memoize :members_outside_collaborators
+
 def members_2fa_disabled(client)
-  members_2fa_disabled = []
-  1.upto(1000).each do |num|
-    members = client.organization_members(ORGANIZATION, filter: '2fa_disabled', page: num)
-    break if members.count == 0
-    members_2fa_disabled += members
-  end
-  members_2fa_disabled
+  client.organization_members(ORGANIZATION, filter: '2fa_disabled')
 end
 memoize :members_2fa_disabled
 
 def team_members(client)
-  team_members = []
   dev_team_id = client.org_teams(ORGANIZATION).find { |t| t[:name] == TEAM_NAME }[:id]
-  1.upto(1000).each do |num|
-    members = client.team_members(dev_team_id, page: num)
-    break if members.count == 0
-    team_members += members
-  end
-  team_members
+  client.team_members(dev_team_id)
 end
 memoize :team_members
 
