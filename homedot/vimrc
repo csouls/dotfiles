@@ -4,12 +4,11 @@ let s:is_mac   = has('mac') || system('uname') =~? '^darwin'
 let s:is_linux = !s:is_mac && has('unix')
 
 filetype plugin indent on " Required for Neobundle
+set nocompatible
 
 if has('vim_starting')
-  set nocompatible               " Be iMproved
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
-
 call neobundle#rc(expand('~/.vim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
@@ -44,7 +43,7 @@ NeoBundle 'vim-erlang/vim-erlang-omnicomplete'
 NeoBundle 'vim-erlang/vim-erlang-runtime'
 NeoBundle 'elixir-lang/vim-elixir'
 " Golang
-NeoBundle 'jnwhiteh/vim-golang'
+NeoBundle 'fatih/vim-go'
 " Lua
 NeoBundle 'xolox/vim-lua-ftplugin'
 NeoBundle 'xolox/vim-lua-inspect'
@@ -54,6 +53,14 @@ NeoBundle 'kchmck/vim-coffee-script'
 " Shader
 NeoBundle 'beyondmarc/hlsl.vim'
 NeoBundle 'tikhomirov/vim-glsl'
+" Scala
+NeoBundle 'derekwyatt/vim-scala'
+NeoBundle 'jergason/scala.vim'
+let g:scala_scaladoc_indent = 1
+
+" Snippets
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 
 " Ctags
 NeoBundle 'szw/vim-tags'
@@ -99,6 +106,8 @@ NeoBundle 'tpope/vim-markdown'
 NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'editorconfig/editorconfig-vim'
 "NeoBundle 'airblade/vim-rooter'
+NeoBundle 'kana/vim-operator-user'
+NeoBundle 'tyru/operator-camelize.vim'
 
 " Joke
 NeoBundle 'mattn/webapi-vim'
@@ -157,27 +166,6 @@ NeoBundle 'http://svn.macports.org/repository/macports/contrib/mpvim/'
 NeoBundleCheck
 
 "-------------------- Plugin settings --------------------
-"--- Switch.vim
-so ~/.vim/plugin/switch.vim
-
-"--- neocomplete or neocomplcache
-so ~/.vim/plugin/neocomplete.vim
-
-"--- Unite
-so ~/.vim/plugin/unite.vim
-
-"--- TextObject
-so ~/.vim/plugin/textobject.vim
-
-"--- quickrun
-so ~/.vim/plugin/quickrun.vim
-
-"--- css/sass/less
-so ~/.vim/plugin/css.vim
-
-"--- AlpacaTags
-so ~/.vim/plugin/alpaca_tags.vim
-
 "--- json
 let g:vim_json_syntax_conceal = 1
 let g:vim_json_syntax_concealcursor = 1
@@ -202,6 +190,33 @@ nmap <C-n> <Plug>(yankround-next)
 "--- ruby
 au FileType ruby,eruby setl tags+=~/.vim/tmp/rtags
 
+"--- Neosnippet
+let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/snippets/'
+" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
+
+" Keymaps
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
+
 "---------------------------------------------------------------------
 "--- vim general settings
 set ambiwidth=double
@@ -210,7 +225,6 @@ set backupskip=/tmp/*,/private/tmp/*
 set directory=$HOME/.vim/tmp/
 set viminfo+=n~/.vim/tmp/viminfo.txt
 set browsedir=buffer
-set nocompatible
 set expandtab
 set hidden
 set list
@@ -220,13 +234,14 @@ set showmatch
 set smartcase
 set whichwrap=b,s,h,l,<,>,[,]
 set autochdir
+set re=1
 
 " Search
-set incsearch " インクリメンタルサーチ. １文字入力毎に検索を行う
-set ignorecase " 検索パターンに大文字小文字を区別しない
-set smartcase " 検索パターンに大文字を含んでいたら大文字小文字を区別する
-set hlsearch " 検索結果をハイライト
-" ESCキー2度押しでハイライトの切り替え
+set incsearch
+set ignorecase
+set smartcase
+set hlsearch
+" Toggle highlighting by twice ESC
 nnoremap <silent><Esc><Esc> :<C-u>set nohlsearch!<CR>
 
 syntax on
@@ -264,7 +279,7 @@ nnoremap <Leader>k :split<CR> :exe("tjump ".expand('<cword>'))<CR>
 " <C-g> show the full file path
 nnoremap <C-g> 1<C-g>
 
-" tagsジャンプの時に複数ある時は一覧表示
+" ctags display list if there are multiple search results
 nnoremap <C-]> g<C-]>
 
 " Change color on status line when input mode
@@ -289,6 +304,7 @@ autocmd BufNewFile,BufRead *\.h set tabstop=4 shiftwidth=4
 autocmd BufNewFile,BufRead *\.gradle set tabstop=4 shiftwidth=4
 autocmd BufNewFile,BufRead *\.*sl set tabstop=4 shiftwidth=4
 autocmd FileType json setlocal sw=2 sts=2 ts=2 et
+"autocmd BufNewFile,BufRead *\.go set noexpandtab tabstop=4 shiftwidth=4
 " File type
 autocmd BufNewFile,BufRead *\.shader set filetype=glsl
 autocmd BufNewFile,BufRead Fastfile set filetype=ruby
@@ -297,12 +313,21 @@ autocmd BufNewFile,BufRead Matchfile set filetype=ruby
 " Python
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
 " Json formatting
-command! Jf :execute '%!python -mjson.tool'
-  \ | :execute '%!python -c "import re,sys;chr=__builtins__.__dict__.get(\"unichr\", chr);sys.stdout.write(re.sub(r\"\\u[0-9a-f]{4}\", lambda x: chr(int(\"0x\" + x.group(0)[2:], 16)), sys.stdin.read()))"'
-  \ | :%s/ \+$//ge
-  \ | :set ft=javascript
-  \ | :1
+command! -nargs=? Jq call s:Jq(<f-args>)
+function! s:Jq(...)
+    if 0 == a:0
+        let l:arg = "."
+    else
+        let l:arg = a:1
+    endif
+    execute "%! jq \"" . l:arg . "\""
+endfunction
 
 " Highlight the trailing whitespace
 augroup HighlightTrailingSpaces
@@ -310,3 +335,6 @@ augroup HighlightTrailingSpaces
   autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guibg=Red ctermbg=Red
   autocmd VimEnter,WinEnter * match TrailingSpaces /\s\+$/
 augroup END
+
+" toggle CamelCase / snake_cake
+map <leader>c <plug>(operator-camelize-toggle)

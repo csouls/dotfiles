@@ -25,6 +25,9 @@ source ~/.zsh/peco
 # rbenv
 which rbenv > /dev/null 2>&1 && eval "$(rbenv init -)"
 
+# direnv
+eval "$(direnv hook zsh)" > /dev/null 2>&1
+
 # added by travis gem
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 
@@ -34,9 +37,3 @@ ZSH_THEME="powerline"
 POWERLINE_HIDE_HOST_NAME="true"
 POWERLINE_HIDE_GIT_PROMPT_STATUS="true"
 POWERLINE_SHOW_GIT_ON_RIGHT="true"
-
-# The next line updates PATH for the Google Cloud SDK.
-[ -f ~/lib/google-cloud-sdk/path.zsh.inc ] && source ~/lib/google-cloud-sdk/path.zsh.inc
-
-# The next line enables shell command completion for gcloud.
-[ -f ~/lib/google-cloud-sdk/completion.zsh.inc ] && source ~/lib/google-cloud-sdk/completion.zsh.inc

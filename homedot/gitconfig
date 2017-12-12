@@ -1,7 +1,7 @@
 [core]
   quotepath = false
   editor = vim
-  excludesfile = ~/.gitignore
+	excludesfile = ${HOME}/.gitignore
 	untrackedCache = true
 [color]
   status = auto
@@ -38,9 +38,10 @@
 [url "git@github.com:"]
   pushinsteadof = https://github.com/
 [filter "lfs"]
-  clean = git-lfs clean %f
-  smudge = git-lfs smudge %f
-  required = true
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
 [alias]
   a = add
   b = branch
@@ -64,3 +65,9 @@
   graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
   today = !git log --all --oneline --graph --decorate --since=yesterday --committer=`git config http://user.name`
   online = log --oneline --no-merges --date=short --pretty='format:%C(yellow)%h %C(green)%cd %C(blue)%an%C(red)%d %C(reset)%s'
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

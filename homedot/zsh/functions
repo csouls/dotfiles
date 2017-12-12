@@ -35,4 +35,3 @@ function hlcopy() {
   highlight -O rtf $1 $syntax --font Ricty --font-size 24 --style molokai -W -J 60 -j 3 | pbcopy
 }
 
-

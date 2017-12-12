@@ -16,9 +16,7 @@ alias g='git'
 alias gd='g d'
 alias gg='git grep -i'
 alias gi='git'
-alias gitdd='git checkout develop && git branch -d $(git branch --merged | grep -Ev "\sstaging$" | grep -Ev "\smaster$" | grep -v "*")'
-alias gitds='git checkout staging && git branch -d $(git branch --merged | grep -Ev "\sdevelop$" | grep -Ev "\smaster$" | grep -v "*")'
-alias gitdm='git checkout master  && git branch -d $(git branch --merged | grep -Ev "\sdevelop$" | grep -Ev "\sstaging$" | grep -v "*")'
+alias gitdd='git branch -d $(git branch --merged | grep -Ev "\sdevelop$" | grep -Ev "\sstaging$" | grep -Ev "\smaster$" | grep -v "*")'
 alias gitrebasem='git fetch origin master && git rebase origin/master'
 alias gits='git status'
 alias gs='g s'
@@ -44,6 +42,7 @@ alias psshlinkping-tail='psshlink -p8 -t0 -P "tail -f /media/ephemeral0/rails/pi
 alias psshlinkping='pssh -h ~/.config/server-linkping.lst -i'
 alias r='rails'
 alias rails='bundle exec rails'
+alias rackup='bundle exec rackup'
 alias rds='rake db:migrate:status'
 alias rename_model='rails runner ~/script/rename_model'
 alias rs='rspec'
@@ -62,3 +61,7 @@ alias unitylogtail='tail -f ~/Library/Logs/Unity/Editor.log'
 alias usls='git diff --name-only `git tag -l "production*" | tail -2` `git tag -l "production*" | tail -1` | grep "^db/seeds" | xargs -L1 -I {} basename {} .yml | tr "\n" "," | sed "s/,$//"'
 alias vi='vim'
 alias git-tsubasa-add='git add Assets/*/Resources/Prefabs Assets/*/Scenes Assets/*/Scripts'
+
+# GCC
+#alias gcc=/usr/local/bin/gcc-4.9
+#alias g++=/usr/local/bin/g++-4.9

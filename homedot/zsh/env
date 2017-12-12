@@ -1,55 +1,75 @@
-# PATH
-export PATH=~/.rbenv/bin:~/.gem/bin:~/bin/:$PATH #for Ruby
-export PATH=~/.cabal/bin:$PATH #for Haskell
-export PATH=/usr/local/bin:$PATH
-export PATH=$PATH:~/bin/FDK/Tools/osx # for makeotf
-
 # Color setting
 export CLICOLOR=1
 
+# make ruby
+export RUBY_CONFIGURE_OPTS="--with-readline-dir=/usr/local/opt/readline:${RUBY_CONFIGURE_OPTS}"
+
 # vim
-export EDITOR=vim
+export EDITOR="vim"
+
+# Java
+if [ -x /usr/libexec/java_home ]; then
+  export JAVA_HOME="$(/usr/libexec/java_home)"
+fi
 
 # AWS
-if [ -x /usr/libexec/java_home ]; then
-  export JAVA_HOME=`/usr/libexec/java_home`
-fi
-export PATH=$PATH:$JAVA_HOME/bin
-
-export EC2_REGION=ap-northeast-1
-export EC2_HOME=/usr/local/ec2/ec2-api-tools-1.7.3.2
-export PATH=$PATH:$EC2_HOME/bin
-
-export AWS_RDS_HOME=~/bin/RDSCli-1.19.004
-export PATH=$PATH:$AWS_RDS_HOME/bin # for RDS command line tools
-
-export AWS_AUTO_SCALING_HOME=~/bin/AutoScaling
-export PATH=$PATH:$AWS_AUTO_SCALING_HOME/bin
-
-export AWS_CREDENTIAL_FILE=~/.aws/credentials/reserved-instances
+export EC2_REGION="ap-northeast-1"
+export EC2_HOME="/usr/local/ec2/ec2-api-tools-1.7.3.2"
+export AWS_RDS_HOME="${HOME}/bin/RDSCli-1.19.004"
+export AWS_AUTO_SCALING_HOME="${HOME}/bin/AutoScaling"
+export AWS_CREDENTIAL_FILE="${HOME}/.aws/credentials/reserved-instances"
 
 # PostgreSQL
-export PGDATA=/usr/local/var/postgres
+export PGDATA="/usr/local/var/postgres"
 
 # ios
 export IOS_SIMULATOR_PATH="~/Library/Application Support/iPhone Simulator/"
 
 # android
-ANDROID_NDK=/usr/local/Cellar/android-ndk-r10e/r10e
-export PATH=$PATH:${ANDROID_NDK}
-export NDK_ROOT=${ANDROID_NDK}
-export ANDROID_NDK_ROOT=${ANDROID_NDK}
-ANDROID_SDK=/usr/local/Cellar/android-sdk/`ls /usr/local/Cellar/android-sdk/ | tail -1`
-export PATH=$PATH:${ANDROID_SDK}:${ANDROID_SDK}/platform-tools
-export ANDROID_SDK_ROOT=${ANDROID_SDK}
-export ANT_ROOT=/usr/local/bin
-which ccache > /dev/null 2>&1 && export NDK_CCACHE=`which ccache`
-export CLASSPATH=${ANDROID_SDK}/platform-tools
-export PATH=$PATH:${ANDROID_SDK}/tools
+ANDROID_NDK="/usr/local/Cellar/android-ndk-r10e/r10e"
+export NDK_ROOT="${ANDROID_NDK}"
+export ANDROID_NDK_ROOT="${ANDROID_NDK}"
 
-# Cocos2d-x
-export COCOS_CONSOLE_ROOT=~/lib/cocos2d-x/tools/cocos2d-console/bin
-export PATH=$COCOS_CONSOLE_ROOT:$PATH
+ANDROID_SDK_DIR="/usr/local/Caskroom/android-sdk"
+ANDROID_SDK="${ANDROID_SDK_DIR}/$(ls ${ANDROID_SDK_DIR} | tail -1)"
+export ANDROID_HOME="${ANDROID_SDK}"
+export ANDROID_SDK_ROOT="${ANDROID_SDK}"
+which ccache > /dev/null 2>&1 && export NDK_CCACHE="$(which ccache)"
+export CLASSPATH="${ANDROID_SDK}/platform-tools"
 
-# Unity
-export UNITY_PATH=/Applications/Unity5.4.1p2/Unity.app/Contents/MacOS/Unity
+# GO
+export GOPATH="${HOME}/src/go"
+export GOROOT="${HOME}/lib/google-cloud-sdk/platform/google_appengine/goroot-1.8"
+export GO15VENDOREXPERIMENT=1
+
+# Yubikey
+export SSH_AUTH_SOCK="${HOME}/.gnupg/S.gpg-agent.ssh"
+
+# PATH
+export PATH="${PATH}:${HOME}/bin"      # tools
+export PATH="${PATH}:${JAVA_HOME}/bin" # Java
+
+## languages
+export PATH="${PATH}:/usr/local/bin"     # Homebrew
+export PATH="${PATH}:${HOME}/.rbenv/bin" # Ruby
+export PATH="${PATH}:${HOME}/.cabal/bin" # Haskell
+export PATH="${PATH}:$GOPATH/bin"        # Golang
+
+## AWS
+export PATH="${PATH}:$EC2_HOME/bin"               # ec2-api-tools
+export PATH="${PATH}:$AWS_RDS_HOME/bin"           # RDS command line tools
+export PATH="${PATH}:$AWS_AUTO_SCALING_HOME/bin"  # AWS auto scaling tools
+
+## Android
+export PATH="${PATH}:${ANDROID_NDK}"
+export PATH="${PATH}:${ANDROID_SDK}"
+export PATH="${PATH}:${ANDROID_SDK}/tools"
+export PATH="${PATH}:${ANDROID_SDK}/platform-tools"
+
+## GCP
+export PATH="${PATH}:${HOME}/lib/google-cloud-sdk/platform/google_appengine/goroot-1.8/bin"
+### Google Cloud SDK.
+if [ -f "${HOME}/lib/google-cloud-sdk/path.zsh.inc" ]; then source "${HOME}/lib/google-cloud-sdk/path.zsh.inc"; fi
+### Enables shell command completion for gcloud.
+if [ -f "${HOME}/lib/google-cloud-sdk/completion.zsh.inc" ]; then source "${HOME}/lib/google-cloud-sdk/completion.zsh.inc"; fi
+
