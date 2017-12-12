@@ -40,6 +40,9 @@ Style/NumericLiterals:
 Style/RaiseArgs:
   Enabled: false  # true にしたい
 
+Style/SignalException:
+  EnforcedStyle: semantic
+
 Style/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
 
