@@ -1,7 +1,7 @@
 [core]
   quotepath = false
   editor = vim
-	excludesfile = ${HOME}/.gitignore
+	excludesfile = ~/.gitignore
 	untrackedCache = true
 [color]
   status = auto

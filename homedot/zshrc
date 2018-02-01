@@ -30,6 +30,7 @@ eval "$(direnv hook zsh)" > /dev/null 2>&1
 
 # added by travis gem
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
+[ $commands[kubectl] ] && source <(kubectl completion zsh)
 
 # oh-my-zsh
 ZSH_THEME="powerline"
