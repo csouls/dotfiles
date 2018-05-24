@@ -1,11 +1,14 @@
-#!/bin/sh
+#!/bin/bash
+
+set -eu
+
 export GITHUB_USER=csouls
 git submodule update --init --recursive
 
 if [ `uname` = "Darwin" ]; then
-  ./setup/setup_mac.sh
+  sh setup/setup_mac.sh
 elif [ `uname` = "Linux" ]; then
-  ./setup/setup_linux.sh
+  sh setup/setup_linux.sh
 fi
 
 path=$(cd $(dirname $0); pwd)

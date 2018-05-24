@@ -1,6 +1,3 @@
-# oh-my-zsh
-source ~/.zsh/oh-my-zsh
-
 # command complement
 autoload -U compinit
 compinit
@@ -8,9 +5,11 @@ compinit
 # Disable Ctrl+S(terminal lock)
 stty stop undef
 
+# oh-my-zsh
+source ~/.zsh/oh-my-zsh
+
 # environments
 source ~/.zsh/env
-source ~/.zsh/options
 
 # aliases
 source ~/.zsh/alias
@@ -20,7 +19,6 @@ source ~/.zsh/alias
 
 # extensions
 source ~/.zsh/functions
-source ~/.zsh/peco
 
 # rbenv
 which rbenv > /dev/null 2>&1 && eval "$(rbenv init -)"
@@ -32,9 +30,23 @@ eval "$(direnv hook zsh)" > /dev/null 2>&1
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 [ $commands[kubectl] ] && source <(kubectl completion zsh)
 
-# oh-my-zsh
-ZSH_THEME="powerline"
-# ZSH_THEME="suvash"
-POWERLINE_HIDE_HOST_NAME="true"
-POWERLINE_HIDE_GIT_PROMPT_STATUS="true"
-POWERLINE_SHOW_GIT_ON_RIGHT="true"
+# history
+HISTFILE=~/.history-zsh
+HISTSIZE=1000000
+SAVEHIST=1000000
+setopt APPEND_HISTORY
+## for sharing history between zsh processes
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+# allow tab completion in the middle of a word
+setopt COMPLETE_IN_WORD
+# enable color
+autoload -U colors; colors
+# prompt
+PROMPT="
+%{$fg_bold[blue]%}${HOST[0,7]} ${PROMPT}%{%(?.$fg[cyan].$fg[red])%}%(?.(▰╹◡╹%).ヾ(｡>﹏<｡%)ﾉ)%{$reset_color%}%b "
+## continuation of command
+PROMPT2='%B%_%(?.%f.%S%F)%b %#%f%s '
+## auto correct
+setopt correct
+SPROMPT="%r is correct? [n,y,a,e]: "

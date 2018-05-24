@@ -26,11 +26,12 @@ export PGDATA="/usr/local/var/postgres"
 export IOS_SIMULATOR_PATH="~/Library/Application Support/iPhone Simulator/"
 
 # android
-ANDROID_NDK="/usr/local/Cellar/android-ndk-r10e/r10e"
+ANDROID_NDK="/Users/y.tanaka/Library/Android/ndk/android-ndk-r13b"
 export NDK_ROOT="${ANDROID_NDK}"
+export ANDROID_NDK_HOME="${ANDROID_NDK}"
 export ANDROID_NDK_ROOT="${ANDROID_NDK}"
 
-ANDROID_SDK="/usr/local/share/android-sdk"
+ANDROID_SDK="${HOME}/Library/Android/sdk"
 export ANDROID_HOME="${ANDROID_SDK}"
 export ANDROID_SDK_ROOT="${ANDROID_SDK}"
 which ccache > /dev/null 2>&1 && export NDK_CCACHE="$(which ccache)"
@@ -38,40 +39,43 @@ export CLASSPATH="${ANDROID_SDK}/platform-tools"
 
 # GO
 export GOPATH="${HOME}/src/go"
-# export GOROOT="${HOME}/lib/google-cloud-sdk/platform/google_appengine/goroot-1.8"
-export GOROOT=/usr/local/Cellar/go/1.9.2/libexec/
+export GOROOT="/usr/local/Cellar/go/$(ls /usr/local/Cellar/go/ | tail -1)/libexec"
 export GO15VENDOREXPERIMENT=1
 
 # Yubikey
 export SSH_AUTH_SOCK="${HOME}/.gnupg/S.gpg-agent.ssh"
 
 # PATH
-export PATH="${PATH}:${HOME}/bin"      # tools
-export PATH="${PATH}:${JAVA_HOME}/bin" # Java
+export PATH="${HOME}/bin:${PATH}"      # tools
+export PATH="${JAVA_HOME}/bin:${PATH}" # Java
 
 ## languages
-export PATH="${PATH}:/usr/local/bin"     # Homebrew
-export PATH="${PATH}:${HOME}/.rbenv/bin" # Ruby
-export PATH="${PATH}:${HOME}/.cabal/bin" # Haskell
-export PATH="${PATH}:$GOPATH/bin"        # Golang
+export PATH="${HOME}/.rbenv/bin:${PATH}" # Ruby
+export PATH="${HOME}/.cabal/bin:${PATH}" # Haskell
+export PATH="$GOPATH/bin:${PATH}"        # Golang
 
 ## AWS
-export PATH="${PATH}:$EC2_HOME/bin"               # ec2-api-tools
-export PATH="${PATH}:$AWS_RDS_HOME/bin"           # RDS command line tools
-export PATH="${PATH}:$AWS_AUTO_SCALING_HOME/bin"  # AWS auto scaling tools
+export PATH="$EC2_HOME/bin:${PATH}"               # ec2-api-tools
+export PATH="$AWS_RDS_HOME/bin:${PATH}"           # RDS command line tools
+export PATH="$AWS_AUTO_SCALING_HOME/bin:${PATH}"  # AWS auto scaling tools
 
 ## Android
-export PATH="${PATH}:${ANDROID_NDK}"
-export PATH="${PATH}:${ANDROID_SDK}"
-export PATH="${PATH}:${ANDROID_SDK}/tools"
-export PATH="${PATH}:${ANDROID_SDK}/platform-tools"
+export PATH="${ANDROID_NDK}:${PATH}"
+export PATH="${ANDROID_SDK}:${PATH}"
+export PATH="${ANDROID_SDK}/tools:${PATH}"
+export PATH="${ANDROID_SDK}/tools/bin:${PATH}"
+export PATH="${ANDROID_SDK}/platform-tools:${PATH}"
 
 ## GCP
-export PATH="${PATH}:${HOME}/lib/google-cloud-sdk/platform/google_appengine/goroot-1.8/bin"
+export APPENGINE_DEV_APPSERVER="${HOME}/lib/google-cloud-sdk/bin/dev_appserver.py"
+export PATH="${HOME}/lib/google-cloud-sdk/platform/google_appengine/goroot-1.8/bin:${PATH}"
 ### Google Cloud SDK.
 if [ -f "${HOME}/lib/google-cloud-sdk/path.zsh.inc" ]; then source "${HOME}/lib/google-cloud-sdk/path.zsh.inc"; fi
 ### Enables shell command completion for gcloud.
 if [ -f "${HOME}/lib/google-cloud-sdk/completion.zsh.inc" ]; then source "${HOME}/lib/google-cloud-sdk/completion.zsh.inc"; fi
 
 ## libxml
-export PATH="${PATH}:/usr/local/opt/libxml2/bin"
+export PATH="/usr/local/opt/libxml2/bin:${PATH}"
+
+## Homebrew
+export PATH="/usr/local/bin:${PATH}"

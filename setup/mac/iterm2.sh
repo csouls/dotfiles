@@ -21,7 +21,7 @@
 /usr/libexec/PlistBuddy -c "Set :\"New Bookmarks\":0:\"Non Ascii Font\" \"Ricty-Regular 13\"" ~/Library/Preferences/com.googlecode.iterm2.plist
 
 # set transparency
-/usr/libexec/PlistBuddy -c "Set :\"New Bookmarks\":0:\"Transparency\" 0.224709" ~/Library/Preferences/com.googlecode.iterm2.plist
+/usr/libexec/PlistBuddy -c "Set :\"New Bookmarks\":0:\"Transparency\" 0.114891" ~/Library/Preferences/com.googlecode.iterm2.plist
 
 # config clipboard
 /usr/libexec/PlistBuddy -c "Set :\"PasteFromClipboard\" false" ~/Library/Preferences/com.googlecode.iterm2.plist
