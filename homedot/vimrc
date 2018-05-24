@@ -47,9 +47,11 @@ NeoBundle 'fatih/vim-go'
 " Lua
 NeoBundle 'xolox/vim-lua-ftplugin'
 NeoBundle 'xolox/vim-lua-inspect'
-" JavaScript / CoffeeScript
+" JavaScript
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'Quramy/tsuquyomi'
+NeoBundle 'leafgarland/typescript-vim'
 " Shader
 NeoBundle 'beyondmarc/hlsl.vim'
 NeoBundle 'tikhomirov/vim-glsl'
@@ -86,6 +88,9 @@ NeoBundle 'FuzzyFinder'
 " Execute external command
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle "osyo-manga/shabadou.vim"
+
+" plantuml
+NeoBundle "aklt/plantuml-syntax"
 
 " Other utilities
 NeoBundle 'xolox/vim-misc'  " Miscellaneous auto-load Vim scripts

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 brew upgrade
 brew update
 
@@ -7,8 +9,6 @@ brew tap caius/jo
 brew tap sanemat/font
 
 brew install adns
-brew install android-ndk
-brew install android-sdk
 brew install ant
 brew install astyle
 brew install autoconf
@@ -160,9 +160,7 @@ brew install rbenv-gemset
 brew install readline
 brew install reattach-to-user-namespace
 brew install redis
-brew install ricty
 brew install rmtrash
-brew install ruby
 brew install ruby-build
 brew install rust
 brew install sdl
@@ -187,7 +185,6 @@ brew install vault
 brew install vim
 brew install webp
 brew install wget
-brew install wsta
 brew install wxmac
 brew install x264
 brew install xvid
@@ -197,6 +194,10 @@ brew install z
 brew install zeromq
 brew install zlib
 brew install zsh
+
+# https://github.com/esphen/wsta
+brew tap esphen/wsta https://github.com/esphen/wsta.git
+brew install wsta
 
 # font
 fonts=(
@@ -208,47 +209,23 @@ fonts=(
 brew cask install --force ${fonts[@]}
 
 ## ricty
+brew install ricty --with-powerline
 cp -f /PATH/TO/RICTY/fonts/Ricty*.ttf ~/Library/Fonts/
 fc-cache -vf
 
-# brew cask install --force adobe-air
-# brew cask install --force adobe-creative-cloud
-# brew cask install --force adobe-reader
-# brew cask install --force alfred
-# brew cask install --force amethyst
-# brew cask install --force android-studio
-# brew cask install --force appcleaner
-# brew cask install --force bettertouchtool
-# brew cask install --force box-sync
-# brew cask install --force charles
-# brew cask install --force coteditor
-# brew cask install --force dropbox
-# brew cask install --force firefox
-# brew cask install --force flash
-# brew cask install --force flip4mac
-# brew cask install --force genymotion
-# brew cask install --force google-chrome
-# brew cask install --force google-japanese-ime
-# brew cask install --force gyazo
-# brew cask install --force hipchat
-# brew cask install --force hyperswitch
-# brew cask install --force istat-menus
-# brew cask install --force iterm2
-# brew cask install --force java
-# brew cask install --force karabiner
-# brew cask install --force league-of-legends
-# brew cask install --force lightpaper
-# brew cask install --force mou
-# brew cask install --force reflector
-# brew cask install --force seil
-# brew cask install --force sequel-pro
-# brew cask install --force skype
-# brew cask install --force sourcetree
-# brew cask install --force spotify
-# brew cask install --force steam
-# brew cask install --force texturepacker
-# brew cask install --force vagrant
-# brew cask install --force virtualbox
-# brew cask install --force vlc
+brew cask install java
+brew cask install android-ndk
+brew cask install android-sdk
+brew cask install android-studio
+
+# brew cask install alfred
+# brew cask install bettertouchtool
+# brew cask install charles
+# brew cask install gyazo
+# brew cask install iterm2
+# brew cask install karabiner
+# brew cask install sequel-pro
+# brew cask install sourcetree
+# brew cask install vlc
 
 brew cleanup

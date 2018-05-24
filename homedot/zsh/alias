@@ -40,6 +40,7 @@ alias psshlink-tail='psshlink -p8 -t0 -P "tail -f /ebs1/link/shared/log/producti
 alias psshlink='pssh -h ~/.config/server-link.lst -i'
 alias psshlinkping-tail='psshlink -p8 -t0 -P "tail -f /media/ephemeral0/rails/ping.log"'
 alias psshlinkping='pssh -h ~/.config/server-linkping.lst -i'
+alias pg='pgrep -alf'
 alias r='rails'
 alias rails='bundle exec rails'
 alias rackup='bundle exec rackup'
