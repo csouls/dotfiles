@@ -154,6 +154,7 @@ brew install python
 brew install python3
 brew install qt
 brew install qt5
+brew install rainbarf
 brew install rbenv
 brew install rbenv-gem-rehash
 brew install rbenv-gemset
