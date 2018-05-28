@@ -1,26 +1,33 @@
 #!/bin/bash
 set -eu
 
-cd `dirname $0`
+SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
 # homebrew
 which brew > /dev/null
 if [ $0 -ne 0  ]; then
   ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
-  sh ./homebrew.sh
+  sh ${SCRIPT_DIR}/mac/homebrew/install.sh
 fi
 
-# post processing
-find mac -name "*.sh" | xargs -I S sh S
-
-# oh-my-zsh and powerline
-if [ ! -e ~/.oh-my-zsh ]; then
+# install oh-my-zsh
+if [ -e ~/.oh-my-zsh ]; then
+  cd ~/.oh-my-zsh
+  git fetch origin
+  git reset --hard origin/master
+else
   git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 fi
 
-if [ ! -e ../home/tmux/tmux-powerline ]; then
+# install oh-my-zsh tmux-powerline
+if [ -e ~/.oh-my-zsh/themes/oh-my-zsh-powerline-theme ]; then
+  cd ~/.oh-my-zsh/themes/oh-my-zsh-powerline-theme
+  git fetch origin
+  git reset --hard origin/master
+else
   git clone https://github.com/jeremyFreeAgent/oh-my-zsh-powerline-theme.git ~/.oh-my-zsh/themes/oh-my-zsh-powerline-theme
   sh ~/.oh-my-zsh/themes/oh-my-zsh-powerline-theme/install_in_omz.sh
-  ln -sf $(pwd)/mac/tmux-powerline-theme.sh ../homedot/tmux/tmux-powerline/themes/default.sh
-  echo 'iTerm > Preferences > Profiles > Text Uncheck "Treat ambiguous-width characters as double width" at "Double-Width Characters".'
 fi
+
+# post processing
+find ${SCRIPT_DIR}/mac -name "*.sh" | xargs -I S sh S
