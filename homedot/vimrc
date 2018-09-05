@@ -172,7 +172,7 @@ NeoBundleCheck
 
 "-------------------- Plugin settings --------------------
 "--- json
-let g:vim_json_syntax_conceal = 1
+let g:vim_json_syntax_conceal = 0
 let g:vim_json_syntax_concealcursor = 1
 
 "--- Alignta
@@ -221,6 +221,8 @@ if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
 
+" surround
+let g:surround_116 = "{{ _('\r') }}"
 
 "---------------------------------------------------------------------
 "--- vim general settings

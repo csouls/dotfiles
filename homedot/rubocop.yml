@@ -4,6 +4,12 @@ AllCops:
     - bin/*
     - db/schema.rb
 
+Layout/DotPosition:
+  EnforcedStyle: trailing
+
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+
 Style/AsciiComments:
   Enabled: false
 
@@ -22,10 +28,10 @@ Style/CommentAnnotation:
 Style/Documentation:
   Enabled: false
 
-Style/DotPosition:
-  EnforcedStyle: trailing
-
 Style/FormatString:
+  Enabled: false
+
+Style/IfUnlessModifier:
   Enabled: false
 
 Style/Lambda:
@@ -34,17 +40,20 @@ Style/Lambda:
 Style/LambdaCall:
   Enabled: false
 
+Style/MultilineBlockChain:
+  Enabled: false
+
 Style/NumericLiterals:
   MinDigits: 9
+
+Style/NumericPredicate:
+  Enabled: false
 
 Style/RaiseArgs:
   Enabled: false  # true にしたい
 
 Style/SignalException:
-  EnforcedStyle: semantic
-
-Style/SpaceInsideHashLiteralBraces:
-  EnforcedStyle: no_space
+  Enabled: false
 
 Style/StringLiterals:
   Enabled: false
@@ -58,6 +67,10 @@ Metrics/ClassLength:
 
 Metrics/MethodLength:
   Max: 20
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
 
 Metrics/LineLength:
   Max: 200
