@@ -48,7 +48,8 @@ alias rds='rake db:migrate:status'
 alias rename_model='rails runner ~/script/rename_model'
 alias rs='rspec'
 alias rspec="bundle exec rspec"
-alias rtags="ctags -R -a -f ~/.vim/tmp/rtags --sort=yes --exclude=\"*.js\" --exclude=\"*.h\" --exclude=log --exclude=\"*.yml\" --exclude=.git --langmap=RUBY:.rb `gem environment gemdir`"
+alias ctagsr="ctags -R -a -f ~/.vim/tmp/rtags --sort=yes --exclude=\"*.js\" --exclude=\"*.h\" --exclude=log --exclude=\"*.yml\" --exclude=.git --langmap=RUBY:.rb `gem environment gemdir`"
+alias ctagsl="ctags -R -a --sort=yes --exclude=\"*.js\" --exclude=\"*.h\" --exclude=log --exclude=\"*.yml\" --exclude=.git --langmap=RUBY:.rb `gem environment gemdir`"
 alias rubocop="rubocop -D"
 alias sp="spring"
 alias spork="spork -p 3990"
