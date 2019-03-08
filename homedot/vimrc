@@ -59,6 +59,8 @@ NeoBundle 'tikhomirov/vim-glsl'
 NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'jergason/scala.vim'
 let g:scala_scaladoc_indent = 1
+" Windows PowerShell
+NeoBundle 'PProvost/vim-ps1'
 
 " Snippets
 NeoBundle 'Shougo/neosnippet'
@@ -91,6 +93,8 @@ NeoBundle "osyo-manga/shabadou.vim"
 
 " plantuml
 NeoBundle "aklt/plantuml-syntax"
+
+NeoBundle "tyru/stoptypofile.vim"
 
 " Other utilities
 NeoBundle 'xolox/vim-misc'  " Miscellaneous auto-load Vim scripts
@@ -221,7 +225,8 @@ if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
 
-" surround
+" surround: t
+"  e.g. visual mode -> St, ysst
 let g:surround_116 = "{{ _('\r') }}"
 
 "---------------------------------------------------------------------
@@ -279,6 +284,18 @@ nnoremap k gk
 nnoremap <Down> gj
 nnoremap <Up>   gk
 
+"These are to cancel the default behavior of c, C, s, p
+"  to put the text they delete in the default register.
+"  Note that this means e.g. "ad won't copy the text into
+"  register a anymore.  You have to explicitly yank it.
+nnoremap c "_c
+vnoremap c "_c
+nnoremap C "_C
+vnoremap C "_C
+nnoremap s "_s
+vnoremap s "_s
+xnoremap p "_dP
+
 " Tag jump
 nnoremap <Leader>h :vsp<CR> :exe("tjump ".expand('<cword>'))<CR>
 nnoremap <Leader>k :split<CR> :exe("tjump ".expand('<cword>'))<CR>
@@ -316,6 +333,7 @@ autocmd FileType json setlocal sw=2 sts=2 ts=2 et
 autocmd BufNewFile,BufRead *\.shader set filetype=glsl
 autocmd BufNewFile,BufRead Fastfile set filetype=ruby
 autocmd BufNewFile,BufRead Matchfile set filetype=ruby
+autocmd BufRead,BufNewFile *\.gs set filetype=javascript
 
 " Python
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
