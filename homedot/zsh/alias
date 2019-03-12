@@ -5,6 +5,8 @@ alias be="bundle exec"
 alias berks="bundle exec berks"
 alias cap="bundle exec cap"
 alias cppc='clang++ -std=c++11 -stdlib=libc++'
+alias ctagsl="ctags -R -a --sort=yes --exclude=\"*.js\" --exclude=\"*.h\" --exclude=log --exclude=\"*.yml\" --exclude=.git --langmap=RUBY:.rb `gem environment gemdir`"
+alias ctagsr="ctags -R -a -f ~/.vim/tmp/rtags --sort=yes --exclude=\"*.js\" --exclude=\"*.h\" --exclude=log --exclude=\"*.yml\" --exclude=.git --langmap=RUBY:.rb `gem environment gemdir`"
 alias d='pwd'
 alias dbresetall='for e in development test; do RAILS_ENV=$e bundle exec rake db:shards:drop:all; RAILS_ENV=$e bundle exec rake db:shards:create:all; RAILS_ENV=$e bundle exec rake db:migrate; done'
 alias dstat-cpu='dstat -Tclr'
@@ -13,9 +15,11 @@ alias dstat-full='dstat -Tclmdrn'
 alias dstat-mem='dstat -Tclm'
 alias dstat-net='dstat -Tclnd'
 alias g='git'
+alias gam='~/bin/gam/gam'
 alias gd='g d'
 alias gg='git grep -i'
 alias gi='git'
+alias git-tsubasa-add='git add Assets/*/Resources/Prefabs Assets/*/Scenes Assets/*/Scripts'
 alias gitdd='git branch -d $(git branch --merged | grep -Ev "\sdevelop$" | grep -Ev "\sstaging$" | grep -Ev "\smaster$" | grep -v "*")'
 alias gitrebasem='git fetch origin master && git rebase origin/master'
 alias gits='git status'
@@ -31,6 +35,7 @@ alias lr='ls -ltr'
 alias mig='rake db:migrate'
 alias notificationkill='launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist'
 alias nsuserdel='rm -rf ~/Library/Application\ Support/iPhone\ Simulator/6.1/Applications/*'
+alias pg='pgrep -alf'
 alias plf='perl -p -i.bak -e'
 alias pmosharms-tailerr='pmosharms -p8 -t0 -P "tail -f /media/ephemeral0/rails/production.log | grep ^E | grep -e releases -e ::" | rails_log_highlight'
 alias pmosharms='pmosh -h ~/.config/server.lst -i'
@@ -40,16 +45,13 @@ alias psshlink-tail='psshlink -p8 -t0 -P "tail -f /ebs1/link/shared/log/producti
 alias psshlink='pssh -h ~/.config/server-link.lst -i'
 alias psshlinkping-tail='psshlink -p8 -t0 -P "tail -f /media/ephemeral0/rails/ping.log"'
 alias psshlinkping='pssh -h ~/.config/server-linkping.lst -i'
-alias pg='pgrep -alf'
 alias r='rails'
-alias rails='bundle exec rails'
 alias rackup='bundle exec rackup'
+alias rails='bundle exec rails'
 alias rds='rake db:migrate:status'
 alias rename_model='rails runner ~/script/rename_model'
 alias rs='rspec'
 alias rspec="bundle exec rspec"
-alias ctagsr="ctags -R -a -f ~/.vim/tmp/rtags --sort=yes --exclude=\"*.js\" --exclude=\"*.h\" --exclude=log --exclude=\"*.yml\" --exclude=.git --langmap=RUBY:.rb `gem environment gemdir`"
-alias ctagsl="ctags -R -a --sort=yes --exclude=\"*.js\" --exclude=\"*.h\" --exclude=log --exclude=\"*.yml\" --exclude=.git --langmap=RUBY:.rb `gem environment gemdir`"
 alias rubocop="rubocop -D"
 alias sp="spring"
 alias spork="spork -p 3990"
@@ -62,8 +64,3 @@ alias unitylog='less ~/Library/Logs/Unity/Editor.log'
 alias unitylogtail='tail -f ~/Library/Logs/Unity/Editor.log'
 alias usls='git diff --name-only `git tag -l "production*" | tail -2` `git tag -l "production*" | tail -1` | grep "^db/seeds" | xargs -L1 -I {} basename {} .yml | tr "\n" "," | sed "s/,$//"'
 alias vi='vim'
-alias git-tsubasa-add='git add Assets/*/Resources/Prefabs Assets/*/Scenes Assets/*/Scripts'
-
-# GCC
-#alias gcc=/usr/local/bin/gcc-4.9
-#alias g++=/usr/local/bin/g++-4.9
