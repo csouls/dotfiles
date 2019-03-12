@@ -1,8 +1,9 @@
-id_rsa.pub
-id_rsa
+!homedot/vim/bundle/neobundle.vim
+.DS_Store
+home/bin/gam
 home/bin/secret
 homedot/vim/bundle/*
-!homedot/vim/bundle/neobundle.vim
 homedot/vim/tmp
 homedot/zsh/secret
-.DS_Store
+id_rsa
+id_rsa.pub
