@@ -5,7 +5,7 @@ SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
 # homebrew
 which brew > /dev/null
-if [ $0 -ne 0  ]; then
+if [ $? -ne 0  ]; then
   ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
   sh ${SCRIPT_DIR}/mac/homebrew/install.sh
 fi
@@ -30,4 +30,5 @@ else
 fi
 
 # post processing
-find ${SCRIPT_DIR}/mac -name "*.sh" | xargs -I S sh S
+mkdir -p ~/Library/LaunchAgents
+find ${SCRIPT_DIR}/mac -name "*.sh" -maxdepth 1 | xargs -I S sh S

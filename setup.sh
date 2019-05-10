@@ -5,9 +5,9 @@ set -eu
 export GITHUB_USER=csouls
 git submodule update --init --recursive
 
-if [ `uname` = "Darwin" ]; then
+if [ "$(uname)" = "Darwin" ]; then
   sh setup/setup_mac.sh
-elif [ `uname` = "Linux" ]; then
+elif [ "$(uname)" = "Linux" ]; then
   sh setup/setup_linux.sh
 fi
 
@@ -34,6 +34,6 @@ do
   ln -sf $from $to
 done
 
-# make user directories
+# make directories
 cd ~
 mkdir -p bin lib src tmp .vim/tmp

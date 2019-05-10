@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -eu
+
 # change terminal to xtarm-256-color
 /usr/libexec/PlistBuddy -c "Set :\"New Bookmarks\":0:\"Terminal Type\" xterm-256color" ~/Library/Preferences/com.googlecode.iterm2.plist
 
@@ -24,18 +26,10 @@
 /usr/libexec/PlistBuddy -c "Set :\"New Bookmarks\":0:\"Transparency\" 0.114891" ~/Library/Preferences/com.googlecode.iterm2.plist
 
 # config clipboard
-/usr/libexec/PlistBuddy -c "Set :\"PasteFromClipboard\" false" ~/Library/Preferences/com.googlecode.iterm2.plist
 /usr/libexec/PlistBuddy -c "Set :\"AllowClipboardAccess\" true" ~/Library/Preferences/com.googlecode.iterm2.plist
 
-# apparence
-/usr/libexec/PlistBuddy -c "Set :\"WindowStyle\" 1" ~/Library/Preferences/com.googlecode.iterm2.plist
-/usr/libexec/PlistBuddy -c "Set :\"TabViewType\" 1" ~/Library/Preferences/com.googlecode.iterm2.plist
-/usr/libexec/PlistBuddy -c "Set :\"HideTab\" false" ~/Library/Preferences/com.googlecode.iterm2.plist
-
-THEMEDIR=`dirname $0`/../themes/iterm2/
-
+THEMEDIR="$(dirname $0)/../themes/iterm2/"
 cd $THEMEDIR
-
 for f in *; do
     THEME=$(basename "$f")
     defaults write -app iTerm 'Custom Color Presets' -dict-add "$THEME" "`cat $f`"
