@@ -2,9 +2,9 @@
 
 brew upgrade
 brew update
+export HOMEBREW_NO_AUTO_UPDATE=1
 
-brew tap caskroom/cask
-brew tap homebrew/dupes
+brew tap homebrew/cask
 brew tap caius/jo
 brew tap sanemat/font
 
@@ -20,11 +20,9 @@ brew install boost
 brew install boot2docker
 brew install cairo
 brew install ccache
-brew install chromedriver
 brew install cloog
 brew install cmake
 brew install cmigemo
-brew install codeclimate
 brew install coreutils
 brew install csshx
 brew install ctags
@@ -64,8 +62,8 @@ brew install graphite2
 brew install graphviz
 brew install grep
 brew install harfbuzz
-brew install heroku
-brew install heroku-node
+brew install heroku/brew/heroku
+brew install heroku/brew/heroku-node
 brew install highlight
 brew install hub
 brew install icu4c
@@ -75,7 +73,6 @@ brew install isl
 brew install jasper
 brew install jbig2dec
 brew install jemalloc
-brew install jenkins
 brew install jo
 brew install jpeg
 brew install jq
@@ -121,7 +118,6 @@ brew install msgpack
 brew install mycli
 brew install mysql
 brew install nasm
-brew install neovim
 brew install nettle
 brew install nkf
 brew install node
@@ -156,8 +152,6 @@ brew install qt
 brew install qt5
 brew install rainbarf
 brew install rbenv
-brew install rbenv-gem-rehash
-brew install rbenv-gemset
 brew install readline
 brew install reattach-to-user-namespace
 brew install redis
@@ -196,6 +190,8 @@ brew install zeromq
 brew install zlib
 brew install zsh
 
+brew cask install chromedriver
+
 # https://github.com/esphen/wsta
 brew tap esphen/wsta https://github.com/esphen/wsta.git
 brew install wsta
@@ -215,18 +211,7 @@ cp -f /PATH/TO/RICTY/fonts/Ricty*.ttf ~/Library/Fonts/
 fc-cache -vf
 
 brew cask install java
-brew cask install android-ndk
 brew cask install android-sdk
 brew cask install android-studio
-
-# brew cask install alfred
-# brew cask install bettertouchtool
-# brew cask install charles
-# brew cask install gyazo
-# brew cask install iterm2
-# brew cask install karabiner
-# brew cask install sequel-pro
-# brew cask install sourcetree
-# brew cask install vlc
 
 brew cleanup
