@@ -4,10 +4,6 @@ brew upgrade
 brew update
 export HOMEBREW_NO_AUTO_UPDATE=1
 
-brew tap homebrew/cask
-brew tap caius/jo
-brew tap sanemat/font
-
 brew install adns
 brew install ant
 brew install astyle
@@ -169,25 +165,13 @@ brew install zeromq
 brew install zlib
 brew install zsh
 
-brew cask install chromedriver
-
 # https://github.com/esphen/wsta
 brew tap esphen/wsta https://github.com/esphen/wsta.git
 brew install wsta
 
-# font
-fonts=(
-  font-m-plus
-  font-source-code-pro
-  font-clear-sans
-  font-roboto
-)
-brew cask install --force ${fonts[@]}
+brew tap homebrew/cask
 
-## ricty
-brew install ricty --with-powerline
-cp -f /PATH/TO/RICTY/fonts/Ricty*.ttf ~/Library/Fonts/
-fc-cache -vf
+brew cask install chromedriver
 
 brew cask install java
 brew cask install android-sdk

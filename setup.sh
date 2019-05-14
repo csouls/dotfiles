@@ -2,7 +2,9 @@
 
 set -eu
 
-export GITHUB_USER=csouls
+echo -n "input your github account: "
+read GITHUB_USER
+export GITHUB_USER
 git submodule update --init --recursive
 
 if [ "$(uname)" = "Darwin" ]; then
