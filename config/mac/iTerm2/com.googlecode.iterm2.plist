@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AllowClipboardAccess</key>
+	<true/>
 	<key>AppleAntiAliasingThreshold</key>
 	<integer>1</integer>
 	<key>AppleScrollAnimationEnabled</key>
@@ -12,19 +14,23 @@
 	<string>manual</string>
 	<key>Custom Color Presets</key>
 	<dict>
-		<key>mac</key>
+		<key>home</key>
 		<string></string>
-		<key>setup_linux.sh</key>
+		<key>homedot</key>
+		<string></string>
+		<key>powerline-fonts</key>
+		<string></string>
+		<key>setup</key>
 		<string></string>
 	</dict>
 	<key>Default Bookmark Guid</key>
-	<string>DF4DC130-10E3-4E34-A17C-F6DB47CA7F14</string>
+	<string>BC37C0D1-58B2-423D-8EB0-6B07BD4DE7CF</string>
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/dotfiles/setup/mac/config/iTerm</string>
+	<string>~/Documents</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{712, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
@@ -58,27 +64,12 @@
 	</data>
 	<key>NSTableView Supports v2 KeyBingingTable</key>
 	<true/>
-	<key>NSToolbar Configuration com.apple.NSColorPanel</key>
-	<dict>
-		<key>TB Is Shown</key>
-		<integer>1</integer>
-	</dict>
-	<key>NSWindow Frame NSFontPanel</key>
-	<string>2083 333 1060 487 1920 300 1440 877 </string>
-	<key>NSWindow Frame SessionsPreferences</key>
-	<string>220 99 606 469 0 0 1680 1027 </string>
+	<key>NSWindow Frame SUUpdateAlert</key>
+	<string>-1270 588 620 392 -1920 0 1920 1177 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>775 684 796 473 0 0 1920 1177 </string>
-	<key>NSWindow Frame UKCrashReporter</key>
-	<string>1920 592 592 584 1920 150 1680 1027 </string>
+	<string>-1158 571 796 486 -1920 0 1920 1177 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 30 1865 1115 0 0 1920 1177 </string>
-	<key>NSWindow Frame iTerm Window 1</key>
-	<string>343 506 570 402 0 0 1680 1027 </string>
-	<key>NeverWarnAboutShortLivedSessions_DF4DC130-10E3-4E34-A17C-F6DB47CA7F14</key>
-	<true/>
-	<key>NeverWarnAboutShortLivedSessions_DF4DC130-10E3-4E34-A17C-F6DB47CA7F14_selection</key>
-	<integer>0</integer>
+	<string>-1883 154 1795 1002 -1920 0 1920 1177 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -244,7 +235,7 @@
 			<key>Background Image Location</key>
 			<string></string>
 			<key>Blinking Cursor</key>
-			<true/>
+			<false/>
 			<key>Blur</key>
 			<false/>
 			<key>Bold Color</key>
@@ -304,7 +295,7 @@
 				<real>0.73333334922790527</real>
 			</dict>
 			<key>Guid</key>
-			<string>DF4DC130-10E3-4E34-A17C-F6DB47CA7F14</string>
+			<string>BC37C0D1-58B2-423D-8EB0-6B07BD4DE7CF</string>
 			<key>Horizontal Spacing</key>
 			<real>1</real>
 			<key>Idle Code</key>
@@ -604,17 +595,17 @@
 			<key>Name</key>
 			<string>Default</string>
 			<key>Non Ascii Font</key>
-			<string>Ricty-Regular 13</string>
+			<string>Monaco 12</string>
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>RictyForPowerline-Regular 14</string>
+			<string>Monaco 12</string>
 			<key>Option Key Sends</key>
-			<integer>2</integer>
+			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
 			<false/>
 			<key>Right Option Key Sends</key>
-			<integer>2</integer>
+			<integer>0</integer>
 			<key>Rows</key>
 			<integer>25</integer>
 			<key>Screen</key>
@@ -644,7 +635,7 @@
 			<key>Shortcut</key>
 			<string></string>
 			<key>Silence Bell</key>
-			<true/>
+			<false/>
 			<key>Sync Title</key>
 			<false/>
 			<key>Tags</key>
@@ -652,7 +643,7 @@
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
 			<key>Transparency</key>
-			<real>0.11849073005206695</real>
+			<real>0.13502141497461931</real>
 			<key>Unlimited Scrollback</key>
 			<false/>
 			<key>Use Bold Font</key>
@@ -670,29 +661,27 @@
 			<key>Window Type</key>
 			<integer>0</integer>
 			<key>Working Directory</key>
-			<string>/Users/y.tanaka</string>
+			<string>/Users/yusuke.tanaka</string>
 		</dict>
 	</array>
+	<key>NoSyncHaveRequestedFullDiskAccess</key>
+	<true/>
 	<key>NoSyncHaveWarnedAboutPasteConfirmationChange</key>
 	<true/>
 	<key>NoSyncInstallationId</key>
-	<string>CCD81C37-6748-4856-9EF3-C2E594DB391C</string>
+	<string>A999A601-4FE9-4D2E-AE90-0CD182AE0E76</string>
 	<key>NoSyncLastTipTime</key>
-	<real>540354577.76089895</real>
+	<real>579498738.59195006</real>
 	<key>NoSyncPermissionToShowTip</key>
 	<true/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
-	<real>539486372.59936094</real>
-	<key>NoSyncTipsDisabled</key>
-	<true/>
+	<real>573701617.17391503</real>
 	<key>NoSyncTipsToNotShow</key>
 	<array>
 		<string>000</string>
 		<string>0000</string>
 		<string>0001</string>
 	</array>
-	<key>PMPrintingExpandedStateForPrint2</key>
-	<false/>
 	<key>PointerActions</key>
 	<dict>
 		<key>Button,1,1,,</key>
@@ -727,28 +716,24 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/y.tanaka/dotfiles/setup/mac/config/iTerm</string>
-	<key>Print In Black And White</key>
+	<string>/Users/yusuke.tanaka/dotfiles/configuration/mac/iTerm2</string>
+	<key>SUAutomaticallyUpdate</key>
 	<true/>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/final.xml?shard=6</string>
+	<string>https://iterm2.com/appcasts/final.xml?shard=67</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-04-16T11:41:32Z</date>
+	<date>2019-05-14T04:19:31Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
-	<key>UKCrashReporterLastCrashReportDate</key>
-	<real>1523533696</real>
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
-	<key>findMode_iTerm</key>
-	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.1.5</string>
+	<string>3.2.9</string>
 </dict>
 </plist>
