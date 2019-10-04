@@ -35,3 +35,37 @@ function hlcopy() {
   highlight -O rtf $1 $syntax --font Ricty --font-size 24 --style molokai -W -J 60 -j 3 | pbcopy
 }
 
+gcp_create_credential() {
+  if [ "${PROJECT_ID}" = "" ]; then
+    echo 'require $PROJECT_ID'
+    return 1
+  fi
+  if [ "${IAM_USER}" = "" ]; then
+    echo 'require $IAM_USER'
+    return 1
+  fi
+
+  if [ -z "${GOOGLE_APPLICATION_CREDENTIALS}" ]; then
+    export GOOGLE_APPLICATION_CREDENTIALS=$(realpath ~/tmp/gcloud-key.json)
+  fi
+  echo "gcloud iam service-accounts keys create ${GOOGLE_APPLICATION_CREDENTIALS} --iam-account ${IAM_USER}@${PROJECT_ID}.iam.gserviceaccount.com"
+  gcloud iam service-accounts keys create "${GOOGLE_APPLICATION_CREDENTIALS}" --iam-account ${IAM_USER}@${PROJECT_ID}.iam.gserviceaccount.com
+}
+
+gcp_delete_credential() {
+  if [ "${PROJECT_ID}" = "" ]; then
+    echo 'require $PROJECT_ID'
+    return 1
+  fi
+  if [ "${IAM_USER}" = "" ]; then
+    echo 'require $IAM_USER'
+    return 1
+  fi
+
+  if [ -z "${GOOGLE_APPLICATION_CREDENTIALS}" ]; then
+    export GOOGLE_APPLICATION_CREDENTIALS=$(realpath ~/tmp/gcloud-key.json)
+  fi
+  PRIVATE_KEY_ID=$(cat ${GOOGLE_APPLICATION_CREDENTIALS} | jq ".private_key_id" | sed 's/"//g')
+  echo "gcloud iam service-accounts keys delete ${PRIVATE_KEY_ID} --iam-account ${IAM_USER}@${PROJECT_ID}.iam.gserviceaccount.com"
+  gcloud iam service-accounts keys delete ${PRIVATE_KEY_ID} --iam-account ${IAM_USER}@${PROJECT_ID}.iam.gserviceaccount.com
+}

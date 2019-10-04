@@ -246,7 +246,6 @@ set showmatch
 set smartcase
 set whichwrap=b,s,h,l,<,>,[,]
 set autochdir
-set re=1
 
 " Search
 set incsearch
@@ -267,6 +266,7 @@ set fencs=utf-8,iso-2022-jp,euc-jp,cp932
 set fileformats=unix,mac,dos
 set ambiwidth=double
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+set re=1
 
 " activate molokai colorscheme
 colorscheme molokai
@@ -340,7 +340,7 @@ autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,
 
 " For conceal markers.
 if has('conceal')
-  set conceallevel=2 concealcursor=niv
+  setl conceallevel=0
 endif
 
 " Json formatting

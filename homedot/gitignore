@@ -1,10 +1,11 @@
 .DS_Store
 .bundle/
+.envrc
 .ruby-version
 .sass-cache
-.envrc
 Assets/GAF/Resources/Cache/
 Assets/StyleCop.Cache*
 Assets/_TsubasaDebug/GAF_TEST/
 tags
+tmp/
 vendor/
