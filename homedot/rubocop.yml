@@ -58,8 +58,8 @@ Style/SignalException:
 Style/StringLiterals:
   Enabled: false
 
-Style/TrailingCommaInLiteral:
-  EnforcedStyleForMultiline: comma
+# Style/TrailingCommaInLiteral:
+#   EnforcedStyleForMultiline: comma
 
 ##################### Metrics ##################################
 Metrics/ClassLength:

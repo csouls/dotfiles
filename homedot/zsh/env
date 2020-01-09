@@ -1,3 +1,8 @@
+if [ "${ZSHENV_MD5}" = "$(md5 -q ${0})" ]; then
+  return
+fi
+export ZSHENV_MD5=$(md5 -q ${0})
+
 # Color setting
 export CLICOLOR=1
 
