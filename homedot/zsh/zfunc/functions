@@ -1,0 +1,80 @@
+# Highlight for Rails error log
+rails_log_highlight() {
+  perl -pe '
+s/ERROR/\e[0;31m$&\e[0m/g;
+s/\d*-\d*-\d*T\d*:\d*:\d*\.\d*/\e[1;33m$&\e[0m/g;
+s/#\d*/\e[0;34m$&\e[0m/g;
+s/\S*::\S*/\e[0;36m$&\e[0m/g;
+'
+}
+
+rename_files() {
+  filematch=$1
+  regexp=$2
+  replacement=$3
+  echo "filematch=$filematch, regexp=$regexp, replacement=$replacement"
+  find . -name $filematch | while read from; do to="`echo $from | sed "s/$regexp/$replacement/g"`"; echo "mv $from $to"; mv $from $to; done
+}
+
+ipinfo() {
+  # or use https://ipinfo.io/account/search
+  if [ -z "$2" ]; then
+    curl "ipinfo.io/$1?token=${IPINFO_TOKEN}"
+  else
+    curl "ipinfo.io/$1/$2?token=${IPINFO_TOKEN}"
+  fi
+}
+
+dbe() {
+  ./d cmd "$*"
+}
+
+dbr() {
+  ./d cmd "rake $*"
+}
+
+function hlcopy() {
+  if [ -z "$2" ]; then
+    syntax=""
+  else
+    syntax="-S$2"
+  fi
+
+#  cat $1 | highlight -O rtf $syntax --font=Ricty --style=molokai --font-size 24 | pbcopy
+  highlight -O rtf $1 $syntax --font Ricty --font-size 24 --style molokai -W -J 60 -j 3 | pbcopy
+}
+
+gcp_create_credential() {
+  if [ "${PROJECT_ID}" = "" ]; then
+    echo 'require $PROJECT_ID'
+    return 1
+  fi
+  if [ "${IAM_USER}" = "" ]; then
+    echo 'require $IAM_USER'
+    return 1
+  fi
+
+  if [ -z "${GOOGLE_APPLICATION_CREDENTIALS}" ]; then
+    export GOOGLE_APPLICATION_CREDENTIALS=$(realpath ~/tmp/gcloud-key.json)
+  fi
+  echo "gcloud iam service-accounts keys create ${GOOGLE_APPLICATION_CREDENTIALS} --iam-account ${IAM_USER}@${PROJECT_ID}.iam.gserviceaccount.com"
+  gcloud iam service-accounts keys create "${GOOGLE_APPLICATION_CREDENTIALS}" --iam-account ${IAM_USER}@${PROJECT_ID}.iam.gserviceaccount.com
+}
+
+gcp_delete_credential() {
+  if [ "${PROJECT_ID}" = "" ]; then
+    echo 'require $PROJECT_ID'
+    return 1
+  fi
+  if [ "${IAM_USER}" = "" ]; then
+    echo 'require $IAM_USER'
+    return 1
+  fi
+
+  if [ -z "${GOOGLE_APPLICATION_CREDENTIALS}" ]; then
+    export GOOGLE_APPLICATION_CREDENTIALS=$(realpath ~/tmp/gcloud-key.json)
+  fi
+  PRIVATE_KEY_ID=$(cat ${GOOGLE_APPLICATION_CREDENTIALS} | jq ".private_key_id" | sed 's/"//g')
+  echo "gcloud iam service-accounts keys delete ${PRIVATE_KEY_ID} --iam-account ${IAM_USER}@${PROJECT_ID}.iam.gserviceaccount.com"
+  gcloud iam service-accounts keys delete ${PRIVATE_KEY_ID} --iam-account ${IAM_USER}@${PROJECT_ID}.iam.gserviceaccount.com
+}

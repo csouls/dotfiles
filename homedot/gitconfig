@@ -1,7 +1,7 @@
 [core]
   quotepath = false
   editor = vim
-  excludesfile = ~/.gitignore
+	excludesfile = /Users/yusuke.tanaka/.gitignore
   untrackedCache = true
 [color]
   status = auto
@@ -72,3 +72,7 @@
 [mergetool "sourcetree"]
   cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
   trustExitCode = true
+[hub]
+	protocol = git
+[init]
+	defaultBranch = main

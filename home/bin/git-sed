@@ -1,0 +1,23 @@
+#!/bin/bash
+set -euC
+if [ "$#" -eq 0 ]; then
+  echo 'git sed [SED-COMMANDS]' >&2
+  exit 1
+fi
+
+if which gsed > /dev/null; then
+  SED=gsed
+else
+  SED=sed
+fi
+
+cmd=()
+while [ "$#" != "0" ]; do
+  cmd+=(-e "$1")
+  shift
+done
+
+git ls-files | while read -r f; do
+  # シンボリックリンクにはsedを適用しない（リンクを一度削除して、通常のファイルとして作り直してしまうため）
+  [ -f "$f" ] && [ ! -L "$f" ] && "$SED" -i "${cmd[@]}" "$f"
+done

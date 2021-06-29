@@ -1,34 +1,16 @@
-# command complement
-autoload -U compinit
-compinit
-
-# Disable Ctrl+S(terminal lock)
-stty stop undef
-
 # oh-my-zsh
 source ~/.zsh/oh-my-zsh
 
-# environments
-source ~/.zsh/env
+# autoload
+fpath+=~/.zsh/zfunc
+autoload -U compinit
+compinit
 
 # aliases
 source ~/.zsh/alias
 
 # git-ignored
 [ -f ~/.zsh/secret ] && source ~/.zsh/secret
-
-# extensions
-source ~/.zsh/functions
-
-# rbenv
-which rbenv > /dev/null 2>&1 && eval "$(rbenv init -)"
-
-# direnv
-eval "$(direnv hook zsh)" > /dev/null 2>&1
-
-# added by travis gem
-[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
-[ $commands[kubectl] ] && source <(kubectl completion zsh)
 
 # history
 HISTFILE=~/.history-zsh
@@ -38,10 +20,17 @@ setopt APPEND_HISTORY
 ## for sharing history between zsh processes
 setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
+
 # allow tab completion in the middle of a word
 setopt COMPLETE_IN_WORD
+
+# Disable Ctrl+S(terminal lock)
+stty stop undef
+
 # enable color
+export CLICOLOR=1
 autoload -U colors; colors
+
 # prompt
 PROMPT="
 %{$fg_bold[blue]%}${HOST[0,7]} ${PROMPT}%{%(?.$fg[cyan].$fg[red])%}%(?.(▰╹◡╹%).ヾ(｡>﹏<｡%)ﾉ)%{$reset_color%}%b "
