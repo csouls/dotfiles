@@ -1,0 +1,13 @@
+echo env-initialize
+
+# rbenv initialize
+which rbenv > /dev/null 2>&1 && eval "$(rbenv init -)"
+
+# pyenv initialize
+which pyenv > /dev/null 2>&1 && eval "$(pyenv init -)"
+
+# goenv initialize
+which goenv > /dev/null 2>&1 && eval "$(goenv init -)"
+
+# direnv
+which direnv > /dev/null 2>&1 && eval "$(direnv hook zsh)"

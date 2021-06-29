@@ -10,10 +10,11 @@ Layout/DotPosition:
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
 
-Style/AsciiComments:
-  Enabled: false
+Layout/LineLength:
+  Max: 200
 
-Style/BracesAroundHashParameters:
+##################### Style ##################################
+Style/AsciiComments:
   Enabled: false
 
 Style/ClassAndModuleChildren:
@@ -30,6 +31,15 @@ Style/Documentation:
 
 Style/FormatString:
   Enabled: false
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
 
 Style/IfUnlessModifier:
   Enabled: false
@@ -71,9 +81,6 @@ Metrics/MethodLength:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
-
-Metrics/LineLength:
-  Max: 200
 
 Metrics/AbcSize:
   Max: 30

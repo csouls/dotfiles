@@ -3,35 +3,67 @@ if [ "${ZSHENV_MD5}" = "$(md5 -q ${0})" ]; then
 fi
 export ZSHENV_MD5=$(md5 -q ${0})
 
-# Color setting
-export CLICOLOR=1
-
-# make ruby
-export RUBY_CONFIGURE_OPTS="--with-readline-dir=/usr/local/opt/readline:${RUBY_CONFIGURE_OPTS}"
-
-# vim
-export EDITOR="vim"
+# for Homebrew
+# export PATH="/usr/local/bin:${PATH}"
 
 # Java
+## OpenJDK
+# export PATH="/usr/local/opt/openjdk/bin:${PATH}"
+# use ver.11
+export PATH="/usr/local/opt/openjdk@11/bin:${PATH}"
+### or other options
+# export PATH="${JAVA_HOME}/bin:${PATH}"
+# export CPPFLAGS="-I/usr/local/opt/openjdk/include"
+
+## JAVA_HOME
 if [ -x /usr/libexec/java_home ]; then
   export JAVA_HOME="$(/usr/libexec/java_home)"
 fi
 
-# AWS
-export EC2_REGION="ap-northeast-1"
-export EC2_HOME="/usr/local/ec2/ec2-api-tools-1.7.3.2"
-export AWS_RDS_HOME="${HOME}/bin/RDSCli-1.19.004"
-export AWS_AUTO_SCALING_HOME="${HOME}/bin/AutoScaling"
-export AWS_CREDENTIAL_FILE="${HOME}/.aws/credentials"
+# Ruby
+export PATH="${HOME}/.rbenv/bin:${PATH}"
+## for make ruby
+export RUBY_CONFIGURE_OPTS="--with-readline-dir=/usr/local/opt/readline:${RUBY_CONFIGURE_OPTS}"
 
-# PostgreSQL
-export PGDATA="/usr/local/var/postgres"
+# Python
+## Poetry
+export PATH="${HOME}/.poetry/bin:${HOME}/.local/bin:${PATH}"
+
+## conda initialize
+### !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('${HOME}/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "${HOME}/opt/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "${HOME}/opt/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/yusuke.tanaka/opt/miniconda3/bin:${PATH}"
+    fi
+fi
+unset __conda_setup
+
+# Haskell
+export PATH="${HOME}/.cabal/bin:${PATH}"
+
+# Golang
+export PATH="${HOME}/.goenv/bin:${PATH}"
+export PATH="${HOME}/go/bin:${PATH}"
+
+# Rust / Cargo
+source $HOME/.cargo/env
+
+# libxml
+export PATH="/usr/local/opt/libxml2/bin:${PATH}"
+
+# openssl
+export PATH="/usr/local/opt/openssl@1.1/bin:${PATH}"
 
 # ios
-export IOS_SIMULATOR_PATH="~/Library/Application Support/iPhone Simulator/"
+export IOS_SIMULATOR_PATH="${HOME}/Library/Application Support/iPhone Simulator/"
 
 # android
-ANDROID_NDK="/Users/y.tanaka/Library/Android/ndk/android-ndk-r13b"
+ANDROID_NDK="${HOME}/Library/Android/ndk/android-ndk-r13b"
 export NDK_ROOT="${ANDROID_NDK}"
 export ANDROID_NDK_HOME="${ANDROID_NDK}"
 export ANDROID_NDK_ROOT="${ANDROID_NDK}"
@@ -42,43 +74,61 @@ export ANDROID_SDK_ROOT="${ANDROID_SDK}"
 which ccache > /dev/null 2>&1 && export NDK_CCACHE="$(which ccache)"
 export CLASSPATH="${ANDROID_SDK}/platform-tools"
 
-# GO
-export GO15VENDOREXPERIMENT=1
-export GO111MODULE=auto
-
-# Yubikey
-export SSH_AUTH_SOCK="${HOME}/.gnupg/S.gpg-agent.ssh"
-
-# PATH
-export PATH="${HOME}/bin:${PATH}"      # tools
-export PATH="${JAVA_HOME}/bin:${PATH}" # Java
-export PATH="~/go/bin:${PATH}"         # Go
-
-## languages
-export PATH="${HOME}/.rbenv/bin:${PATH}" # Ruby
-export PATH="${HOME}/.cabal/bin:${PATH}" # Haskell
-
-## AWS
-export PATH="$EC2_HOME/bin:${PATH}"               # ec2-api-tools
-export PATH="$AWS_RDS_HOME/bin:${PATH}"           # RDS command line tools
-export PATH="$AWS_AUTO_SCALING_HOME/bin:${PATH}"  # AWS auto scaling tools
-
-## Android
 export PATH="${ANDROID_NDK}:${PATH}"
 export PATH="${ANDROID_SDK}:${PATH}"
 export PATH="${ANDROID_SDK}/tools:${PATH}"
 export PATH="${ANDROID_SDK}/tools/bin:${PATH}"
 export PATH="${ANDROID_SDK}/platform-tools:${PATH}"
 
-## GCP
-export APPENGINE_DEV_APPSERVER="${HOME}/lib/google-cloud-sdk/bin/dev_appserver.py"
-### Google Cloud SDK.
+# AWS
+export EC2_REGION="ap-northeast-1"
+export EC2_HOME="/usr/local/ec2/ec2-api-tools-1.7.3.2"
+export AWS_RDS_HOME="${HOME}/bin/RDSCli-1.19.004"
+export AWS_AUTO_SCALING_HOME="${HOME}/bin/AutoScaling"
+export AWS_CREDENTIAL_FILE="${HOME}/.aws/credentials"
+
+export PATH="$EC2_HOME/bin:${PATH}"               # ec2-api-tools
+export PATH="$AWS_RDS_HOME/bin:${PATH}"           # RDS command line tools
+export PATH="$AWS_AUTO_SCALING_HOME/bin:${PATH}"  # AWS auto scaling tools
+
+# GCP
+## Google Cloud SDK.
+### The next line updates PATH for the Google Cloud SDK.
 if [ -f "${HOME}/lib/google-cloud-sdk/path.zsh.inc" ]; then source "${HOME}/lib/google-cloud-sdk/path.zsh.inc"; fi
-### Enables shell command completion for gcloud.
+### The next line enables shell command completion for gcloud.
 if [ -f "${HOME}/lib/google-cloud-sdk/completion.zsh.inc" ]; then source "${HOME}/lib/google-cloud-sdk/completion.zsh.inc"; fi
+export CLOUDSDK_PYTHON=$(which python2)
 
-## libxml
-export PATH="/usr/local/opt/libxml2/bin:${PATH}"
+## GAE
+export APPENGINE_DEV_APPSERVER="${HOME}/lib/google-cloud-sdk/bin/dev_appserver.py"
 
-## Homebrew
-export PATH="/usr/local/bin:${PATH}"
+# PostgreSQL
+export PGDATA="/usr/local/var/postgres"
+
+# Local tools
+export PATH="${HOME}/bin:${PATH}"
+
+# vim
+export EDITOR="vim"
+
+# Yubikey
+export SSH_AUTH_SOCK="${HOME}/.gnupg/S.gpg-agent.ssh"
+
+# Netskope Cert (disabled)
+# export SSL_CERT_FILE="${HOME}/Library/Application\ Support/Netskope/STAgent/download/nscacert.pem"
+
+
+# xxxenv initialize
+## rbenv initialize
+which rbenv > /dev/null 2>&1 && eval "$(rbenv init -)"
+
+## pyenv initialize
+which pyenv > /dev/null 2>&1 && eval "$(pyenv init -)"
+## pyenv for tmux
+#export PATH="${HOME}/.pyenv/shims:${HOME}/.pyenv/bin:${PATH}"
+
+## goenv initialize
+which goenv > /dev/null 2>&1 && eval "$(goenv init -)"
+
+## direnv initialize
+which direnv > /dev/null 2>&1 && eval "$(direnv hook zsh)"
