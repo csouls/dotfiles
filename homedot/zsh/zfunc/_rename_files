@@ -1,0 +1,11 @@
+#compdef rename_files
+
+rename_files() {
+  filematch=$1
+  regexp=$2
+  replacement=$3
+  echo "filematch=$filematch, regexp=$regexp, replacement=$replacement"
+  find . -name $filematch | while read from; do to="`echo $from | sed "s/$regexp/$replacement/g"`"; echo "mv $from $to"; mv $from $to; done
+}
+
+compdef _rename_files rename_files

@@ -6,11 +6,19 @@ fpath+=~/.zsh/zfunc
 autoload -U compinit
 compinit
 
+# setup environments
+if [[ -z $TMUX ]]; then
+    source ~/.zsh/env
+fi
+
 # aliases
 source ~/.zsh/alias
 
 # git-ignored
 [ -f ~/.zsh/secret ] && source ~/.zsh/secret
+
+# direnv hook
+which direnv > /dev/null 2>&1 && eval "$(direnv hook zsh)"
 
 # history
 HISTFILE=~/.history-zsh

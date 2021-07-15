@@ -57,6 +57,8 @@ let g:scala_scaladoc_indent = 1
 " Shader
 Plug 'beyondmarc/hlsl.vim'
 Plug 'tikhomirov/vim-glsl'
+" Terraform
+Plug 'hashivim/vim-terraform'
 " Windows PowerShell
 Plug 'PProvost/vim-ps1'
 
@@ -345,25 +347,26 @@ if has("autocmd")
   "enable for search filetype
   filetype plugin on
   filetype indent on
-  " set autoindent
-  " set smartindent
-  " set smarttab
+  set smartindent
+  set smarttab
+  set tabstop=2 shiftwidth=2
   "sw=softtabstop, sts=shiftwidth, ts=tabstop, et=expandtab
   autocmd FileType c            setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType html         setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType ruby         setlocal sw=2 sts=2 ts=2 et
-  autocmd FileType js           setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType zsh          setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType python       setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType scala        setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType json         setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType yml          setlocal sw=2 sts=2 ts=2 et
-  autocmd FileType yaml         setlocal sw=2 sts=2 ts=2 et
-  autocmd FileType html         setlocal sw=4 sts=4 ts=4 et
   autocmd FileType css          setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType scss         setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType sass         setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType html         setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType html         setlocal sw=4 sts=4 ts=4 et
   autocmd FileType javascript   setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType js           setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType json         setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType python       setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType ruby         setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType sass         setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType scala        setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType scss         setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType sh           setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType yaml         setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType yml          setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType zsh          setlocal sw=4 sts=4 ts=4 et
 endif
 
 " File type
@@ -396,7 +399,7 @@ function! Preserve(command)
 endfunction
 function! Autopep8()
   if executable('autopep8')
-    call Preserve(':silent %!autopep8 --ignore=E501 --max-line-length=120 -')
+    call Preserve(':silent %!autopep8 --ignore=E501 -')
   endif
 endfunction
 autocmd BufWrite *.py :call Autopep8()

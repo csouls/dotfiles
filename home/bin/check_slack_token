@@ -1,0 +1,5 @@
+#!/bin/bash
+
+read -sp "SLACK_TOKEN: " SLACK_TOKEN
+echo
+curl -H"Authorization: Bearer ${SLACK_TOKEN}" -XPOST "https://slack.com/api/auth.test"

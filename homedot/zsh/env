@@ -4,7 +4,8 @@ fi
 export ZSHENV_MD5=$(md5 -q ${0})
 
 # for Homebrew
-# export PATH="/usr/local/bin:${PATH}"
+# need: setopt no_global_rcs to .zshenv
+export PATH="/usr/local/bin:${PATH}"
 
 # Java
 ## OpenJDK
@@ -97,7 +98,7 @@ export PATH="$AWS_AUTO_SCALING_HOME/bin:${PATH}"  # AWS auto scaling tools
 if [ -f "${HOME}/lib/google-cloud-sdk/path.zsh.inc" ]; then source "${HOME}/lib/google-cloud-sdk/path.zsh.inc"; fi
 ### The next line enables shell command completion for gcloud.
 if [ -f "${HOME}/lib/google-cloud-sdk/completion.zsh.inc" ]; then source "${HOME}/lib/google-cloud-sdk/completion.zsh.inc"; fi
-export CLOUDSDK_PYTHON=$(which python2)
+export CLOUDSDK_PYTHON=$(which python3)
 
 ## GAE
 export APPENGINE_DEV_APPSERVER="${HOME}/lib/google-cloud-sdk/bin/dev_appserver.py"
@@ -125,7 +126,7 @@ which rbenv > /dev/null 2>&1 && eval "$(rbenv init -)"
 ## pyenv initialize
 which pyenv > /dev/null 2>&1 && eval "$(pyenv init -)"
 ## pyenv for tmux
-#export PATH="${HOME}/.pyenv/shims:${HOME}/.pyenv/bin:${PATH}"
+export PATH="${HOME}/.pyenv/shims:${HOME}/.pyenv/bin:${PATH}"
 
 ## goenv initialize
 which goenv > /dev/null 2>&1 && eval "$(goenv init -)"

@@ -1,0 +1,12 @@
+#compdef ipinfo
+
+_ipinfo() {
+  # or use https://ipinfo.io/account/search
+  if [ -z "$2" ]; then
+    curl "ipinfo.io/$1?token=${IPINFO_TOKEN}"
+  else
+    curl "ipinfo.io/$1/$2?token=${IPINFO_TOKEN}"
+  fi
+}
+
+compdef _ipinfo ipinfo

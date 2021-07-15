@@ -1,0 +1,7 @@
+#!/bin/bash
+
+read -sp "API_KEY: " API_KEY
+echo
+# curl "https://maps.googleapis.com/maps/api/staticmap?center=Tokyo&size=100x100&key=${API_KEY}"
+
+curl "https://maps.googleapis.com/maps/api/geocode/json?address=Tokyo&key=${API_KEY}"
