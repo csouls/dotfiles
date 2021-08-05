@@ -48,7 +48,6 @@ unset __conda_setup
 export PATH="${HOME}/.cabal/bin:${PATH}"
 
 # Golang
-export PATH="${HOME}/.goenv/bin:${PATH}"
 export PATH="${HOME}/go/bin:${PATH}"
 
 # Rust / Cargo

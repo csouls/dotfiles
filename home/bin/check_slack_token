@@ -1,5 +1,68 @@
 #!/bin/bash
 
+function slack_api() {
+  RESOURCE=$1
+  METHOD=$2
+  JSON_BODY=$3
+  if [ -z "${SLACK_TOKEN}" ]; then
+    echo "SLACK_TOKEN required."
+    exit 1
+  fi
+
+  URL="https://slack.com/api/${RESOURCE}"
+  HEADER="Authorization: Bearer ${SLACK_TOKEN}"
+  if [ -z "${METHOD}" ]; then
+    RESPONSE=$(curl --silent -H"${HEADER}" "${URL}")
+  else
+    if [ -z "${JSON_BODY}" ]; then
+      RESPONSE=$(curl --silent -H"${HEADER}" -X${METHOD} "${URL}")
+    else
+      RESPONSE=$(curl --silent -H"${HEADER}" -H "Content-Type: application/json" -X${METHOD} -d"${JSON_BODY}" "${URL}")
+    fi
+  fi
+
+  OK=$(echo $RESPONSE | jq -r '.ok')
+  if [ "${OK}" = "true" ]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
 read -sp "SLACK_TOKEN: " SLACK_TOKEN
 echo
-curl -H"Authorization: Bearer ${SLACK_TOKEN}" -XPOST "https://slack.com/api/auth.test"
+
+slack_api "auth.test" "POST"
+RET=$?
+echo $RESPONSE | jq
+if [ ${RET} -ne 0 ]; then
+  exit 1
+fi
+
+printf "\nGET conversations.list? (y/N): "
+read ANSWER
+case "$ANSWER" in
+  [yY]*)
+    slack_api "conversations.list"
+    if [ $? -eq 0 ]; then
+      CHANNEL=$(echo $RESPONSE | jq -r '.channels[] | select(.is_member == true) | .id')
+    fi
+    echo $RESPONSE | jq -r '.channels[] | select(.is_member == true)'
+    ;;
+esac
+
+if [ -z "${CHANNEL}" ]; then
+  exit 0
+fi
+
+TEXT="このアプリのトークンはリポジトリにコミットされたため、漏洩しました。至急無効化してください"
+BODY="{\"channel\":\"${CHANNEL}\", \"text\":\"${TEXT}\"}"
+echo "BODY=${BODY}"
+printf "\nPOST chat.postMessage? (y/N): "
+read ANSWER
+case "$ANSWER" in
+  [yY]*)
+    slack_api "chat.postMessage" "POST" "${BODY}"
+    echo $RESPONSE
+    ;;
+esac

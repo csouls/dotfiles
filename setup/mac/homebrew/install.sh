@@ -49,7 +49,7 @@ brew install gmp
 brew install gnu-sed
 brew install gnupg
 brew install gnutls
-brew install go
+brew install goenv --HEAD
 brew install gradle
 brew install graphite2
 brew install graphviz
