@@ -55,13 +55,17 @@ if [ -z "${CHANNEL}" ]; then
   exit 0
 fi
 
-TEXT="このアプリのトークンはリポジトリにコミットされたため、漏洩しました。至急無効化してください"
-BODY="{\"channel\":\"${CHANNEL}\", \"text\":\"${TEXT}\"}"
-echo "BODY=${BODY}"
 printf "\nPOST chat.postMessage? (y/N): "
 read ANSWER
 case "$ANSWER" in
   [yY]*)
+    TEXT="このメッセージ送信に使われているSlackトークンは漏洩しています。至急無効化してください。"
+    echo "message: ${TEXT}"
+    printf "\nAdd Note? (input addition message): "
+    read NOTE
+    BODY="{\"channel\":\"${CHANNEL}\", \"text\":\"${TEXT}${NOTE}\"}"
+    echo "${BODY}"
+
     slack_api "chat.postMessage" "POST" "${BODY}"
     echo $RESPONSE
     ;;

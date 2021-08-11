@@ -4,4 +4,49 @@ read -sp "API_KEY: " API_KEY
 echo
 # curl "https://maps.googleapis.com/maps/api/staticmap?center=Tokyo&size=100x100&key=${API_KEY}"
 
-curl "https://maps.googleapis.com/maps/api/geocode/json?address=Tokyo&key=${API_KEY}"
+function show_header() {
+  echo -e "\033[96m$1\033[0m"
+}
+
+function google_api() {
+  TARGET=$1
+  METHOD=$2
+
+  if [ `echo $TARGET | grep \?` ]; then
+    URL="${TARGET}&key=${API_KEY}"
+  else
+    URL="${TARGET}?key=${API_KEY}"
+  fi
+
+  if [ -z ${METHOD} ]; then
+    RESPONSE=$(curl --silent "${URL}")
+  else
+    RESPONSE=$(curl --silent -X${METHOD} "${URL}")
+  fi
+
+  if [ "$(echo ${RESPONSE} | jq '.error')" = "null" ]; then
+    echo ${RESPONSE} | jq .
+  elif [ ! -z "${SHOW_ERROR}" ]; then
+    echo ${RESPONSE} | jq .
+  fi
+}
+
+show_header "[Cloud Natural Language API]"
+google_api "https://language.googleapis.com/v1/documents:analyzeEntities" "POST"
+# GET Project ID
+if [ "$(echo ${RESPONSE} | jq '.error')" != "null" ]; then
+  CONSUMER=$(echo ${RESPONSE} | jq -r '.error.details[] | select(."@type" == "type.googleapis.com/google.rpc.ErrorInfo") | .metadata.consumer')
+fi
+echo "consumer is ${CONSUMER}"
+
+show_header "[Analytics API]"
+google_api "https://analyticsreporting.googleapis.com/v4/reports:batchGet" "POST"
+
+show_header "[Cloud Resource Manager API]"
+google_api "https://cloudresourcemanager.googleapis.com/v3/projects"
+
+show_header "[Service Usage API - services.list]"
+google_api "https://serviceusage.googleapis.com/v1/${CONSUMER}/services"
+
+show_header "[Maps API - geocode]"
+google_api "https://maps.googleapis.com/maps/api/geocode/json?address=Tokyo"

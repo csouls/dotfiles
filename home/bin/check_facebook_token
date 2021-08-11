@@ -1,0 +1,20 @@
+#!/bin/bash
+
+function show_header() {
+  echo -e "\033[96m$1\033[0m"
+}
+
+read -sp "TOKEN: " TOKEN
+echo
+
+read -sp "BUSINESS_ID (optional): " BUSINESS_ID
+echo
+
+show_header "[me/accounts]"
+curl --silent "https://graph.facebook.com/v11.0/me/accounts/?access_token=${TOKEN}" | jq
+
+if [ ! -z "${BUSINESS_ID}" ]; then
+  FIELDS="id,media_type,media_url,username,timestamp,permalink"
+  show_header "[media]"
+  curl --silent "https://graph.facebook.com/v11.0/${BUSINESS_ID}/media?fields=${FIELDS}&access_token=${TOKEN}" | jq
+fi
