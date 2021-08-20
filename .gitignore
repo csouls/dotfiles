@@ -4,8 +4,9 @@ home/bin/gam
 home/bin/secret
 home/bin/dex2jar-2.0/
 home/bin/suspiciuous*
-homedot/vim/bundle/*
-homedot/vim/tmp
+homedot/vim/bundle/
+homedot/vim/plugged/
+homedot/vim/tmp/
 homedot/zsh/secret
 id_rsa
 id_rsa.pub

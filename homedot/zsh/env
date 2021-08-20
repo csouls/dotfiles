@@ -123,9 +123,7 @@ export SSH_AUTH_SOCK="${HOME}/.gnupg/S.gpg-agent.ssh"
 which rbenv > /dev/null 2>&1 && eval "$(rbenv init -)"
 
 ## pyenv initialize
-which pyenv > /dev/null 2>&1 && eval "$(pyenv init -)"
-## pyenv for tmux
-export PATH="${HOME}/.pyenv/shims:${HOME}/.pyenv/bin:${PATH}"
+which pyenv > /dev/null 2>&1 && eval "$(pyenv init -)" && eval "$(pyenv init --path)"
 
 ## goenv initialize
 which goenv > /dev/null 2>&1 && eval "$(goenv init -)"
