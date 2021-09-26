@@ -6,9 +6,10 @@ SCRIPT_DIR=$(cd $(dirname $0); pwd)
 # homebrew
 which brew > /dev/null
 if [ $? -ne 0  ]; then
-  ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
-  sh ${SCRIPT_DIR}/mac/homebrew/install.sh
+  echo "Please install Homebrew from https://brew.sh/"
+  exit 1
 fi
+sh ${SCRIPT_DIR}/mac/homebrew/install.sh
 
 # install oh-my-zsh
 if [ -e ~/.oh-my-zsh ]; then
