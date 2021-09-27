@@ -4,7 +4,6 @@ fi
 export ZSHENV_MD5=$(md5 -q ${0})
 
 # for Homebrew
-# need: setopt no_global_rcs to .zshenv
 export PATH="/usr/local/bin:${PATH}"
 
 # Java
@@ -28,7 +27,7 @@ export RUBY_CONFIGURE_OPTS="--with-readline-dir=/usr/local/opt/readline:${RUBY_C
 
 # Python
 ## Poetry
-export PATH="${HOME}/.poetry/bin:${HOME}/.local/bin:${PATH}"
+export PATH="${HOME}/.poetry/bin:${PATH}"
 
 ## conda initialize
 ### !! Contents within this block are managed by 'conda init' !!

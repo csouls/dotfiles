@@ -12,22 +12,8 @@ fi
 sh ${SCRIPT_DIR}/mac/homebrew/install.sh
 
 # install oh-my-zsh
-if [ -e ~/.oh-my-zsh ]; then
-  cd ~/.oh-my-zsh
-  git fetch origin
-  git reset --hard origin/master
-else
+if [ ! -e ~/.oh-my-zsh ]; then
   git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-fi
-
-# install oh-my-zsh tmux-powerline
-if [ -e ~/.oh-my-zsh/themes/oh-my-zsh-powerline-theme ]; then
-  cd ~/.oh-my-zsh/themes/oh-my-zsh-powerline-theme
-  git fetch origin
-  git reset --hard origin/master
-else
-  git clone https://github.com/jeremyFreeAgent/oh-my-zsh-powerline-theme.git ~/.oh-my-zsh/themes/oh-my-zsh-powerline-theme
-  sh ~/.oh-my-zsh/themes/oh-my-zsh-powerline-theme/install_in_omz.sh
 fi
 
 # post processing

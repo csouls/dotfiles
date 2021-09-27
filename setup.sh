@@ -2,9 +2,9 @@
 
 set -eu
 
-echo -n "input your github account: "
-read GITHUB_USER
-export GITHUB_USER
+# echo -n "input your github account: "
+# read GITHUB_USER
+# export GITHUB_USER
 git submodule update --init --recursive
 
 if [ "$(uname)" = "Darwin" ]; then
@@ -21,8 +21,15 @@ do
   to="$HOME/."$file
   if [ -L $to ]; then
     rm $to
+  elif [ -e $to ]; then
+    read -p "replace ~/.$file ? [y/n] "
+    if [ "$REPLY" = "y" ]; then
+      rm -rf $to
+    fi
   fi
-  ln -sf $from $to
+  if [ ! -e $to ]; then
+    ln -sf $from $to
+  fi
 done
 
 # copy normal files
