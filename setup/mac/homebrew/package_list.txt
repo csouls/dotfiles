@@ -56,6 +56,7 @@ icu4c
 ilmbase
 isl
 jbig2dec
+java11
 jo
 jpeg
 jq

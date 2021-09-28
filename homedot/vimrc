@@ -295,6 +295,9 @@ syntax enable
 colorscheme dracula
 " colorscheme molokai
 
+" background transparent
+hi Normal guibg=NONE ctermbg=NONE
+
 " change comment color
 highlight Comment ctermfg=darkcyan
 highlight LineNr ctermfg=grey
