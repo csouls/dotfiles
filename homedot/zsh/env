@@ -8,17 +8,15 @@ export PATH="/usr/local/bin:${PATH}"
 
 # Java
 ## OpenJDK
-# export PATH="/usr/local/opt/openjdk/bin:${PATH}"
-# use ver.11
-export PATH="/usr/local/opt/openjdk@11/bin:${PATH}"
+export PATH="/usr/local/opt/openjdk/bin:${PATH}"
 ### or other options
 # export PATH="${JAVA_HOME}/bin:${PATH}"
 # export CPPFLAGS="-I/usr/local/opt/openjdk/include"
 
-## JAVA_HOME
-if [ -x /usr/libexec/java_home ]; then
-  export JAVA_HOME="$(/usr/libexec/java_home)"
-fi
+## original JAVA_HOME
+# if [ -x /usr/libexec/java_home ]; then
+#   export JAVA_HOME="$(/usr/libexec/java_home)"
+# fi
 
 # Ruby
 export PATH="${HOME}/.rbenv/bin:${PATH}"
