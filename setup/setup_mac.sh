@@ -11,6 +11,9 @@ if [ $? -ne 0  ]; then
 fi
 sh ${SCRIPT_DIR}/mac/homebrew/install.sh
 
+# install cargo packages
+sh ${SCRIPT_DIR}/mac/cargo/install.sh
+
 # install oh-my-zsh
 if [ ! -e ~/.oh-my-zsh ]; then
   git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh

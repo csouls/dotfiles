@@ -68,6 +68,12 @@ Style/SignalException:
 Style/StringLiterals:
   Enabled: false
 
+Style/SymbolArray:
+  Enabled: false
+
+Style/WordArray:
+  Enabled: false
+
 # Style/TrailingCommaInLiteral:
 #   EnforcedStyleForMultiline: comma
 
