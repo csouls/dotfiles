@@ -1,0 +1,18 @@
+# locale
+export LANG="ja_JP.UTF-8"
+
+# Java
+export JAVA_HOME="/Applications/Unity/Hub/Editor/2020.3.26f1/PlaybackEngines/AndroidPlayer/OpenJDK"
+export PATH="${JAVA_HOME}/bin:${PATH}"
+
+# Ruby
+export PATH="${HOME}/.rbenv/bin:${PATH}"
+## for make ruby
+export RUBY_CONFIGURE_OPTS="--with-readline-dir=/usr/local/opt/readline:${RUBY_CONFIGURE_OPTS}"
+
+# xxxenv initialize
+## rbenv initialize
+which rbenv > /dev/null 2>&1 && eval "$(rbenv init -)"
+
+## pyenv initialize
+which pyenv > /dev/null 2>&1 && eval "$(pyenv init -)" && eval "$(pyenv init --path)"

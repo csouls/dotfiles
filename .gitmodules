@@ -1,14 +1,14 @@
 [submodule "vim/bundle/neobundle"]
   path = vim/bundle/neobundle
-  url = git://github.com/Shougo/neobundle.vim
+  url = https://github.com/Shougo/neobundle.vim
   ignore = dirty
 [submodule "liquidprompt"]
   path = liquidprompt
-  url = git://github.com/nojhan/liquidprompt.git
+  url = https://github.com/nojhan/liquidprompt.git
   ignore = dirty
 [submodule "homedot/oh-my-zsh"]
 	path = homedot/oh-my-zsh
-	url = git://github.com/robbyrussell/oh-my-zsh.git
+	url = https://github.com/ohmyzsh/ohmyzsh
 [submodule "homedot/vim/bundle/neobundle.vim"]
 	path = homedot/vim/bundle/neobundle.vim
 	url = https://github.com/Shougo/neobundle.vim.git

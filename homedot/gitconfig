@@ -16,6 +16,7 @@
   rebase = true
 [push]
   default = simple
+	autoSetupRemote = true
 [grep]
   lineNumber = true
 [pager]
@@ -76,3 +77,5 @@
 	protocol = git
 [init]
 	defaultBranch = main
+[trim]
+	bases = develop,master,main
