@@ -1,23 +1,18 @@
 #!/bin/bash
-set -eu
+set -u
 
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
 # homebrew
-which brew > /dev/null
-if [ $? -ne 0  ]; then
+if [ ! -e '/opt/homebrew/bin/brew' ]; then
   echo "Please install Homebrew from https://brew.sh/"
   exit 1
 fi
+eval "$(/opt/homebrew/bin/brew shellenv)"
 sh ${SCRIPT_DIR}/mac/homebrew/install.sh
 
 # install cargo packages
 sh ${SCRIPT_DIR}/mac/cargo/install.sh
-
-# install oh-my-zsh
-if [ ! -e ~/.oh-my-zsh ]; then
-  git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-fi
 
 # post processing
 mkdir -p ~/Library/LaunchAgents

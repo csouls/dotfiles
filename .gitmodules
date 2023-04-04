@@ -8,7 +8,7 @@
   ignore = dirty
 [submodule "homedot/oh-my-zsh"]
 	path = homedot/oh-my-zsh
-	url = https://github.com/ohmyzsh/ohmyzsh
+	url = https://github.com/ohmyzsh/ohmyzsh.git
 [submodule "homedot/vim/bundle/neobundle.vim"]
 	path = homedot/vim/bundle/neobundle.vim
 	url = https://github.com/Shougo/neobundle.vim.git

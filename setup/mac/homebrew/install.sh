@@ -1,28 +1,37 @@
 #!/bin/bash
 
-echo "-- brew update"
-brew update
 # export HOMEBREW_NO_AUTO_UPDATE=1
+export HOMEBREW_NO_INSTALL_CLEANUP=1
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
-LIST=$(brew list --version | cut -d' ' -f1)
+echo "-- brew update"
+brew update
 
 echo "-- brew install packages"
-while read PACKAGE; do
-  echo ${LIST} | grep -q ${PACKAGE}
-  if [ $? -ne 0 ]; then
-    brew list ${PACKAGE} 1>/dev/null 2>/dev/null || brew install ${PACKAGE}
+cat /dev/null > "${SCRIPT_DIR}/brew_install_package.sh"
+LIST=$(brew list -1)
+cat "${SCRIPT_DIR}/package_list.txt" | while read -r PACKAGE; do
+  echo $LIST | grep ${PACKAGE} 1>/dev/null 2>/dev/null
+  if [ $? -eq 1 ]; then
+    echo "brew install ${PACKAGE}" >> "${SCRIPT_DIR}/brew_install_package.sh"
   fi
-done < "${SCRIPT_DIR}/package_list.txt"
+done
+bash "${SCRIPT_DIR}/brew_install_package.sh"
+rm "${SCRIPT_DIR}/brew_install_package.sh"
 
-while read PACKAGE; do
-  echo ${LIST} | grep -q ${PACKAGE}
-  if [ $? -ne 0 ]; then
-    brew list ${PACKAGE} 1>/dev/null 2>/dev/null || brew install --head ${PACKAGE}
+echo "-- brew install packages head"
+cat /dev/null > "${SCRIPT_DIR}/brew_install_package_head.sh"
+cat "${SCRIPT_DIR}/package_head_list.txt" | while read -r PACKAGE; do
+  echo $LIST | grep ${PACKAGE} 1>/dev/null 2>/dev/null
+  if [ $? -eq 1 ]; then
+    echo "brew install ${PACKAGE}" >> "${SCRIPT_DIR}/brew_install_package_head.sh"
   fi
-done < "${SCRIPT_DIR}/package_head_list.txt"
+done
+bash "${SCRIPT_DIR}/brew_install_package_head.sh"
+rm "${SCRIPT_DIR}/brew_install_package_head.sh"
 
 # brew tap homebrew/cask
 # brew cask install chromedriver
 
+echo "-- brew cleanup"
 brew cleanup
