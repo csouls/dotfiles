@@ -17,6 +17,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-jp/vital.vim'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
+" GitHub Copilot
+Plug 'github/copilot.vim'
+
 " C++ / Clang
 Plug 'vim-jp/cpp-vim'
 Plug 'Rip-Rip/clang_complete'

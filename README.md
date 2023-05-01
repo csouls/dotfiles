@@ -2,19 +2,16 @@ dotfiles
 ===========
 
 ## Installation on mac
-1. Install Xcode from [Mac App Store](https://apps.apple.com/jp/app/xcode/id497799835)
-2. Install Command Line Tools for Xcode from [Apple Developer Downloads](https://developer.apple.com/download/more/)
-3. run `sudo xcodebuild -license` and press `q` -> `agree`
-4. Clone this repository, cd `dotfiles` directory
-5. run `git submodule update --init`
-6. run `./setup.sh`
-7. Launch applications and update Accessibility ( in Preferences -> Security and Privacy -> Privacy tab )
+1. Install [Homebrew](https://brew.sh/index_ja)
+1. `brew install gh` and setup git
+1. `gh repo clone csouls/dotfiles`
+1. run `git submodule update --init`
+1. run `./setup.sh`
 
 ## Other
 - [Google IME](https://www.google.co.jp/ime/)
+- [iTerm2](https://iterm2.com/)
 - [Karabiner-Elements](https://karabiner-elements.pqrs.org/)
-- [Slack](https://slack.com/intl/ja-jp/downloads/)
-- [Zoom](https://zoom.us/download)
 - [Clipy](https://clipy-app.com/)
 
 ## Settings
@@ -32,18 +29,9 @@ dotfiles
 2. Set the `dotfiles/config/mac/iTerm2` directory -> choise [Don't copy]
 
 ### Karabiner-Elements
-
-#### Simple modifications
-- (For JIS to US Keyboard) `International3` -> `grave_accent_and_tilde`
-- (For Realforce JIS) `PCキーボードの無変換キー` -> `left_control`
-- (For Realforce JIS) `PCキーボードの変換キー` -> `escape`
-
-#### Complex modifications
-- Add rule -> Import more...Internet... -> Download `Emacs key bindings` -> Enable `Emacs key bindings [control+keys]`
-
-#### Virtual Keyboard
-- (IF Use  US Keyboard) Country code: 1  -> Set JIS Keybaord
-- (IF Use JIS Keyboard) Country code: 45 -> Set JIS Keybaord
+#### Simple modifications for JIS Keyboard
+- (For Realforce) `PCキーボードの無変換キー` -> `left_control`
+- (For Realforce) `PCキーボードの変換キー` -> `escape`
 
 ### Vim
 1. run vim

@@ -11,7 +11,7 @@
   ff = false
   tool = vimdiff
 [fetch]
-  prune = true
+	prune = true
 [pull]
   rebase = true
 [push]
